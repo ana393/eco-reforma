@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="comunes/comunes :: head"></head>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+<body>
+	 <div class="container mt-5 pb-5">
+        <form th:action="@{/usuario/guardar_recurso}" th:object="${habitacion}" method="post" enctype="multipart/form-data">
+            <h5>Complete el Formulario</h5>
+               <br>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nombre:</label>
+                    <div class="col-sm-6">
+                        <input type="text"  id="title" name="titulo" th:value ="${habitacion.titulo}" placeholder="Nombre de habitacion" 
+								th:classappend="${tituloError} ? ' is-invalid'">
+						<div th:if="${tituloError}" class="invalid-feedback" th:text="${tituloError}"></div>
+                    </div>
+                </div>
+                            
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Tipo:</label>
+                <div class="col-sm-6">
+                    <input type="text" name="tipo" th:value="${habitacion.tipo}" class="form-control" placeholder="Tipo de habitacion" 
+                           th:classappend="${tipoError} ? ' is-invalid'" />
+                    <div th:if="${tipoError}" class="invalid-feedback" th:text="${tipoError}"></div>
+                </div>
+            </div>
+        
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Precio:</label>
+                <div class="col-sm-6">
+						<input  type="text" name="precio" id="price" th:value="${habitacion.precio}" placeholder="Precio habitacion" />
+						<div ><span  id="basic-addon1"></span></div>
+                    <div th:if="${precioError}" class="invalid-feedback" th:text="${precioError}"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Descripcion</label>
+                <textarea class="form-control col-sm-8"  name="descripcion"  th:value ="${habitacion.descripcion}"  rows="3"
+                         placeholder="Descripcion"  th:classappend="${descripcionError} ? ' is-invalid'"></textarea>
+                 <div th:if="${descripcionError}" class="invalid-feedback" th:text="${descripcionError}"></div>
+            </div>
+            
+              <!-------Campo para multipartf-->
+				<div class="form-group row">
+					<label for="ficero" class="col-2 col-form-label text-right">Seleccione una Imagen</label>
+						<div class="col-6">
+                       		 <input class="btn btn-dark" type="file"  id="customFile" name="fichero">
+                   		 </div>
+              	  </div>
+                
+				<div class="form-group row">
+					<div class="offset-2 col-6">
+						<button type="submit" class="btn btn-success"> ACEPTAR</button>
+						<a class="btn btn-danger" th:href="@{/usuario/gestion}">CANCELAR</a>
+					</div>
+				</div>
+        </form>
+	</div>
+ <footer th:insert="~{comunes/comunes :: footer}"></footer>
+</body>
+</html>

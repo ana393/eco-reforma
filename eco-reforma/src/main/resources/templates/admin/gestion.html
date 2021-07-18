@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="comunes/comunes :: head"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+
+
+    <div class="container">
+        <div th:replace="comunes/comunes :: userNavbar"></div>
+    </div>
+
+     <h2>Pagina Admin</h2>
+<footer th:insert="~{comunes/comunes :: footer}"></footer>
+</body>
+</html>

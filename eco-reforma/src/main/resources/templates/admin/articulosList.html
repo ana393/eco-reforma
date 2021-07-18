@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="comunes/comunes :: head"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+
+
+    <div class="container">
+        <div th:replace="comunes/comunes :: userNavbar"></div>
+    </div>
+
+ 
+    <section class="container">
+    <table   class="table table-striped table-bordered table-hover" >
+     <thead >
+       <tr>
+      	<th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Precio</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+       <div th:if="${#lists.isEmpty(page.getContent())}">
+            <h2>No hay Datos en su Base de datos</h2>
+        </div>
+    <tbody  id="tabla-recursos">
+      <tr  th:each="item: ${page.getContent()}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.titulo}"></td>
+        <td th:text="${item.tipo}"></td>
+        <td th:text="${item.precio}"></td>
+        <td>
+            <a th:href="@{/usuario/articulosList/borrar/{id}(id=${item.id})}" 
+              onclick="return confirm('Estas seguro de que quieres borrar este recurso de la Base de Datos?')" class="badge badge-danger">DELETE </a> </td>
+       </tr>
+      </tbody>
+     </table>
+     <hr/>
+   
+     <div th:insert="comunes/comunes :: pagination"></div>
+   </section>  
+ <script>
+  $(document).ready(function(){
+	 $('table-usuarios').DataTable({
+		 stateSave:true
+	 });
+  });
+</script>
+  <footer th:insert="~{comunes/comunes :: footer}"></footer>
+ </body>
+</html>
