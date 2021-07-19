@@ -29,10 +29,11 @@ public class CatalogoController {
 	public String pagina_Catalogo(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
 		Page<Habitacion> page = habitacionService.encuentraTodo(pageRequest);
 		int[] pagination = ControllerUtil.computePagination(page);
+		log.info("IN pagina_Catalogo(): ", pagination.length);
 		model.addAttribute("pagina", pagination);
 		model.addAttribute("url","/catalogo");
 		model.addAttribute("page", page);
-		log.info("IN pagina_Catalogo(): ", pagination.length);
+		log.info("IN pagina_Recursos()");
 		return "catalogo";
 		}
 		

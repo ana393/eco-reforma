@@ -21,6 +21,7 @@ import com.reforma.ecoreforma.service.HabitacionService;
 
 @Service
 public class HabitacionServiceImpl implements HabitacionService{
+	
 	private final HabitacionRepository habitacionRepository;
 	private static final Logger log = LoggerFactory.getLogger(HabitacionServiceImpl.class);
 	
@@ -38,14 +39,20 @@ public class HabitacionServiceImpl implements HabitacionService{
 		return habitacionRepository.findAll(pagina);
 	}
 
+
 	@Override
-	public Page<Habitacion> encuentraPorTitulo(String titulo, Pageable pagina) {
-		return habitacionRepository.findByTitulo(titulo, pagina);
+	public Page<Habitacion> encuentraPorTipoOPorTitulo(String tipo, String titulo, Pageable pageable) {
+		return habitacionRepository.findByTipoOrTitulo(tipo, titulo, pageable);
 	}
+	
 	@Override
 	public Habitacion encuentraPorId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Habitacion result = habitacionRepository.findById(id).orElse(null);
+		if(result == null) {
+			log.warn("IN encontrarPorId() - no hay habitacion con id: {}", result);
+		}
+		log.info("IN encontrarPorId() - habitacion: {} encontrada por id: {}", result);
+		return result;
 	}
 
 	@Override
@@ -68,12 +75,10 @@ public class HabitacionServiceImpl implements HabitacionService{
 		
 		try{
 			fichero.transferTo(new File(uploadPath + "/" + nombre_Fichero));
-		
 			}catch(IOException e) {
 			   e.printStackTrace();
 			}
-		
-		habitacion.setImg_url(nombre_Fichero);
+		  habitacion.setImg_url(nombre_Fichero);
 		 } 
 		
 		Habitacion persistente = habitacionRepository.save(habitacion);
@@ -89,5 +94,4 @@ public class HabitacionServiceImpl implements HabitacionService{
 		log.info("IN eliminarHabitacion() - habitacion con id: {} se ha eliminado");	
 		
 	}
-
 }

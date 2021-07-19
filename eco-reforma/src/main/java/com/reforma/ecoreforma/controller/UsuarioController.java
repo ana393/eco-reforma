@@ -57,8 +57,8 @@ public class UsuarioController {
 	 
 	 @RequestMapping("/articulosList/borrar/{id}")
 	 public String borrarRecurso(@PathVariable("id") Long id){
-		  log.info("IN borrarRecurso()", id);
 		  habitacionService.eliminarHabitacionPorId(id);
+		  log.debug("ADMIN elimino un articulo de la DB: id={}", id);
 		  return "redirect:/usuario/articulosList";
 	 }
 	 

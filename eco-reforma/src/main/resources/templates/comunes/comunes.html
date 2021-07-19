@@ -46,12 +46,12 @@
                 <ul class="navbar-nav ml-auto">
                    <li>
                     <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
-                        <input class="form-control form-control-sm mr-3 w-75 rounded-0" type="text" name="filter" placeholder="buscar" aria-label="Buscar" />
+                        <input class="form-control form-control-sm mr-3 w-75 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
                         <button type="submit" class="bg-dark"><i class="fas fa-search fa-1x" aria-hidden="true" style="color:white"></i></button>
                     </form>
                     </li>   
                     <li class="nav-item" sec:authorize="isAnonymous()">
-                        <a class="nav-link text-light " href="/preReserva">Identificate</a>
+                        <a class="nav-link text-light " href="/reservas">Identificate</a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
                       <a class="nav-link text-light " href="/logout">Salir</a>

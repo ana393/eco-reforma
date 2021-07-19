@@ -124,13 +124,13 @@
                         </ul>
                     </li>
                 </ul>
-                </form>
+             </form>
             </nav>
 				<div class="row mt-5 ml-5">
 					<div th:insert="~{comunes/comunes :: pagination}"></div>
 					<div class="container-fluid mt-5">
 						<div class="card column" th:fragment="list">
-							<div class="card my-3" style="width: 18rem" th:each="item: ${page.getContent()}">
+							<div class="card my-3" data-id="${item.id}" style="width: 18rem" th:each="item: ${page.getContent()}">
 								<div th:if="${item.img_url != null}">
 									<img class="card-img-top" th:src="@{'/img/' + ${item.img_url}}" alt="foto"></img>
 								</div>

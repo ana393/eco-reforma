@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+import com.reforma.ecoreforma.domain.Habitacion;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,7 +38,7 @@ public class ControllerUtil {
 	 * @param page
 	 * @return paginacion computada
 	 */
-	static int[] computePagination(Page page) {
+	static int[] computePagination(Page<Habitacion> page) {
         Integer totalPages = page.getTotalPages();
         log.info("IN computePagination():", totalPages.toString());
         if (totalPages > 4) {

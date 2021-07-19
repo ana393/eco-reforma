@@ -34,16 +34,25 @@ public class Habitacion {
     private String img_url;
     
     private Double precio;
-    
-    public Habitacion() {}
-	
-   public Habitacion(String titulo, String descripcion, String img_url, Double precio, String tipo) {
+   
+   public Habitacion() {}
+   
+   public Habitacion(long id, String titulo, String tipo, String descripcion, double precio) {
+    	this.id = id;
+  		this.titulo = titulo;
+  		this.descripcion = descripcion;
+  		this.precio = precio;
+  		this.tipo = tipo;
+  	}
+   public Habitacion(String titulo, String tipo, String descripcion, String img_url, double precio) {
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.img_url = img_url;
 		this.precio = precio;
 		this.tipo = tipo;
 	}
+	
+	
 	
 	public long getId() {
 		return id;
