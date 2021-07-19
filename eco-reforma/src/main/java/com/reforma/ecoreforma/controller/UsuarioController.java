@@ -89,4 +89,6 @@ public class UsuarioController {
         		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio());
 		return "redirect:/usuario/articulosList";
 	  }
+	 
+	 //Metodo get mostrar lista usuarios
 }
