@@ -55,11 +55,11 @@ public class UsuarioController {
 		return "admin/articulosList";
 	}
 	 
-	 @RequestMapping("/v/borrar/{id}")
+	 @RequestMapping("/articulosList/borrar/{id}")
 	 public String borrarRecurso(@PathVariable("id") Long id){
 		  log.info("IN borrarRecurso()", id);
 		  habitacionService.eliminarHabitacionPorId(id);
-		  return "redirect:/admin/articulosList";
+		  return "redirect:/usuario/articulosList";
 	 }
 	 
 	 @GetMapping("/crea_recurso")
@@ -81,12 +81,12 @@ public class UsuarioController {
 		  		Map<String, String> eroresMap = ControllerUtil.obtenerErrores(bindingResult);
 		  		log.info("In registro(): errors - {}", eroresMap.toString());
 		  		model.mergeAttributes(eroresMap);
-		  		return "admin/gestion";
+		  		return "admin/crea_recurso";
 		  	}
 		  	
 		   habitacionService.guardaHabitacion(habitacion, fichero); 
            log.debug("ADMIN anadio articulo a DB: id={}, titulo={}, precio={}",
         		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio());
-		return "redirect: /admin/articulosList";
+		return "redirect:/usuario/articulosList";
 	  }
 }
