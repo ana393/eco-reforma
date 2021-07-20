@@ -39,18 +39,14 @@ public class HabitacionServiceImpl implements HabitacionService{
 		return habitacionRepository.findAll(pagina);
 	}
 
-
 	@Override
-	public Page<Habitacion> encuentraPorTipoOPorTitulo(String tipo, String titulo, Pageable pageable) {
-		return habitacionRepository.findByTipoOrTitulo(tipo, titulo, pageable);
+	public Page<Habitacion> encuentraPorTituloOrPorTipo(String titulo, String tipo, Pageable pageable) {
+		return habitacionRepository.findByTituloOrTipo(titulo, tipo, pageable);
 	}
 	
 	@Override
 	public Habitacion encuentraPorId(long id) {
 		Habitacion result = habitacionRepository.findById(id).orElse(null);
-		if(result == null) {
-			log.warn("IN encontrarPorId() - no hay habitacion con id: {}", result);
-		}
 		log.info("IN encontrarPorId() - habitacion: {} encontrada por id: {}", result);
 		return result;
 	}
@@ -91,7 +87,6 @@ public class HabitacionServiceImpl implements HabitacionService{
 	@Transactional
 	public void eliminarHabitacionPorId(Long id) {
 		habitacionRepository.deleteById(id);
-		log.info("IN eliminarHabitacion() - habitacion con id: {} se ha eliminado");	
-		
+		log.info("IN eliminarHabitacion() - habitacion con id: {} se ha eliminado");			
 	}
 }

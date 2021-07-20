@@ -9,149 +9,25 @@
 
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
-<body>
-
-<!--  -->
-<div id="container">
-    <div class="container">
-        <div class="d-flex">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Catalogo</h3>
-                </div>
-
-                <form action="/catalogo/buscar" method="get">
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary ml-auto d-inline-block bg-success" style="width: 80px;">Buscar</button>
-                    <a href="/menu" class="btn btn-secondary ml-2 d-inline-block" role="button" style="width: 100px;">Actualizar</a>
-                </div>
-
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categorias:</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu2">
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="perfumers" value="Guerlain">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Guerlain
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipo" value="Escaleras">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                          Escaleras
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipo" value="Entradas">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Entradas
-                                    </label>
-                                </div>
-                            </li>
-                          
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipo" value="Cocina">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Cocina
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipos" value="Comedor formal">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Comedor formal
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipos" value="Habitación Familiar">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Habitación Familiar
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipo" value="Sala de estaro">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Sala de estar
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipo" value="Oficina doméstica">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Oficina doméstica
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="tipo" value="Dormitorio">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Dormitorios
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox ml-3">
-                                    <label>
-                                        <input type="checkbox" name="perfumers" value="Baño">
-                                        <span class="cr"><i class="cr-icon fas fa-check"></i></span>
-                                        Baño
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-             </form>
-            </nav>
-				<div class="row mt-5 ml-5">
-					<div th:insert="~{comunes/comunes :: pagination}"></div>
-					<div class="container-fluid mt-5">
-						<div class="card column" th:fragment="list">
-							<div class="card my-3" data-id="${item.id}" style="width: 18rem" th:each="item: ${page.getContent()}">
-								<div th:if="${item.img_url != null}">
-									<img class="card-img-top" th:src="@{'/img/' + ${item.img_url}}" alt="foto"></img>
-								</div>
-								<strong th:text="${item.getTitulo()}"></strong> <span
-									class="price" th:text="${item.getPrecio()}"> EUR</span>
-								<div class="m-2">
-									<p class="small" th:text="${item.getDescripcion()}"></p>
-								</div>
-								<div class="card-footer">
-									<form th:action="@{/reserva/anade}" method="post">
-										<button type="submit" name="anade" class="btn btn-dark mx-3"
-											th:value="${item.getId()}">Reservar</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>		
+<body> 	
+     <section class="bg-secondary p-5">
+        <div class="container">
+          <div th:insert="~{comunes/comunes :: pagination}"></div>
+            <div class="row g-4"  th:fragment="list">
+              <!-- card -->
+                  <div class="col-md-6 col-lg-3" th:each="item: ${page.getContent()}">
+                    <div class="card">
+                         <img class="card-img-top" th:src="@{'/img/' + ${item.img_url}}"  alt="" >
+                          <div class="card-body text-center"> 
+                            <h5 class="card-title mb-3" th:text="${item.getTitulo()}"></h5>
+                            <h5 class="card-text" th:text="${item.getPrecio()}"> EUR</h5>
+                             <button class="btn btn-secondary" type="submit" name="anade" th:value="${item.getId()}">Reserva</button>
+                            </div>
+                        </div>   
+                   </div>  
+              </div>
+        </div> 
+    </section>                	
 			<footer th:insert="~{comunes/comunes :: footer}"></footer>
 		</body>
 </html>

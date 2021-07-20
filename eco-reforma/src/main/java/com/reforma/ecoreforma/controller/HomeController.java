@@ -38,7 +38,7 @@ public class HomeController {
 		 @RequestParam String filtro,
 		 Model model) {
 	  
-	Page<Habitacion> page = habitacionService.encuentraPorTipoOPorTitulo(filtro, filtro, pageRequest);
+	Page<Habitacion> page = habitacionService.encuentraPorTituloOrPorTipo(filtro, filtro, pageRequest);
 	log.info("IN pagina_Catalogo(): ",filtro.toString());
 	int[] pagination = ControllerUtil.computePagination(page);
 	model.addAttribute("pagina", pagination);

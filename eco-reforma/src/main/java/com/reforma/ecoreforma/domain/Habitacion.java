@@ -35,9 +35,9 @@ public class Habitacion {
     
     private Double precio;
    
-   public Habitacion() {}
+    public Habitacion() {}
    
-   public Habitacion(long id, String titulo, String tipo, String descripcion, double precio) {
+    public Habitacion(long id, String titulo, String tipo, String descripcion, double precio) {
     	this.id = id;
   		this.titulo = titulo;
   		this.descripcion = descripcion;
@@ -62,14 +62,6 @@ public class Habitacion {
 		this.id = id;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public String getTitulo() {
 		return titulo;
 	}
@@ -77,14 +69,14 @@ public class Habitacion {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
-	public String getImg_url() {
-		return img_url;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setImg_url(String img_url) {
-		this.img_url = img_url;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
+	
 
 	public String getDescripcion() {
 		return descripcion;
@@ -93,6 +85,15 @@ public class Habitacion {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public String getImg_url() {
+		return img_url;
+	}
+
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
+	}
+
 
 	public Double getPrecio() {
 		return precio;
@@ -124,7 +125,7 @@ public class Habitacion {
 	
 	@Override
 	public String toString() {
-		return "Habitacion [id=" + id + ", nombre=" + titulo + ", descripcion=" + descripcion + ", img_url=" + img_url
-				+ ", precio=" + precio + ", categoria=" + tipo + "]";
+		return "Habitacion [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", img_url=" + img_url
+				+ ", precio=" + precio + ", tipo=" + tipo + "]";
 	}
 }

@@ -10,7 +10,7 @@ public interface HabitacionService {
 	
     Page<Habitacion> encuentraTodo(Pageable pagina);
 	
-	Page<Habitacion> encuentraPorTipoOPorTitulo(String tipo, String titulo, Pageable pageable);
+	Page<Habitacion> encuentraPorTituloOrPorTipo(String titulo, String tipo, Pageable pageable);
 	
     Habitacion encuentraPorId(long id);
 	
