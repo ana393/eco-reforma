@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.reforma.ecoreforma.domain.Habitacion;
@@ -27,14 +28,16 @@ public class CatalogoController {
 	 
 	@GetMapping
 	public String pagina_Catalogo(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
+		log.info("IN pagina_Catalogo(): ", pageRequest.toString());
 		Page<Habitacion> page = habitacionService.encuentraTodo(pageRequest);
 		int[] pagination = ControllerUtil.computePagination(page);
-		log.info("IN pagina_Catalogo(): ", pagination.length);
+
 		model.addAttribute("pagina", pagination);
 		model.addAttribute("url","/catalogo");
 		model.addAttribute("page", page);
 		log.info("IN pagina_Recursos()");
 		return "catalogo";
 		}
-		
+	
+	
 }

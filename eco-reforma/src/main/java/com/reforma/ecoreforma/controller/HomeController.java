@@ -37,9 +37,15 @@ public class HomeController {
 		 @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest,
 		 @RequestParam String filtro,
 		 Model model) {
-	  
-	Page<Habitacion> page = habitacionService.encuentraPorTituloOrPorTipo(filtro, filtro, pageRequest);
-	log.info("IN pagina_Catalogo(): ",filtro.toString());
+	  Page<Habitacion> page;
+	  if(filtro != null && !filtro.isEmpty()) {
+		  page = habitacionService.encuentraPorTituloOrPorTipo(filtro, filtro, pageRequest);
+		  log.info("IN pagina_Catalogo(): filtro = {} ",filtro.toString());
+	  } else {
+		  page =habitacionService.encuentraTodo(pageRequest); 
+	  }
+	 
+	  log.info("IN pagina_Catalogo(): ",filtro.toString());
 	int[] pagination = ControllerUtil.computePagination(page);
 	model.addAttribute("pagina", pagination);
 	model.addAttribute("url","/catalogo");
