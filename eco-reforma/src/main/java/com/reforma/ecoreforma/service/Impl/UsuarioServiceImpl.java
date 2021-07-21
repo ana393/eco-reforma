@@ -92,8 +92,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public boolean usuarioExiste(Usuario usuario) {
-		return usuarioRepository.findByEmail(usuario.getEmail()).isPresent();
+	public boolean usuarioExiste(String email) {
+		return usuarioRepository.findByEmail(email).isPresent();
 	}
 
 }

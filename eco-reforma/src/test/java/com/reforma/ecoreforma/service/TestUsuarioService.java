@@ -53,12 +53,11 @@ public class TestUsuarioService {
 	
 	@Test
 	public void usuarioExisteTest() {
-		Usuario usuario = new Usuario();
-		usuario.setEmail("Mail@test.com");
-		boolean esUsuarioPresente = usuarioService.usuarioExiste(usuario);
+		String email = "Mail@test.com";
+		boolean esUsuarioPresente = usuarioService.usuarioExiste(email);
 	
 		
-		assertTrue(usuario.getEmail().equals("Mail@test.com"));
+		assertTrue(email.equals("Mail@test.com"));
 		assertTrue(esUsuarioPresente);
 		
 	}

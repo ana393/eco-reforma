@@ -1,0 +1,55 @@
+<div th:fragment="login(path)" xmlns:th="http://www.thymeleaf.org">
+    <form method="post" th:attr="action=${path}" > 
+                  
+        <div class="container mt-5" >
+            <h4 th:text="${path} == '/registro' ? 'Registrate' : 'Su cuenta'"></h4>
+            <hr align="left" width="550"/>
+            <div class="form-group row" th:if="${path} == '/registro'"  >
+                <label class="col-sm-2 col-form-label">Nombre: </label>
+                <div class="col-sm-4">
+                    <input type="text" name="username"  th:value="${usuario} ? ${usuario.username} : ''" class="form-control"  th:classappend="${usernameError} ? ' is-invalid'" />
+                    <div th:if="${usernameError}" class="invalid-feedback" th:text="${usernameError}"></div>
+                 </div>
+            </div>
+
+            <div class="form-group row" >
+                <label class="col-sm-2 col-form-label">Correo electronico: </label>
+               
+                <div class="col-sm-4">
+                    <input type="email" name="email"  th:value="${usuario} ? ${usuario.email} : ''" class="form-control"
+                          th:classappend="${emailError} ? ' is-invalid'"/>
+                      
+                    <div th:if="${emailError}" class="invalid-feedback" th:text="${emailError}"></div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Contrasena: </label>
+                <div class="col-sm-4">
+                    <input type="password" name="password" class="form-control"
+                           th:classappend="${passwordError} ? ' is-invalid'"/>
+                    <div th:if="${passwordError}" class="invalid-feedback" th:text="${passwordError}"></div>
+                </div>
+            </div>
+
+            <div class="form-group row" th:if="${path} == '/registro'">
+                <label class="col-sm-2 col-form-label">Comprobar contrasena: </label>
+                <div class="col-sm-4">
+                    <input type="password" name="password2" class="form-control"
+                           th:classappend="${password2Error} ? ' is-invalid'"/>
+                   <div th:if="${password2Error}" class="invalid-feedback" th:text="${password2Error}"></div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <button type="submit" class="btn btn-dark mx-3"
+                        th:text="${path} == '/registro' ? 'Registrate' : 'Loggeate'"></button>
+                <div th:if="${path} != '/registro'">
+                    <a th:href="@{/registro}" class="btn btn-dark">Registrate</a>
+                </div>
+            </div>
+
+            
+        </div>
+    </form>
+</div>

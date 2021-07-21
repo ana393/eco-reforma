@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="comunes/comunes :: head"></head>
+
+<body>
+
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+
+  <div id="container" class="container mt-5">
+    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" class="alert alert-danger col-sm-8" role="alert">Compruebe sus credenciales</div>
+       <div th:if="${messageType}" class="alert " th:classappend="${messageType}" th:text="${message.text}" role="alert"></div>
+         <div th:replace="comunes/login :: login(path=${'/login'})"></div> 
+  </div>
+
+<footer th:insert="~{comunes/comunes :: footer}"></footer>
+</body>
+</html>

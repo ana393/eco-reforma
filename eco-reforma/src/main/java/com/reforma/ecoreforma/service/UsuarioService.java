@@ -32,9 +32,6 @@ public interface UsuarioService {
 	 */
 	Page<Usuario> encuentraTodos(Pageable page);
 	
-	/*
-	 * Guarda usuario con set de roles
-	 */
 	/**
 	 * @param form formulario con los roles de los usuarios.
 	 * @param usuario de la base de datos.
@@ -49,13 +46,6 @@ public interface UsuarioService {
 	 */
 	void delete(Long id);
     
-    
-    /*
-     * Retorna true si el usuario  existe
-     * 
-     * @param String email
-     * @return true si el usuario  existe
-     */
 	
     /**
      * Retorna true si el usuario  existe.
@@ -63,6 +53,6 @@ public interface UsuarioService {
      * @param email del usuario de la Base de Datos.
      * @return true si el usuario existe en la Base de Datos.
      */
-    boolean usuarioExiste(Usuario usuario);
+    boolean usuarioExiste(String email);
 
 }
