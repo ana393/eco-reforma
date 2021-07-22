@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="comunes/comunes :: head"></head>
+
+<body>
+
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+
+<div id="container">
+  <div th:replace="comunes/loginForm :: login(path=${'/registro'})"></div> 
+</div>
+
+<footer th:insert="~{comunes/comunes :: footer}"></footer>
+</body>
+</html>

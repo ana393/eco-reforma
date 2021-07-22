@@ -32,6 +32,11 @@ public class HomeController {
   return "home";
  }	
   
+  @GetMapping("/reservas")
+  public String userCabinet() {
+      return "reservas";
+  }
+  
   @GetMapping("/buscar")
   public String buscar(
 		 @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest,
@@ -50,7 +55,7 @@ public class HomeController {
 	model.addAttribute("pagina", pagination);
 	model.addAttribute("url","/catalogo");
 	model.addAttribute("page", page);
-	log.info("IN pagina_Catalogo(): ", pagination.length);
+	log.info("IN pagina_Catalogo(): ", page.getSize());
 	return "catalogo";
   }
 }

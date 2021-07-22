@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        return new BCryptPasswordEncoder();
 	    }
 	
-	private static final String[] PUBLIC_MATCHERS = {"/", "/login", "/catalogo", "/registro", "/buscar", "/static/**", "/**/*.js", "/**/*.css", "/img/**"};
+	private static final String[] PUBLIC_MATCHERS = {"/home", "/login", "/catalogo", "/registro", "/buscar", "/static/**", "/**/*.js", "/**/*.css", "/img/**"};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordParameter("password")
 			.permitAll()	
 		.and()
-		    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/salir"))
 		    .permitAll()
 		.and()
 	        .csrf().disable();

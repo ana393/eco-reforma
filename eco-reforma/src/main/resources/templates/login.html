@@ -11,7 +11,7 @@
   <div id="container" class="container mt-5">
     <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" class="alert alert-danger col-sm-8" role="alert">Compruebe sus credenciales</div>
        <div th:if="${messageType}" class="alert " th:classappend="${messageType}" th:text="${message.text}" role="alert"></div>
-         <div th:replace="comunes/login :: login(path=${'/login'})"></div> 
+         <div th:replace="comunes/loginForm :: login(path=${'/login'})"></div> 
   </div>
 
 <footer th:insert="~{comunes/comunes :: footer}"></footer>

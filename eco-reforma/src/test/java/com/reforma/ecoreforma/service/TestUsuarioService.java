@@ -1,8 +1,6 @@
 package com.reforma.ecoreforma.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -21,7 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.reforma.ecoreforma.domain.Role;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.UsuarioRepository;
-import com.reforma.ecoreforma.service.Impl.UsuarioServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

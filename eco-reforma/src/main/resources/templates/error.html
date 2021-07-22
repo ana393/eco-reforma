@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" >
+<head th:replace="comunes/comunes :: head">
+<body>
+  <div class="container">
+        <div class="starter-template">
+            <h1 th:text=" ${#response.getStatus()}"></h1>
+            <a th:href="@{/home}">Pagina principal</a>
+        </div>
+    </div>
+</body>
+</html>

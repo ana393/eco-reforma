@@ -44,6 +44,12 @@ public class RegistrarController {
 		this.usuarioService = usuarioService;
 	}
 	
+	@GetMapping("/login")
+	public String logeo(Usuario usuario) {
+		logger.info("In logeo(), el usuario autentificado es: {}");
+		return "login";
+	}
+	
 	@GetMapping("/registro")
 	public String registro() {
 		logger.info("In registro(), el usuario autentificado es: {}");

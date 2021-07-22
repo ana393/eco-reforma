@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +37,7 @@ public class UsuarioController {
 		this.habitacionService = habitacionService;
 	}
 	
-	
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @GetMapping("/gestion")
 	 public String verPaginaAdmin() {
 	 	   log.info("IN verPaginAdmin() - lista: {} ");
@@ -55,6 +56,7 @@ public class UsuarioController {
 		return "admin/articulosList";
 	}
 	 
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @RequestMapping("/articulosList/borrar/{id}")
 	 public String borrarRecurso(@PathVariable("id") Long id){
 		  habitacionService.eliminarHabitacionPorId(id);
@@ -62,6 +64,7 @@ public class UsuarioController {
 		  return "redirect:/usuario/articulosList";
 	 }
 	 
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @GetMapping("/crea_recurso")
 	 public String andeHabitacion( Model model) {
 		
