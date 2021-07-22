@@ -1,19 +1,71 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head th:replace="comunes/comunes :: head"></head>
-
-<body class="d-flex flex-column min-vh-100">
-
+<head th:replace="comunes/comunes :: head">
+   <link rel="stylesheet"  type="text/css"  href="/static/css/dashboard.css"th:href="@{css/dashboard.css}"/>
+</head>
 <div th:insert="~{comunes/comunes :: scripts}"></div>
-<div th:replace="comunes/comunes :: navbar"></div>
 
+<body >
 
-    <div class="container">
-        <div th:replace="comunes/comunes :: userNavbar"></div>
+    <main class="d-flex" style="overflow-x: hidden; min-width: 100vh; background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf2e4,
+    #d4f5ec,
+    #ddfeef
+  );">
+     <aside >
+       <div th:replace="comunes/comunes :: usuarioNavbar"></div>
+     </aside>
+     <div class="page-content-wrapper flex-fill">
+      <section class="container-fluid ">
+       <h2>Contenido</h2>
+         <div class="row g-3 my-2">
+          <div class="col-md-3">
+           <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+              <div>
+               <h3 class="fs-2">720</h3>
+               <p class="fs-5">Articulos</p>
+            </div>
+           <i class="bi bi-building fs-1 primary text border rounded-full secondary-bg p-3"></i>
+          </div>
+        </div>
+         <div class="col-md-3">
+           <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+              <div>
+               <h3 class="fs-2">1200</h3>
+               <p class="fs-5">Reservas</p>
+            </div>
+           <i class="bi bi-clipboard-checks fs-1 primary text border rounded-full secondary-bg p-4"></i>
+          </div>
+        </div> 
+         <div class="col-md-3">
+           <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+              <div>
+               <h3 class="fs-2">2345</h3>
+               <p class="fs-5">Trabajos Realizados</p>
+            </div>
+           <i class="fs-4 bi-truck  fs-1 primary text border rounded-full secondary-bg p-3"></i>
+          </div>
+        </div>
+         <div class="col-md-3">
+           <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+              <div>
+               <h3 class="fs-2">2345</h3>
+               <p class="fs-5">Comparativa</p>
+            </div>
+           <i class="bi bi-bar-chart-line  fs-1 primary text border rounded-full secondary-bg p-3"></i>
+          </div>
+        </div>
     </div>
+      </section>
+     </div>   
+    </main>
+    
 
-     <h2>Pagina Admin</h2>
 <footer th:insert="~{comunes/comunes :: footer}"></footer>
 </body>
 </html>

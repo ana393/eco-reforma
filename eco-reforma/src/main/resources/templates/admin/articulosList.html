@@ -2,22 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-<head th:replace="comunes/comunes :: head"></head>
-
+<head th:replace="comunes/comunes :: head">
+<link rel="stylesheet"  type="text/css"  th:href="@{/css/dashboard.css}"/>
+</head>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
 <body class="d-flex flex-column min-vh-100">
 
-<div th:insert="~{comunes/comunes :: scripts}"></div>
-<div th:replace="comunes/comunes :: navbar"></div>
 
-
-    <div class="container">
-        <div th:replace="comunes/comunes :: userNavbar"></div>
-    </div>
-
- 
-    <section class="container">
-    <table  id="table-recursos" class="table table-striped table-bordered table-hover" >
-     <thead >
+ <main class="d-flex " style="overflow-x: hidden; min-width: 100vh; background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf2e4,
+    #d4f5ec,
+    #ddfeef
+  );">
+         <div th:replace="comunes/comunes :: usuarioNavbar"></div>
+<!-- -end of sidebar -->
+    
+ <div class="page-content-wrapper flex-fill"> 
+   <div class="row my-5">
+     <h3 class="fs-4 mb-3  m-2 success-50">Lista Recursos</h3>
+       <div class="col">
+      <table  class="table table-secondary table-striped-rounded shadow-sm table-hover m-2">
+     <thead class="table-success">
        <tr>
       	<th>ID</th>
         <th>Nombre</th>
@@ -37,14 +45,19 @@
         <td th:text="${item.precio}"></td>
         <td>
             <a th:href="@{/usuario/articulosList/borrar/{id}(id=${item.id})}" 
-              onclick="return confirm('Estas seguro de que quieres borrar este recurso de la Base de Datos?')" class="badge badge-danger">DELETE </a> </td>
+              onclick="return confirm('Estas seguro de que quieres borrar este recurso de la Base de Datos?')" class="badge bg-danger">DELETE </a> </td>
        </tr>
       </tbody>
      </table>
-     <hr/>
+      <hr/>
    
-     <div th:insert="comunes/comunes :: pagination"></div>
-   </section>  
+           <div th:insert="comunes/comunes :: pagination"></div>
+       </div>
+   </div>
+   
+   </div>
+   
+  </main>    
  <script>
   $(document).ready(function(){
 	 $('table-recursos').DataTable({

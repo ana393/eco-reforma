@@ -1,0 +1,15 @@
+/*** Dashboard***/
+body{
+	background-color: green;
+}
+section {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf2e4,
+    #d4f5ec,
+    #ddfeef
+  );
+}

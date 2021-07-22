@@ -49,7 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public Usuario guardar(Usuario usuario) {
-		usuario.setRoles(Collections.singleton(Role.USER));
+		usuario.setRoles(Collections.singleton(Role.ADMIN));
 		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		
 		Usuario registered = usuarioRepository.save(usuario);

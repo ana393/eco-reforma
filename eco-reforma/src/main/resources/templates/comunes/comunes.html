@@ -4,32 +4,30 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<!-- links 
+ <!-- links  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}"/> -->
-    
+    <link rel="stylesheet"  type="text/css"  th:href="@{css/style.css}"/>
+  <!-- links   
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" /> -->
 </head>
 
 
-<!--Scripts
+<!--Scripts-->
 <div th:fragment="scripts" xmlns:th="http://www.thymeleaf.org">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
-</div>-->
+</div>
 
-<!--Scripts-->
+<!--Scripts
 <div th:fragment="scripts" xmlns:th="http://www.thymeleaf.org">
    <script  type="text/javascript" th:src="@{js/main.js}"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</div>
+</div>-->
 <!--Navbar-->
 <div th:fragment="navbar" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-    <!-- - -->
-    
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top" >
         <div class="container">
             <a href="#" class="navbar-brand">e-reforma</a>
@@ -48,14 +46,18 @@
                     <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                         <a href="/usuario/gestion" class="nav-link">Gestion</a>
                     </li>
-                    <li class="nav-item" sec:authorize="isAnonymous()">
+                     <li class="nav-item" sec:authorize="hasAuthority('USER')">
                         <a href="/usuario/reservas" class="nav-link">Reservas</a>
                     </li>
+                   
                     <li>
                     <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
                         <input class="form-control form-control-sm mr-3 w-75 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
-                        <button type="submit" class="bg-dark"><i class="fas fa-search fa-1x" aria-hidden="true" style="color:white"></i></button>
+                        <button type="submit" class="bg-dark"><i class="be bi-search h4 white" style="color:white"></i></button>
                     </form>
+                    </li>
+                     <li class="nav-item" sec:authorize="isAnonymous()">
+                        <a href="/login" class="nav-link">Identificate</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a href="/salir" class="nav-link">Salir</a>
@@ -64,43 +66,53 @@
             </div>
         </div>
     </nav>
-
-   
-    
-   
-<!--Usuario navbar-->
-<nav th:fragment="userNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="navbar-nav">
-        
-        <li class="nav-item" >
-            <a class="nav-link text-light mx-3" href="/reservas">Sus Rservas</a>
-        </li>
-    </ul>
-
-    <ul class="navbar-nav" >
-        <li class="nav-item active">
-            <a class="nav-link text-light mx-3" href="/usuario/usuarios">Usuarios</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light mx-3" href="/reserva/reservas">Lista de Reservas</a>
-        </li>
-        
-        <li class="nav-item">
-            <form action="/usuario/add" method="get">
-                <a class="nav-link text-light mx-3" th:href="@{/usuario/crea_recurso}">Crear Recurso</a>
-            </form>
-        </li>
-        <li class="nav-item">
-            <form action="/user/productlist" method="get">
-                <a class="nav-link text-light mx-3" th:href="@{/usuario/articulosList}">Lista de Articulos</a>
-            </form>
-        </li>
-    </ul>
-</nav>
 </div>
+ 
+<!-- Admin -->   
+<div th:fragment="usuarioNavbar" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" class=" bg-dark">
+
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="/home" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house white"></i> <span class="ms-1 d-none d-sm-inline white">Home</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="/reserva/reservas" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table white"></i> <span class="ms-1 d-none d-sm-inline white" >Reservas</span></a>
+                    </li>
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid white"></i> <span class="ms-1 d-none d-sm-inline white">Recursos</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="/usuario/articulosList" class="nav-link px-0 white">Lista Recursos</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/usuario/crea_recurso}" class="nav-link px-0 white">Crear Recurso</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/usuario/usuarios" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people white"></i> <span class="ms-1 d-none d-sm-inline white">Customers</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!--Paginacion-->
 <div th:fragment="pagination" xmlns:th="http://www.thymeleaf.org">
@@ -184,9 +196,6 @@
                             <span class="fw-bold">Llamanos:</span> 9156234567, 638977561
                         </li>
                      </ul>
-                 </div>
-                 <div class="col-md">
-                   <div  id="map" style="width: 100%; height:100%; border-radius: 10px;">Map</div>
                  </div>
              </div>
          </div>
