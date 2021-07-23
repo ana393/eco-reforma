@@ -23,7 +23,7 @@ import javax.validation.constraints.Pattern;
 
 
 
-@Entity(name="reservas")
+@Entity(name="presupuesto")
 public class Presupuesto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
