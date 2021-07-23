@@ -25,7 +25,7 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 	}
 
 	@Override
-	public PrePresupuesto obtenPreReserva(Usuario usuario) {
+	public PrePresupuesto obtenPrePresupuesto(Usuario usuario) {
 		return new PrePresupuesto(itemReservaRepo.findAllByUsuarioAndReservaIsNull(usuario));
 	}
 
@@ -38,12 +38,12 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 	@Override
 	public ItemReserva encuentraItemPorId(Long id) {
 		Optional<ItemReserva> opt = itemReservaRepo.findById(id);
-		return opt.orElseThrow();
+		return opt.orElseThrow();//NotFoundElementException
 	}
 
 	@Override
-	public ItemReserva anadeItemAPreRresupuesto(Habitacion habitacion, Usuario usuario, int qty) {
-		PrePresupuesto prePresupuesto = this.obtenPreReserva(usuario);
+	public ItemReserva anadeItemAPrePresupuesto(Habitacion habitacion, Usuario usuario, int qty) {
+		PrePresupuesto prePresupuesto = this.obtenPrePresupuesto(usuario);
 		ItemReserva itemReserva = prePresupuesto.encuentraItemPorHabitacion(habitacion.getId());
 		if(itemReserva != null) {
 			itemReserva.anadeCantidad(qty);

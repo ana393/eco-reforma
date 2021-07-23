@@ -1,10 +1,11 @@
 package com.reforma.ecoreforma.domain;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrePresupuesto {
-	List<ItemReserva> lista;
+	List<ItemReserva> lista = new ArrayList<>();
 
 	public PrePresupuesto(List<ItemReserva> lista) {
 		this.lista = lista;

@@ -6,13 +6,13 @@ import com.reforma.ecoreforma.domain.PrePresupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
 
 public interface PrePresupuestoService {
-	PrePresupuesto obtenPreReserva(Usuario usuario);
+	PrePresupuesto obtenPrePresupuesto(Usuario usuario);
 	
 	int obtenerNrItemos(Usuario usuario);
 	
 	ItemReserva encuentraItemPorId(Long id);
 	
-	ItemReserva anadeItemAPreRresupuesto(Habitacion habitacion,Usuario usuario, int qty);
+	ItemReserva anadeItemAPrePresupuesto(Habitacion habitacion,Usuario usuario, int qty);
 		
 	void eliminarItemReserva(ItemReserva item);
 	

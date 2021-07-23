@@ -48,6 +48,12 @@ public class Usuario implements UserDetails{
 	
     public Usuario(){}
 	
+	public Usuario(long id ,String username, String email) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+	}
+
 	public boolean isAdmin() {
 		return roles.contains(Role.ADMIN);
 	}
