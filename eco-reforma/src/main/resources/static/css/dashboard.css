@@ -2,8 +2,9 @@
 body{
 	background-color: green;
 }
-section {
+.d-flex {
   overflow-x: hidden;
+  min-width: 100vh;
   background-image: linear-gradient(
     to right,
     #baf3d7,

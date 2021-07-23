@@ -7,10 +7,9 @@
  <!-- links  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" />
     <link rel="stylesheet"  type="text/css"  th:href="@{css/style.css}"/>
-  <!-- links   
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" /> -->
+
 </head>
 
 
@@ -49,19 +48,18 @@
                      <li class="nav-item" sec:authorize="hasAuthority('USER')">
                         <a href="/usuario/reservas" class="nav-link">Reservas</a>
                     </li>
-                   
-                    <li>
-                    <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
-                        <input class="form-control form-control-sm mr-3 w-75 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
-                        <button type="submit" class="bg-dark"><i class="be bi-search h4 white" style="color:white"></i></button>
-                    </form>
-                    </li>
-                     <li class="nav-item" sec:authorize="isAnonymous()">
+                    <li class="nav-item" sec:authorize="isAnonymous()">
                         <a href="/login" class="nav-link">Identificate</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a href="/salir" class="nav-link">Salir</a>
                     </li>
+                    <li>
+                    <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
+                        <input class="form-control form-control-sm mr-3 w-75 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
+                        <button type="submit" class="bg-dark"><i class="be bi-search h4 white" style="color:white"></i></button>
+                    </form>
+                    </li>      
                 </ul>
             </div>
         </div>
@@ -73,50 +71,43 @@
 
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                <a href="/usuario/gestion" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <i class="fas fa-user-secret me-2"></i> <span class="fs-5 d-none d-sm-inline">Admin</span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="/home" class="nav-link align-middle px-0">
+                        <a href="/home" class="nav-link align-middle px-0 text-white">
                             <i class="fs-4 bi-house white"></i> <span class="ms-1 d-none d-sm-inline white">Home</span>
                         </a>
                     </li>
                      <li>
-                        <a href="/reserva/reservas" class="nav-link px-0 align-middle">
+                        <a href="/reserva/reservas" class="nav-link px-0 align-middle text-white">
                             <i class="fs-4 bi-table white"></i> <span class="ms-1 d-none d-sm-inline white" >Reservas</span></a>
                     </li>
                     <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
                             <i class="fs-4 bi-grid white"></i> <span class="ms-1 d-none d-sm-inline white">Recursos</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="/usuario/articulosList" class="nav-link px-0 white">Lista Recursos</a>
+                                <a href="/usuario/articulosList" class="nav-link px-0 text-success">Lista Recursos</a>
                             </li>
                             <li>
-                                <a th:href="@{/usuario/crea_recurso}" class="nav-link px-0 white">Crear Recurso</a>
+                                <a th:href="@{/usuario/crea_recurso}" class="nav-link px-0 text-success">Crear Recurso</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/usuario/usuarios" class="nav-link px-0 align-middle">
+                        <a href="/usuario/usuarios" class="nav-link px-0 align-middle text-white">
                             <i class="fs-4 bi-people white"></i> <span class="ms-1 d-none d-sm-inline white">Customers</span> </a>
                     </li>
                 </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1"></span>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
 
 <!--Paginacion-->
 <div th:fragment="pagination" xmlns:th="http://www.thymeleaf.org">
-    <ul class="pagination">
+    <ul class="pagination ">
         <li class="page-item disabled">
             <a class="page-link " href="#" tabindex="-1">Pagina</a>
         </li>
@@ -151,7 +142,7 @@
         </th:block>
    
 
-        <li class="page-item disabled ml-5">
+        <li class="page-item disabled ml-5 ">
             <a class="page-link text-dark" href="#" tabindex="-1">Elementos en la Pagina</a>
         </li>
         <th:block th:each="c : ${#numbers.sequence(4, 12, 6)}">

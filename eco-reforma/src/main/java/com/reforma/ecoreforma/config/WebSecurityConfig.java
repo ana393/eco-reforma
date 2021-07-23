@@ -36,12 +36,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        return new BCryptPasswordEncoder();
 	    }
 	
-	private static final String[] PUBLIC_MATCHERS = {"/home", "/login", "/catalogo", "/registro", "/buscar", "/static/**", "/css/**.css", "/**/*.css", "/img/**"};
+	private static final String[] PUBLIC_MATCHERS = {"/home", "/login", "/catalogo", "/registro", "**/**/**.css", "/buscar", "/img/**"};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
+			.requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+			.permitAll()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.anyRequest().authenticated()
 		.and()

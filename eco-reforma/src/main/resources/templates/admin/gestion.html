@@ -3,20 +3,12 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="comunes/comunes :: head">
-   <link rel="stylesheet"  type="text/css"  href="/static/css/dashboard.css"th:href="@{css/dashboard.css}"/>
 </head>
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 
 <body >
 
-    <main class="d-flex" style="overflow-x: hidden; min-width: 100vh; background-image: linear-gradient(
-    to right,
-    #baf3d7,
-    #c2f5de,
-    #cbf2e4,
-    #d4f5ec,
-    #ddfeef
-  );">
+    <main class="d-flex">
      <aside >
        <div th:replace="comunes/comunes :: usuarioNavbar"></div>
      </aside>
