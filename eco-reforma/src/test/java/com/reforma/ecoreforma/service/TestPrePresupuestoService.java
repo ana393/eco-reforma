@@ -71,6 +71,17 @@ public class TestPrePresupuestoService {
 	}
 	
 	@Test
+	public void debeDevolverNrItemosDelCache() {
+		Usuario usuarioTest = new Usuario(1L, "Test","test@mail.com");
+		ItemReserva testIReserva = ItemReservaCreator.crearTestItemReserva();
+		
+		when(itemReservaRepoMock.countDistinctByUsuarioAndReservaIsNull(usuarioTest)).thenReturn(testIReserva.getCantidad());
+		int result = prePresupuestoService.obtenerNrItemos(usuarioTest);
+		assertEquals(testIReserva.getCantidad(), result);
+		verify(itemReservaRepoMock, Mockito.times(1)).countDistinctByUsuarioAndReservaIsNull(usuarioTest);
+	}
+	
+	@Test
 	public void test_Anade_Item_Existente_A_PrePresupuesto() {
 		ItemReserva testIReserva = new ItemReserva();
 		Habitacion testHabitacion = new Habitacion();
@@ -106,6 +117,18 @@ public class TestPrePresupuestoService {
 		assertTrue(CoreMatchers.is(testIReserva.getHabitacion()).matches(result.getHabitacion()));
 		assertTrue(CoreMatchers.is(testIReserva.getUsuario()).matches(result.getUsuario()));
 		verify(itemReservaRepoMock, Mockito.times(1)).save(testIReserva);
+	}
+	
+	@Test
+	public void debe_EliminarItemReserva_EvictCache() {
+		ItemReserva testIReserva = new ItemReserva();
+		testIReserva.setId(1L);
+		
+		itemReservaRepoMock.deleteById(testIReserva.getId());
+		prePresupuestoService.eliminarItemReserva(testIReserva);
+		
+		
+		verify(itemReservaRepoMock, Mockito.times(1)).deleteById(testIReserva.getId());
 	}
 
 }
