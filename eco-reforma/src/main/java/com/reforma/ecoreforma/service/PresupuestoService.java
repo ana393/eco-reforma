@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.reforma.ecoreforma.domain.PrePresupuesto;
 import com.reforma.ecoreforma.domain.Presupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
 
@@ -12,12 +13,12 @@ public interface PresupuestoService {
 	
 	Page<Presupuesto> encuentraTodos(Pageable page);
 	  
-    Presupuesto guardar(Presupuesto presupuestoValida, Usuario usuario, Presupuesto presupuesto);
+    Presupuesto guardar(Presupuesto presupuestoValida, Usuario usuario, PrePresupuesto presupuesto);
 	  
     List<Presupuesto> encuentraPorUsuario(Usuario usuario);
 	  
-	void actualizaReserva(Map<String, String> form, Presupuesto reserva);
+	void actualizaPresupuesto(Map<String, String> form, Presupuesto presupuesto);
 	  
-	void eliminarReserva(Long id);
+	void eliminarPresupuesto(Long id);
 
 }

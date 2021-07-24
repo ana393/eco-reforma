@@ -28,7 +28,7 @@ public class Presupuesto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private BigDecimal precioTotal;
-	private LocalDate fechaReserva;
+	private LocalDate fechaPresupuesto;
 	
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String nombre;
@@ -70,12 +70,12 @@ public class Presupuesto {
 		this.precioTotal = precioTotal;
 	}
 
-	public LocalDate getFechaReserva() {
-		return fechaReserva;
+	public LocalDate getFechaPresupuesto() {
+		return fechaPresupuesto;
 	}
 
-	public void setFechaReserva(LocalDate fechaReserva) {
-		this.fechaReserva = fechaReserva;
+	public void setFechaPresupuesto(LocalDate fechaPresupuesto) {
+		this.fechaPresupuesto = fechaPresupuesto;
 	}
 
 	public String getTelefono() {
