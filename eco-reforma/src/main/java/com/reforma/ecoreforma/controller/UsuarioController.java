@@ -23,18 +23,22 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.data.domain.Sort;
 
 import com.reforma.ecoreforma.domain.Habitacion;
+import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.service.HabitacionService;
+import com.reforma.ecoreforma.service.UsuarioService;
 
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
     
+	private final UsuarioService usuarioService;
 	private final HabitacionService habitacionService;
 	private static final Logger log = LoggerFactory.getLogger(UsuarioController.class);
 	
 	@Autowired
-	public UsuarioController(HabitacionService habitacionService) {
+	public UsuarioController(HabitacionService habitacionService, UsuarioService usuarioService) {
 		this.habitacionService = habitacionService;
+		this.usuarioService = usuarioService;
 	}
 	
 	 @PreAuthorize("hasAuthority('ADMIN')")
@@ -94,4 +98,17 @@ public class UsuarioController {
 	  }
 	 
 	 //Metodo get mostrar lista usuarios
+	  @GetMapping("/usuarios") 
+	  @PreAuthorize("hasAuthority('ADMIN')")
+	  public String listaUsuarios(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
+			 Page<Usuario> page = usuarioService.encuentraTodos(pageRequest);
+				int[] pagination = ControllerUtil.computePagination(page);
+				log.info("IN listaUsuarios(): ", pagination.length);
+				model.addAttribute("pagina", pagination);
+				model.addAttribute("url","/usuario/usuarios");
+				model.addAttribute("page", page);
+		 	   log.info("IN verPaginAdmin() - lista: {} ");
+		  
+		  return "admin/usuarios";
+	  }
 }

@@ -6,12 +6,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.reforma.ecoreforma.domain.Habitacion;
+import com.reforma.ecoreforma.domain.ItemReserva;
 import com.reforma.ecoreforma.domain.PrePresupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.service.HabitacionService;
@@ -53,4 +55,11 @@ public class PrePresupuestoController {
 		logger.info("In anadePreReserva : {}", usuarioDB.toString());
 	    return "redirect:/pre-presupuesto";
 	}
+	
+	@GetMapping("/remove-item/{id}")
+	public String eliminaPreReserva(@PathVariable("id") long id) {
+		ItemReserva item = prePresupuestoService.encuentraItemPorId(id);
+		prePresupuestoService.eliminarItemReserva(item);
+	    return "redirect:/preReserva";
+	 }
 }

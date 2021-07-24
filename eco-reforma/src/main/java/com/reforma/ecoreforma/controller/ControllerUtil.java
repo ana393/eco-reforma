@@ -38,7 +38,7 @@ public class ControllerUtil {
 	 * @param page
 	 * @return paginacion computada
 	 */
-	static int[] computePagination(Page<Habitacion> page) {
+	static int[] computePagination(Page page) {
         Integer totalPages = page.getTotalPages();
         log.info("IN computePagination():", totalPages.toString());
         if (totalPages > 4) {
