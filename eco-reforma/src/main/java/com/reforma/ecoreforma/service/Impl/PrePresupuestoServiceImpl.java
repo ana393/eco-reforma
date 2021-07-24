@@ -2,9 +2,9 @@ package com.reforma.ecoreforma.service.Impl;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.reforma.ecoreforma.domain.Habitacion;
@@ -18,6 +18,7 @@ import com.reforma.ecoreforma.service.PrePresupuestoService;
 public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 
 	private final ItemReservaRepository itemReservaRepo;
+	private static final Logger log = LoggerFactory.getLogger(PrePresupuestoServiceImpl.class);
 	
 	@Autowired
 	public PrePresupuestoServiceImpl(ItemReservaRepository itemReservaRepo) {
@@ -30,7 +31,6 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 	}
 
 	@Override
-	@Cacheable("nr_itemos")
 	public int obtenerNrItemos(Usuario usuario) {
 		return itemReservaRepo.countDistinctByUsuarioAndReservaIsNull(usuario);
 	}
@@ -59,28 +59,12 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 	}
 
 	@Override
-	@CacheEvict(value = "nr_itemos", allEntries = true)
 	public void eliminarItemReserva(ItemReserva item) {
+		log.debug("req a eliminar item del Cache: {}",item.getId());
 		boolean i = itemReservaRepo.existsById(item.getId());
 		if (i) {
 		itemReservaRepo.deleteById(item.getId());
 		}
-	}
-
-	@Override
-	@CacheEvict(value = "nr_itemos", allEntries = true)
-	public void actualizarItemReserva(ItemReserva item, Integer qty) {
-		if(qty == null || qty <= 0) {
-			this.eliminarItemReserva(item);
-		}
-		
-	}
-
-	@Override
-	@CacheEvict(value = "nr_itemos", allEntries = true)
-	public void vaciarPrePresupuesto(Usuario usuario) {
-		itemReservaRepo.deleteAllByUsuarioAndReservaIsNull(usuario);
-		
 	}
 
 }

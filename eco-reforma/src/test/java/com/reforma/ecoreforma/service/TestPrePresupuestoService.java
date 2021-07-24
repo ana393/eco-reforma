@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -120,15 +121,15 @@ public class TestPrePresupuestoService {
 	}
 	
 	@Test
-	public void debe_EliminarItemReserva_EvictCache() {
+	public void debe_EliminarItemReserva() {
+		//given
 		ItemReserva testIReserva = new ItemReserva();
 		testIReserva.setId(1L);
-		
-		itemReservaRepoMock.deleteById(testIReserva.getId());
+	
 		prePresupuestoService.eliminarItemReserva(testIReserva);
 		
-		
-		verify(itemReservaRepoMock, Mockito.times(1)).deleteById(testIReserva.getId());
+		verify(itemReservaRepoMock, Mockito.times(1)).existsById(testIReserva.getId());
+		verify(itemReservaRepoMock, Mockito.times(0)).deleteById(testIReserva.getId());
 	}
 
 }

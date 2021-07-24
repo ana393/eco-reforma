@@ -16,7 +16,4 @@ public interface PrePresupuestoService {
 		
 	void eliminarItemReserva(ItemReserva item);
 	
-	void actualizarItemReserva(ItemReserva item, Integer qty);
-	
-	void vaciarPrePresupuesto(Usuario usuario);
 }
