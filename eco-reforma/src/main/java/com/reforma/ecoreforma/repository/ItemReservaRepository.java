@@ -11,9 +11,9 @@ import com.reforma.ecoreforma.domain.Usuario;
 public interface ItemReservaRepository  extends JpaRepository<ItemReserva, Long>{
 	
     @EntityGraph(attributePaths = {"habitacion"})
-	List<ItemReserva> findAllByUsuarioAndReservaIsNull(Usuario usuario);
+	List<ItemReserva> findAllByUsuarioAndPresupuestoIsNull(Usuario usuario);
 	
-    void deleteAllByUsuarioAndReservaIsNull(Usuario usuario);
+    void deleteAllByUsuarioAndPresupuestoIsNull(Usuario usuario);
 	
-	int countDistinctByUsuarioAndReservaIsNull(Usuario usuario);
+	int countDistinctByUsuarioAndPresupuestoIsNull(Usuario usuario);
 }

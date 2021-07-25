@@ -1,6 +1,4 @@
-body{
-	 background: green;
-}
+
 
 body::before {
   display: block;

@@ -1,11 +1,5 @@
 package com.reforma.ecoreforma.controller;
 
-import org.springframework.data.domain.Page;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-
-import com.reforma.ecoreforma.domain.Habitacion;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,6 +11,9 @@ import java.util.stream.IntStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 public class ControllerUtil {
 	private static final Logger log = LoggerFactory.getLogger(ControllerUtil.class);
 

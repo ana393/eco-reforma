@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="comunes/comunes :: head"></head>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+<body>
+   <div id="container">
+    <div class="container mt-5 pb-5">
+        <form action="/presupuesto" method="post" enctype="multipart/form-data">
+        <p class="h4 mb-4 text-center">Procedimiento para El Presupuesto</p>
+        <br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nombre:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="nombre" th:value="${presupuesto} ? ${presupuesto.Nombre} : ''"
+                                   class="form-control" th:classappend="${nombreError} ? ' is-invalid'" />
+                            <div th:if="${nombreError}" class="invalid-feedback" th:text="${nombreError}"></div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Теlefono:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="telefono" th:value="${presupuesto} ? ${presupuesto.telefono} : ''"
+                                   class="form-control" th:classappend="${telefonoError} ? ' is-invalid'" placeholder="380__ ___ __ __"/>
+                            <div th:if="${telefonoError}" class="invalid-feedback" th:text="${telefonoError}"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Email:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="email" th:value="${presupuesto} ? ${presupuesto.email} : ''"
+                                   class="form-control" th:classappend="${emailError} ? ' is-invalid'" placeholder="ejemplo@email.com"/>
+                            <div th:if="${emailError}" class="invalid-feedback" th:text="${emailError}"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="container-fluid">
+                        <div class="row" th:fragment="list">
+                            <div class="col-lg-6 d-flex align-items-stretch" th:each="item : ${presupuestos}">
+                                <div class="card mb-5" th:if="${item.habitacion.id}">
+                                    <img th:src="@{'/img/' + ${item.habitacion.getImg_url()}}" class="rounded mx-auto w-50">
+                                    <div class="card-body text-center">
+                                        <h5 th:text="${item.habitacion.titulo}"></h5>
+                                        <h6><span th:text="${item.habitacion.precio}"></span>EUROS</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-success px-5 float-right">Confirmar Presupuesto</button>  
+                    <div class="row">
+                        <p> </p>
+                        <h4> Presupuesto : <span th:text="${#numbers.formatDecimal(prePresupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</h4>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:insert="~{comunes/comunes :: footer}"></footer>  
+</body>
+</html>

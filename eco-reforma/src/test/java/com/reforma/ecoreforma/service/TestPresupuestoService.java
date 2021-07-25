@@ -1,6 +1,5 @@
 package com.reforma.ecoreforma.service;
 
-import static org.hamcrest.CoreMatchers.any;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,11 +8,9 @@ import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
@@ -28,16 +25,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.reforma.ecoreforma.creator.ItemReservaCreator;
 import com.reforma.ecoreforma.creator.PresupuestoCreator;
 import com.reforma.ecoreforma.domain.EstadoPresupuesto;
 import com.reforma.ecoreforma.domain.ItemReserva;
 import com.reforma.ecoreforma.domain.PrePresupuesto;
 import com.reforma.ecoreforma.domain.Presupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
-import com.reforma.ecoreforma.repository.ItemReservaRepository;
 import com.reforma.ecoreforma.repository.PresupuestoRepository;
-import com.reforma.ecoreforma.service.Impl.PresupuestoServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

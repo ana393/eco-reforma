@@ -33,15 +33,17 @@ public class PrePresupuestoController {
 	}
 	
 	@GetMapping
-	public String preReserva(Authentication usuarioSession, Model model) {
+	public String prePresupuesto(Authentication usuarioSession, Model model) {
 		Usuario usuarioDB = (Usuario)usuarioSession.getPrincipal();
+		logger.info("In prePresupuesto : {}", usuarioDB.toString());
 		PrePresupuesto prePresupuesto = prePresupuestoService.obtenPrePresupuesto(usuarioDB);
-		model.addAttribute("pre-reservas", prePresupuesto.getPrePresupusetoItemos());
-		model.addAttribute("pre-presupuesto", prePresupuesto);
+		model.addAttribute("pre_reservas", prePresupuesto.getPrePresupusetoItemos());
+		model.addAttribute("pre_presupuesto", prePresupuesto);
 		
-		logger.info("In obtenerPreReserva : {}");
+		logger.info("In prePresupuesto : {}", prePresupuesto.toString());
 		return "pre-presupuesto";
 	}
+	
 	
 	@PostMapping("/anade")
 	public String anadePreReserva(@RequestParam("anade") Habitacion habitacion,
@@ -56,10 +58,10 @@ public class PrePresupuestoController {
 	    return "redirect:/pre-presupuesto";
 	}
 	
-	@GetMapping("/remove-item/{id}")
+	@GetMapping("/elimina-item/{id}")
 	public String eliminaPreReserva(@PathVariable("id") long id) {
 		ItemReserva item = prePresupuestoService.encuentraItemPorId(id);
 		prePresupuestoService.eliminarItemReserva(item);
-	    return "redirect:/preReserva";
+	    return "redirect:/pre-presupuesto";
 	 }
 }

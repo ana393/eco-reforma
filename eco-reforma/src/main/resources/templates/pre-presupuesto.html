@@ -6,49 +6,50 @@
 <div th:replace="comunes/comunes :: navbar"></div>
  <section>
      <div class="container mt-5 pb-5">
-        <p class="h4 mb-4 text-center">Diseños deseados</p>
-      <div class="text-center" th:if="${#lists.isEmpty(pre-reservas)}">
+        <p class="h4 mb-4 text-center">Articulos Prereservados</p>
+      <div class="text-center" th:if="${#lists.isEmpty(pre_reservas)}">
             <p>No hay elementos deseados.</p>
         </div>
-         <div th:if="${reservas  != null}">
-            <div class="card mb-4 mx-auto" style="max-width: 940px;" th:each="item : ${pre-reservas}" >
-                <div class="row no-gutters">
-                    <div class="col-3 p-2">
-                        <img th:src="@{'/img/' + ${item.habitacion.getImg_url()}}" class="rounded mx-auto w-50">
-                    </div>
-                    <div class="col-7">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${item.habitacion.getNombre()}"></h5>     
+         <div th:if="${pre_reservas  != null}">
+              <div class="row g-4">
+                 <div class="col-md-6 col-lg-3" th:each="item: ${pre_reservas}">
+                    <div class="card">
+                        <img class="card-img-top" th:src="@{'/img/' + ${item.habitacion.getImg_url()}}"  alt="" >
+                          <div class="card-body text-center"> 
+                            <h5 class="card-title mb-3" th:text="${item.habitacion.getTitulo()}"></h5>
+                             <h5 class="card-text" th:text="${item.habitacion.getPrecio()}"> EUR</h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-7">
-                        <div class="card-body">
-                            <h5 class="card-title"><span th:text="${#numbers.formatDecimal(item.habitacion.precio, 0, 'COMMA', 2, 'POINT')}"></span>EUR.</h5>
+                        
+                        <div class="col-7">
+                         <div class="card-body">
                           <span th:text = "${item.cantidad}"></span>
                              <h5 class="card-title"><span th:text="${#numbers.formatDecimal(item.Total(), 0, 'COMMA', 2, 'POINT')}"></span>EUR.</h5>
                           <div class="col-2 ">
-                             <a th:href="@{'/pre-reserva/remove-item/{id}' (id=${item.id})}">Eliminar</a>                              
+                             <a th:href="@{'/pre-presupuesto/elimina-item/{id}' (id=${item.id})}">Eliminar</a>                              
                           </div>                    
                         </div>
-                    </div>
+                    </div>   
+                      </div>  
+                   
+                    
                 </div>
             </div>
             <hr class="my-3"/>
             <div class="row">
                 <div class="col-9 ">
-                  <p class="h5 text-right">Total:<span th:text="${#numbers.formatDecimal(pre-presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</p> 
+                  <p class="h5 text-right">Total:<span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</p> 
                 </div>
                 <div class="col-3">
-                    <form action="/reserva" method="get" class="ml-3">
+                    <form action="/presupuesto" method="get" class="ml-3">
                         <div class="form-row">
-                            <div class="col-6" th:if="${not #lists.isEmpty(pre-reservas)}">
-                                <button class="btn btn-success" >Reservar</button>
+                            <div class="col-6" th:if="${not #lists.isEmpty(pre_reservas)}">
+                                <button class="btn btn-success" >Confirmar Presupuesto</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div> 
     </div>
   </section>
 </body>

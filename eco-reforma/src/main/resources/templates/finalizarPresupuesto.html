@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="comunes/comunes :: head"></head>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+<body>
+ 
+  <div id="container">
+    <div class="container text-center mt-5">
+        <h2>Gracias por Sus Reserva! En breve nos comunicamos con usted</h2>
+       
+    </div>
+    <a th:href="@{/home}">Explore nuestra pagina</a>
+</div>
+<footer th:insert="~{comunes/comunes :: footer}"></footer>  
+</body>
+</html>

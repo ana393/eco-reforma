@@ -48,7 +48,7 @@ public class TestPrePresupuestoService {
 		List<ItemReserva> testIRList = ItemReservaCreator.crearPrePresupuesto();
 		testIRList.add(testIReserva);
 		PrePresupuesto expectedTest = new PrePresupuesto(testIRList); 
-		when(itemReservaRepoMock.findAllByUsuarioAndReservaIsNull(usuarioTest)).thenReturn(testIRList);
+		when(itemReservaRepoMock.findAllByUsuarioAndPresupuestoIsNull(usuarioTest)).thenReturn(testIRList);
 		
 		PrePresupuesto resultTest = prePresupuestoService.obtenPrePresupuesto(usuarioTest);
 	
@@ -75,11 +75,11 @@ public class TestPrePresupuestoService {
 		Usuario usuarioTest = new Usuario(1L, "Test","test@mail.com");
 		ItemReserva testIReserva = ItemReservaCreator.crearTestItemReserva();
 		
-		when(itemReservaRepoMock.countDistinctByUsuarioAndReservaIsNull(usuarioTest)).thenReturn(testIReserva.getCantidad());
+		when(itemReservaRepoMock.countDistinctByUsuarioAndPresupuestoIsNull(usuarioTest)).thenReturn(testIReserva.getCantidad());
 		int result = prePresupuestoService.obtenerNrItemos(usuarioTest);
 		
 		assertEquals(testIReserva.getCantidad(), result);
-		verify(itemReservaRepoMock, Mockito.times(1)).countDistinctByUsuarioAndReservaIsNull(usuarioTest);
+		verify(itemReservaRepoMock, Mockito.times(1)).countDistinctByUsuarioAndPresupuestoIsNull(usuarioTest);
 	}
 	
 	@Test

@@ -27,12 +27,12 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 
 	@Override
 	public PrePresupuesto obtenPrePresupuesto(Usuario usuario) {
-		return new PrePresupuesto(itemReservaRepo.findAllByUsuarioAndReservaIsNull(usuario));
+		return new PrePresupuesto(itemReservaRepo.findAllByUsuarioAndPresupuestoIsNull(usuario));
 	}
 
 	@Override
 	public int obtenerNrItemos(Usuario usuario) {
-		return itemReservaRepo.countDistinctByUsuarioAndReservaIsNull(usuario);
+		return itemReservaRepo.countDistinctByUsuarioAndPresupuestoIsNull(usuario);
 	}
 
 	@Override
