@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.data.domain.Sort;
 
+import com.reforma.ecoreforma.domain.EstadoPresupuesto;
 import com.reforma.ecoreforma.domain.Habitacion;
 import com.reforma.ecoreforma.domain.Presupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
@@ -134,5 +135,39 @@ public class UsuarioController {
 				model.addAttribute("page", page);
 	        log.info("IN obtenerListaPresupuesto() {}", page);
 	        return "admin/presupuestos";
+	    }
+	    
+	    /**
+	     * metodo para obtener la pagina de editar el estado de la {@link Presupueseto}.
+	     * 
+	     * @param presupuesto
+	     * @param model
+	     * @return
+	     */
+	    @GetMapping("{presupuesto}")
+	    @PreAuthorize("hasAuthority('ADMIN')")
+	    public String obtenerEstado(@PathVariable Presupuesto presupuesto, Model model) {
+	  	  model.addAttribute("presupuesto", presupuesto);
+	  	  model.addAttribute("estados", EstadoPresupuesto.values()); 
+	  	  return "admin/estado-presupuesto";
+	    }
+	    
+	   
+	    @PostMapping("/presupuesto-actualizado")
+	    @PreAuthorize("hasAuthority('ADMIN')")
+	    public String editarEstado(@RequestParam Map<String, String> form,
+	  		  					   @RequestParam("presupuestoId") Presupuesto prseupuesto) {
+	  	  presupuestoService.actualizaPresupuesto(form, prseupuesto);
+	  	  log.info("IN editarEstado() : {}", form);
+	      return "redirect:/usuario/presupuestos";
+	    	}
+	    
+	   
+	    @RequestMapping("/eliminar")
+	    @PreAuthorize("hasAuthority('ADMIN')")
+	    public String eliminarReserva(@RequestParam("id") Long id) {
+	    	log.info("IN eliminarReserva() : {}", id);
+	    	presupuestoService.eliminarPresupuesto(id);
+	    	return "redirect:/usuario/presupuestos";
 	    }
 }

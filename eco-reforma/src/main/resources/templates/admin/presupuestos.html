@@ -56,7 +56,7 @@
                 </div>
             </th>
             <th th:text="${item.estado}"></th>
-            <th><a th:href="@{/usuario/gestion/{path} (path = ${item.getId()})}" class="badge bg-success" >editar</a></th>
+            <th><a th:href="@{/usuario/presupuestos/{path} (path = ${item.getId()})}" class="badge bg-success" >editar</a></th>
             <th><a th:href="@{/usuario/eliminar?id=} + ${item.getId()}" 
             onclick="return confirm('Estas seguro de que quieres borrar esta reserva de la Base de Datos?')" class="badge bg-danger">eliminar</a></th>
         </tr>
