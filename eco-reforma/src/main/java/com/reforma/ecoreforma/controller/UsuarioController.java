@@ -149,11 +149,11 @@ public class UsuarioController {
 	    public String obtenerEstado(@PathVariable Presupuesto presupuesto, Model model) {
 	  	  model.addAttribute("presupuesto", presupuesto);
 	  	  model.addAttribute("estados", EstadoPresupuesto.values()); 
-	  	  return "admin/estado-presupuesto";
+	  	  return "admin/presupuesto-editar";
 	    }
 	    
 	   
-	    @PostMapping("/presupuesto-actualizado")
+	    @PostMapping("/presupuesto-editar")
 	    @PreAuthorize("hasAuthority('ADMIN')")
 	    public String editarEstado(@RequestParam Map<String, String> form,
 	  		  					   @RequestParam("presupuestoId") Presupuesto prseupuesto) {

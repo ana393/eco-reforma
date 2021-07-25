@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:replace="comunes/comunes :: head"></head>
+
+<body>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+
+<main class="d-flex">
+  <aside >
+       <div th:replace="comunes/comunes :: usuarioNavbar"></div>
+   </aside>
+
+<div class="form">
+    <form action="/usuario/presupuesto-editar" method="post" >
+        <input type="text" name="email" th:value="${presupuesto.getEmail()}">
+        <div th:each="estado : ${estados}">
+            <input type="checkbox" th:name="${estado}" th:checked="${#lists.contains(presupuesto.estado, estado)}">
+            <label th:text="${estado}" /></label>
+        </div>
+        <input type="hidden" th:value="${presupuesto.getId()}" name="presupuestoId">
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+</main>
+
+<footer th:insert="~{comunes/comunes :: footer}"></footer>
+
+</body>
+</html>
