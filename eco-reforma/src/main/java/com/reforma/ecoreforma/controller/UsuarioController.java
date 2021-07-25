@@ -23,8 +23,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.data.domain.Sort;
 
 import com.reforma.ecoreforma.domain.Habitacion;
+import com.reforma.ecoreforma.domain.Presupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.service.HabitacionService;
+import com.reforma.ecoreforma.service.PresupuestoService;
 import com.reforma.ecoreforma.service.UsuarioService;
 
 @Controller
@@ -33,12 +35,14 @@ public class UsuarioController {
     
 	private final UsuarioService usuarioService;
 	private final HabitacionService habitacionService;
+	private final PresupuestoService presupuestoService;
 	private static final Logger log = LoggerFactory.getLogger(UsuarioController.class);
 	
 	@Autowired
-	public UsuarioController(HabitacionService habitacionService, UsuarioService usuarioService) {
+	public UsuarioController(HabitacionService habitacionService, UsuarioService usuarioService, PresupuestoService presupuestoService) {
 		this.habitacionService = habitacionService;
 		this.usuarioService = usuarioService;
+		this.presupuestoService = presupuestoService;
 	}
 	
 	 @PreAuthorize("hasAuthority('ADMIN')")
@@ -111,4 +115,24 @@ public class UsuarioController {
 		  
 		  return "admin/usuarios";
 	  }
+	 
+		/**
+	     * Retorna todas los presupuesto del consumidor.
+	     * URL request {"/gestion"}, metodo GET.
+	     *
+	     * @param model objeto {@link Model}.
+	     * @return reservas pagina con atributos uso del objeto  {@link Model}.
+	     */
+	    @GetMapping("/presupuestos")
+	    @PreAuthorize("hasAuthority('ADMIN')")
+	    public String obtenerListaPresupuesto(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
+			 Page<Presupuesto> page = presupuestoService.encuentraTodos(pageRequest);
+				int[] pagination = ControllerUtil.computePagination(page);
+				log.info("IN obtenerListaPresupuesto(): ", pagination.length);
+				model.addAttribute("pagina", pagination);
+				model.addAttribute("url","/usuario/presupuestos");
+				model.addAttribute("page", page);
+	        log.info("IN obtenerListaPresupuesto() {}", page);
+	        return "admin/presupuestos";
+	    }
 }

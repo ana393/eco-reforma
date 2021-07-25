@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="comunes/comunes :: head">
+<link rel="stylesheet"  type="text/css"  th:href="@{/css/dashboard.css}"/>
+</head>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<body class="d-flex flex-column min-vh-100">
+
+
+ <main class="d-flex " style="overflow-x: hidden; min-width: 100vh; background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf2e4,
+    #d4f5ec,
+    #ddfeef
+  );">
+         <div th:replace="comunes/comunes :: usuarioNavbar"></div>
+<!-- -end of sidebar -->
+    
+
+ <!-- -Table --> 
+   <div class="page-content-wrapper flex-fill"> 
+   <div class="row my-5">
+     <h3 class="fs-4 mb-3  m-2 success-50">Presupuestos </h3>
+       <div class="col">
+      <table  class="table table-secondary table-striped-rounded shadow-sm table-hover m-2">
+     <thead class="table-success">
+         <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Presupuesto</th>
+            <th scope="col">ID - Habitacion</th>
+            <th scope="col">Estado</th>
+             <th scope="col">Aciones</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+           <div th:if="${#lists.isEmpty(page.getContent())}">
+            <h2>No hay Datos en su Base de datos</h2>
+          </div>
+        <tbody th:each="item : ${page.getContent()}">
+        <tr>
+            <th th:text="${item.fechaPresupuesto}"></th>
+            <th th:text="${item.nombre}"></th>
+            <th th:text="${item.email}"></th>
+            <th th:text="${item.telefono}"></th>
+            <th th:text="${item.precioTotal}"></th>
+            <th>
+                <div th:each="it : ${item.getItemsReserva()}">
+                    <p th:text="${it.habitacion.id}"></p>
+                </div>
+            </th>
+            <th th:text="${item.estado}"></th>
+            <th><a th:href="@{/usuario/gestion/{path} (path = ${item.getId()})}" class="badge bg-success" >editar</a></th>
+            <th><a th:href="@{/usuario/eliminar?id=} + ${item.getId()}" 
+            onclick="return confirm('Estas seguro de que quieres borrar esta reserva de la Base de Datos?')" class="badge bg-danger">eliminar</a></th>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <div th:insert="~{comunes/comunes :: pagination}"></div>
+     </div>
+     </div>
+     </div>
+      </main>    
+ <script>
+  $(document).ready(function(){
+	 $('table-recursos').DataTable({
+		 stateSave:true
+	 });
+  });
+</script>
+  <footer th:insert="~{comunes/comunes :: footer}"></footer>
+ </body>
+</html>
