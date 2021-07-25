@@ -32,7 +32,7 @@ public class TestHabitacionService {
 	  
 	
 	@Test
-	public  void encuentraTodo() {
+	public  void debe_devolver_listapagina_con_Habitaciones() {
 		habitacionService = new HabitacionServiceImpl(habitacionRepositoryMock);
 		List<Habitacion> habitacionList = new ArrayList<>();
 		habitacionList.add(new Habitacion(1L,"Dormitorio doble", "Dormitorio","Test bj.id:1.Clasico y luminoso..", 45.7));

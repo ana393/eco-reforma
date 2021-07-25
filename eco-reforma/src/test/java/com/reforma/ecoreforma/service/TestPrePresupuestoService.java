@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -72,12 +71,13 @@ public class TestPrePresupuestoService {
 	}
 	
 	@Test
-	public void debeDevolverNrItemosDelCache() {
+	public void debe_Devolver_NrItemos_DelCache() {
 		Usuario usuarioTest = new Usuario(1L, "Test","test@mail.com");
 		ItemReserva testIReserva = ItemReservaCreator.crearTestItemReserva();
 		
 		when(itemReservaRepoMock.countDistinctByUsuarioAndReservaIsNull(usuarioTest)).thenReturn(testIReserva.getCantidad());
 		int result = prePresupuestoService.obtenerNrItemos(usuarioTest);
+		
 		assertEquals(testIReserva.getCantidad(), result);
 		verify(itemReservaRepoMock, Mockito.times(1)).countDistinctByUsuarioAndReservaIsNull(usuarioTest);
 	}
@@ -125,9 +125,9 @@ public class TestPrePresupuestoService {
 		//given
 		ItemReserva testIReserva = new ItemReserva();
 		testIReserva.setId(1L);
-	
+	    //when
 		prePresupuestoService.eliminarItemReserva(testIReserva);
-		
+		//then
 		verify(itemReservaRepoMock, Mockito.times(1)).existsById(testIReserva.getId());
 		verify(itemReservaRepoMock, Mockito.times(0)).deleteById(testIReserva.getId());
 	}

@@ -1,5 +1,6 @@
 package com.reforma.ecoreforma.service.Impl;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.reforma.ecoreforma.domain.EstadoPresupuesto;
 import com.reforma.ecoreforma.domain.ItemReserva;
@@ -20,6 +22,7 @@ import com.reforma.ecoreforma.repository.ItemReservaRepository;
 import com.reforma.ecoreforma.repository.PresupuestoRepository;
 import com.reforma.ecoreforma.service.PresupuestoService;
 
+@Service
 public class PresupuestoServiceImpl  implements PresupuestoService{
 	
 	
@@ -43,7 +46,7 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 		presupuestDB.setNombre(presupuestoValida.getNombre());
 		presupuestDB.setTelefono(presupuestoValida.getTelefono());
 		presupuestDB.setEmail(presupuestoValida.getEmail());
-		presupuestDB.setFechaPresupuesto(presupuestoValida.getFechaPresupuesto());
+		presupuestDB.setFechaPresupuesto(LocalDate.now());
 		presupuestDB.setUsuario(usuario);
 		presupuestDB.setPrecioTotal(presupuestoValida.getPrecioTotal());
 		presupuestDB.setEstado(EstadoPresupuesto.PENDIENTE);
@@ -72,7 +75,7 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 		for (String key : form.keySet()) {
 			if (estados.contains(key)) {
 				presupuesto.setEstado(EstadoPresupuesto.valueOf(key));
-				log.info("IN actualizarReserva(): {}", presupuesto.getEstado());
+				log.info("IN actualizarPresupuesto(): {}", presupuesto.getEstado());
 				presupuestoRepository.save(presupuesto);
 			}
 		}	
