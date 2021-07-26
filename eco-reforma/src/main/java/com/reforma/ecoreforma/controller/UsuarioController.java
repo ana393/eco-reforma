@@ -133,26 +133,18 @@ public class UsuarioController {
 				model.addAttribute("pagina", pagination);
 				model.addAttribute("url","/usuario/presupuestos");
 				model.addAttribute("page", page);
+				model.addAttribute("estados", EstadoPresupuesto.values()); 
 	        log.info("IN obtenerListaPresupuesto() {}", page);
 	        return "admin/presupuestos";
 	    }
-	    
+
 	    /**
-	     * metodo para obtener la pagina de editar el estado de la {@link Presupueseto}.
+	     * metodo para guardar el estado de la {@link Presupueseto}.
 	     * 
-	     * @param presupuesto
-	     * @param model
-	     * @return
+	     * @param form que guarda los valores en Map<String, String>
+	     * @param prseupuesto el objeto {@link Presupueseto} editado.
+	     * @return la vista con la ruta /usuario/presupuestos.
 	     */
-	    @GetMapping("{presupuesto}")
-	    @PreAuthorize("hasAuthority('ADMIN')")
-	    public String obtenerEstado(@PathVariable Presupuesto presupuesto, Model model) {
-	  	  model.addAttribute("presupuesto", presupuesto);
-	  	  model.addAttribute("estados", EstadoPresupuesto.values()); 
-	  	  return "admin/presupuesto-editar";
-	    }
-	    
-	   
 	    @PostMapping("/presupuesto-editar")
 	    @PreAuthorize("hasAuthority('ADMIN')")
 	    public String editarEstado(@RequestParam Map<String, String> form,

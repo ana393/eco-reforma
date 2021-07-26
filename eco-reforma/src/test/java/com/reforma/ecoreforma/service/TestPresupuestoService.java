@@ -63,8 +63,8 @@ public class TestPresupuestoService {
 		Presupuesto presupuestoTest = PresupuestoCreator.crearTestPresupuesto();
 		Presupuesto presupuestoValidoTest = new Presupuesto();
 		Usuario usuarioTest = new Usuario();
-		List<ItemReserva> li = new ArrayList<>();
-		PrePresupuesto ppTest = new PrePresupuesto(li);
+		List<ItemReserva> listaTest = new ArrayList<>();
+		PrePresupuesto ppTest = new PrePresupuesto(listaTest);
 		usuarioTest.setId(1L);
 		presupuestoTest.setUsuario(usuarioTest);
 		

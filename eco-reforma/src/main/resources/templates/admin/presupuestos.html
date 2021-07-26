@@ -56,25 +56,52 @@
                 </div>
             </th>
             <th th:text="${item.estado}"></th>
-            <th><a th:href="@{/usuario/{path} (path = ${item.getId()})}" class="badge bg-success" >editar</a></th>
-            <th><a th:href="@{/usuario/eliminar?id=} + ${item.getId()}" 
+            <th>
+            <button class="btn btn-success btn-sm" data-bs-toggle="modal" th:attr = "data-bs-target=${'#estado' + item.id}">Editar</button>
+                <!-- -Modal para editar estado -->
+           <div class="modal fade" th:id="${'estado' + item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modifica el Estado del Presupuesto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                <div class="modal-body">
+                   <form action="/usuario/presupuesto-editar" method="post" >
+                       <div class="mb-3">
+                           <label for="Email" class="col-form-label" >Email cliente: </label>
+                           <label for="EmailCliente" class="col-form-label" th:text="${item.getEmail()}"></label>
+                       </div>
+                    <div class="mb-3">
+                       <label for="Estado"   class="col-form-label" > Estado actual Presupuesto:</label>
+                         <label for="EstadoPresupuesto"   class="col-form-label" th:text="${item.getEstado()}">></label>
+                          <div  th:each="estado : ${estados}">
+                         <input type="checkbox" th:name="${estado}" th:text="${estado}" th:checked="${#lists.contains(item.estado, estado)}">
+                      </div>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                       <input type="hidden" th:value="${item.getId()}" name="presupuestoId">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+                </form>
+                </div> 
+              </div>
+          </div>
+        </div>
+                <!------ -----------------------Fin Modal ------------------->
+            </th>
+         <th><a th:href="@{/usuario/eliminar?id=} + ${item.getId()}" 
             onclick="return confirm('Estas seguro de que quieres borrar esta reserva de la Base de Datos?')" class="badge bg-danger">eliminar</a></th>
         </tr>
         </tbody>
-    </table>
-    <hr/>
-    <div th:insert="~{comunes/comunes :: pagination}"></div>
-     </div>
-     </div>
-     </div>
-      </main>    
- <script>
-  $(document).ready(function(){
-	 $('table-recursos').DataTable({
-		 stateSave:true
-	 });
-  });
-</script>
+     </table>
+    
+        <div th:insert="~{comunes/comunes :: pagination}"></div>
+       </div>
+      </div>
+    </div>
+ </main>   
   <footer th:insert="~{comunes/comunes :: footer}"></footer>
  </body>
 </html>
