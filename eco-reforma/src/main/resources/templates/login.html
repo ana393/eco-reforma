@@ -8,11 +8,11 @@
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
 
-  <div id="container" class="container mt-5">
-    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" class="alert alert-danger col-sm-8" role="alert">Compruebe sus credenciales</div>
+  <section  class="container mt-5 shadow justify-content-center" >
+    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" class="alert alert-danger col-sm-12 text-center" role="alert">Compruebe sus credenciales</div>
        <div th:if="${messageType}" class="alert " th:classappend="${messageType}" th:text="${message.text}" role="alert"></div>
          <div th:replace="comunes/loginForm :: login(path=${'/login'})"></div> 
-  </div>
+  </section>
 
 <footer th:insert="~{comunes/comunes :: footer}"></footer>
 </body>

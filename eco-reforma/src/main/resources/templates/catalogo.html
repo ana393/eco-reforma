@@ -20,7 +20,7 @@
                             <h5 class="card-title mb-3" th:text="${item.getTitulo()}"></h5>
                              <h5 class="card-text" th:text="${item.getPrecio()}"> EUR</h5>
                               <form th:action="@{/pre-presupuesto/anade}" method="post">
-                                <button class="btn btn-secondary" id="click" onclick="DisplayNone" type="submit" name="anade" th:value="${item.getId()}">Reserva</button>
+                                <button class="btn btn-secondary" type="submit" name="anade" th:value="${item.getId()}">Reserva</button>
                               </form>  
                             </div>
                         </div>   
@@ -28,11 +28,7 @@
               </div>
         </div> 
      </section>     
-     <script>
-        function DisplayNone(){
-        	document.getElementById('click').style['display'] = none;
-        }
-     </script>           	
+                	
 	<footer th:insert="~{comunes/comunes :: footer}"></footer>
   </body>
 </html>

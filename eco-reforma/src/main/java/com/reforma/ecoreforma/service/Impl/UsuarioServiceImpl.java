@@ -17,7 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.reforma.ecoreforma.domain.Role;
+import com.reforma.ecoreforma.domain.Roles;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.UsuarioRepository;
 import com.reforma.ecoreforma.service.UsuarioService;
@@ -49,7 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public Usuario guardar(Usuario usuario) {
-		usuario.setRoles(Collections.singleton(Role.ADMIN));
+		usuario.setRoles(Collections.singleton(Roles.ADMIN));
 		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		
 		Usuario registered = usuarioRepository.save(usuario);
@@ -64,14 +64,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public void actualizaUsuario(Map<String, String> form, Usuario usuario) {
-		Set <String> roles = Arrays.stream(Role.values())
-				.map(Role::name)
+		Set <String> roles = Arrays.stream(Roles.values())
+				.map(Roles::name)
 				.collect(Collectors.toSet());
 		usuario.getRoles().clear();
 		
 		for (String key : form.keySet()) {
 			if (roles.contains(key)) {
-				usuario.getRoles().add(Role.valueOf(key));
+				usuario.getRoles().add(Roles.valueOf(key));
 			}
 		}
 		

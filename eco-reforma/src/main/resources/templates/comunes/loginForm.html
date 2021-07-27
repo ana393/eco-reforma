@@ -1,55 +1,65 @@
 <div th:fragment="login(path)" xmlns:th="http://www.thymeleaf.org">
-    <form method="post" th:attr="action=${path}" > 
-                  
-        <div class="container mt-5" >
-            <h4 th:text="${path} == '/registro' ? 'Registrate' : 'Su cuenta'"></h4>
-            <hr align="left" width="550"/>
-            <div class="form-group row" th:if="${path} == '/registro'"  >
-                <label class="col-sm-2 col-form-label">Nombre: </label>
-                <div class="col-sm-4">
+ <div class="row  mb-5 shadow">
+   <div class="col-lg-6" style="background-image: url(./../img/user.svg);">
+   <img  th:src="@{'./../img/user.svg'}"  alt=""  class="card-img w-25" >
+   </div>
+   <div class="col-lg-6 col-md-12 col-sm-12 ">
+      <form method="post" th:attr="action=${path}" > 
+          <div class="card-title text-center"  >
+            <h3  class ="p-3  fw-bold" style="color:#6f42c1;" th:text="${path} == '/registro' ? 'Registrate' : 'Login'"></h3>
+            <hr class=" fw-bold"/>
+            <div class="form-group row mb-4" th:if="${path} == '/registro'"  >
+                <label class="col-sm-4 col-form-label fw-bold">Nombre: </label>
+                <div class="col-sm-6">
                     <input type="text" name="username"  th:value="${usuario} ? ${usuario.username} : ''" class="form-control"  th:classappend="${usernameError} ? ' is-invalid'" />
                     <div th:if="${usernameError}" class="invalid-feedback" th:text="${usernameError}"></div>
                  </div>
             </div>
 
-            <div class="form-group row" >
-                <label class="col-sm-2 col-form-label">Correo electronico: </label>
-               
-                <div class="col-sm-4">
+            <div class="form-group row mb-4" >
+                <label class="col-sm-4 col-form-label  fw-bold" >Correo electronico: </label>  
+                  <div class="col-sm-6">
                     <input type="email" name="email"  th:value="${usuario} ? ${usuario.email} : ''" class="form-control"
                           th:classappend="${emailError} ? ' is-invalid'"/>
-                      
                     <div th:if="${emailError}" class="invalid-feedback" th:text="${emailError}"></div>
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Contrasena: </label>
-                <div class="col-sm-4">
+            <div class="form-group row mb-4">
+                <label class="col-sm-4 col-form-label  fw-bold">Contrasena: </label>
+                <div class="col-sm-6">
                     <input type="password" name="password" class="form-control"
                            th:classappend="${passwordError} ? ' is-invalid'"/>
                     <div th:if="${passwordError}" class="invalid-feedback" th:text="${passwordError}"></div>
                 </div>
             </div>
 
-            <div class="form-group row" th:if="${path} == '/registro'">
-                <label class="col-sm-2 col-form-label">Comprobar contrasena: </label>
-                <div class="col-sm-4">
+            <div class="form-group row mb-4" th:if="${path} == '/registro'">
+                <label class="col-sm-4 col-form-label  fw-bold">Comprobar contrasena: </label>
+                <div class="col-sm-6">
                     <input type="password" name="password2" class="form-control"
                            th:classappend="${password2Error} ? ' is-invalid'"/>
                    <div th:if="${password2Error}" class="invalid-feedback" th:text="${password2Error}"></div>
                 </div>
             </div>
 
-            <div class="form-group row">
-                <button type="submit" class="btn btn-dark mx-3"
-                        th:text="${path} == '/registro' ? 'Registrate' : 'Loggeate'"></button>
-                <div th:if="${path} != '/registro'">
-                    <a th:href="@{/registro}" class="btn btn-dark">Registrate</a>
-                </div>
+     <div class="row">
+       <div class="col">
+         <button class="btn btn-dark w-100 my-1  text-cente" >
+            <div class="rowr" th:text="${path} == '/registro' ? 'Registrate' : 'Loggeate'"> 
+             </div>
+        </button>
+     </div>
+     <div class="col" th:if="${path} != '/registro'">
+         <div class="btn btn-dark w-100 my-1" >
+            <div class="row align-items-center"> 
+               <a th:href="@{/registro}" style="text-decoration:none; color:white;" >Registrate</a>
+             </div>
             </div>
-
-            
+          </div>
         </div>
-    </form>
+        </div>
+      </form>
+    </div>
+   </div>
 </div>

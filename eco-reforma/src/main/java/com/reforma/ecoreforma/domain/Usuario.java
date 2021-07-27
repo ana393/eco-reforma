@@ -41,10 +41,10 @@ public class Usuario implements UserDetails{
 	@NotBlank(message = "El email no puede estar vacio")
 	private String email;
     
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+	@ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "rol_usuario", joinColumns = @JoinColumn(name = "usuario_id"))
 	@Enumerated(EnumType.STRING)
-	private Set<Role> roles;
+	private Set<Roles> roles;
 	
     public Usuario(){}
 	
@@ -55,7 +55,7 @@ public class Usuario implements UserDetails{
 	}
 
 	public boolean isAdmin() {
-		return roles.contains(Role.ADMIN);
+		return roles.contains(Roles.ADMIN);
 	}
 
 	public Long getId() {
@@ -89,12 +89,12 @@ public class Usuario implements UserDetails{
 	}
 
 
-	public Set<Role> getRoles() {
+	public Set<Roles> getRoles() {
 		return roles;
 	}
 
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<Roles> roles) {
 		this.roles = roles;
 	}
 

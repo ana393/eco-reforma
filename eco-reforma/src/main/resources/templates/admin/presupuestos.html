@@ -13,8 +13,6 @@
     to right,
     #baf3d7,
     #c2f5de,
-    #cbf2e4,
-    #d4f5ec,
     #ddfeef
   );">
          <div th:replace="comunes/comunes :: usuarioNavbar"></div>
@@ -22,11 +20,11 @@
     
 
  <!-- -Table --> 
-   <div class="page-content-wrapper flex-fill"> 
+   <div class="page-content-wrapper flex-fill  container-md"> 
    <div class="row my-5">
-     <h3 class="fs-4 mb-3  m-2 success-50">Presupuestos </h3>
-       <div class="col">
-      <table  class="table table-secondary table-striped-rounded shadow-sm table-hover m-2">
+     <h3 class="fs-4 mb-3  m-2 success-50"><i class="bi-reception-4 " style="width: 8rem;"></i>Presupuestos </h3>
+       <div class="col-secondary">
+      <table  class="table table-secondary table-rounded shadow-sm table-hover m-2">
      <thead class="table-success">
          <tr>
             <th scope="col">Fecha</th>
@@ -57,8 +55,8 @@
             </th>
             <th th:text="${item.estado}"></th>
             <th>
-            <button class="btn btn-success btn-sm" data-bs-toggle="modal" th:attr = "data-bs-target=${'#estado' + item.id}">Editar</button>
-                <!-- -Modal para editar estado -->
+            <button class="btn btn-success btn-sm" data-bs-toggle="modal" th:attr = "data-bs-target=${'#estado' + item.id}"><i class="bi bi-pencil-square white  p-2" ></i></button>
+          <!-------   -Modal para editar estado ------>
            <div class="modal fade" th:id="${'estado' + item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -74,9 +72,9 @@
                        </div>
                     <div class="mb-3">
                        <label for="Estado"   class="col-form-label" > Estado actual Presupuesto:</label>
-                         <label for="EstadoPresupuesto"   class="col-form-label" th:text="${item.getEstado()}">></label>
+                         <label for="EstadoPresupuesto"   class="col-form-label" th:text="${item.getEstado()}" style="color: green;"></label>
                           <div  th:each="estado : ${estados}">
-                         <input type="checkbox" th:name="${estado}" th:text="${estado}" th:checked="${#lists.contains(item.estado, estado)}">
+                         <input id="estadoCheck" type="checkbox"  th:name="${estado}" th:text="${estado}" th:checked="${#lists.contains(item.estado, estado)}">
                       </div>
                     </div>
                   <div class="modal-footer">
@@ -90,18 +88,20 @@
           </div>
         </div>
                 <!------ -----------------------Fin Modal ------------------->
-            </th>
-         <th><a th:href="@{/usuario/eliminar?id=} + ${item.getId()}" 
-            onclick="return confirm('Estas seguro de que quieres borrar esta reserva de la Base de Datos?')" class="badge bg-danger">eliminar</a></th>
+                
+          <a th:href="@{/usuario/eliminar?id=} + ${item.getId()}" 
+            onclick="return confirm('Estas seguro de que quieres borrar esta reserva de la Base de Datos?')" class="btn btn-danger btn-sm"><i class="bi bi-trash white p-2"></i></a>      
+          </th>
         </tr>
         </tbody>
      </table>
-    
+      <hr/>
         <div th:insert="~{comunes/comunes :: pagination}"></div>
        </div>
       </div>
     </div>
  </main>   
   <footer th:insert="~{comunes/comunes :: footer}"></footer>
+
  </body>
 </html>

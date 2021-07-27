@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.BeanDefinitionDsl.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -25,6 +26,7 @@ import org.springframework.data.domain.Sort;
 import com.reforma.ecoreforma.domain.EstadoPresupuesto;
 import com.reforma.ecoreforma.domain.Habitacion;
 import com.reforma.ecoreforma.domain.Presupuesto;
+import com.reforma.ecoreforma.domain.Roles;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.service.HabitacionService;
 import com.reforma.ecoreforma.service.PresupuestoService;
@@ -108,14 +110,26 @@ public class UsuarioController {
 	  public String listaUsuarios(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
 			 Page<Usuario> page = usuarioService.encuentraTodos(pageRequest);
 				int[] pagination = ControllerUtil.computePagination(page);
-				log.info("IN listaUsuarios(): ", pagination.length);
+				
 				model.addAttribute("pagina", pagination);
 				model.addAttribute("url","/usuario/usuarios");
 				model.addAttribute("page", page);
+				model.addAttribute("roles", Roles.values());
+				
 		 	   log.info("IN verPaginAdmin() - lista: {} ");
 		  
 		  return "admin/usuarios";
 	  }
+	  
+	  
+	  @PostMapping("/roles")
+	  @PreAuthorize("hasAuthority('ADMIN')")
+	  public String editarRoles(@RequestParam Map<String, String> form,
+	  		  					   @RequestParam("usuarioId") Usuario usuario) {
+	  	  usuarioService.actualizaUsuario(form, usuario);
+	  	  log.info("IN editarRoles() : {}", form);
+	      return "redirect:/usuario/usuarios";
+	    }
 	 
 		/**
 	     * Retorna todas los presupuesto del consumidor.
@@ -137,6 +151,7 @@ public class UsuarioController {
 	        log.info("IN obtenerListaPresupuesto() {}", page);
 	        return "admin/presupuestos";
 	    }
+	    
 
 	    /**
 	     * metodo para guardar el estado de la {@link Presupueseto}.
@@ -148,8 +163,8 @@ public class UsuarioController {
 	    @PostMapping("/presupuesto-editar")
 	    @PreAuthorize("hasAuthority('ADMIN')")
 	    public String editarEstado(@RequestParam Map<String, String> form,
-	  		  					   @RequestParam("presupuestoId") Presupuesto prseupuesto) {
-	  	  presupuestoService.actualizaPresupuesto(form, prseupuesto);
+	  		  					   @RequestParam("presupuestoId") Presupuesto presupuesto) {
+	  	  presupuestoService.actualizaPresupuesto(form, presupuesto);
 	  	  log.info("IN editarEstado() : {}", form);
 	      return "redirect:/usuario/presupuestos";
 	    	}

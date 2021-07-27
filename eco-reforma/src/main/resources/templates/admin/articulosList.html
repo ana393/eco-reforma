@@ -20,7 +20,7 @@
          <div th:replace="comunes/comunes :: usuarioNavbar"></div>
 <!-- -end of sidebar -->
     
- <div class="page-content-wrapper flex-fill"> 
+ <div class="page-content-wrapper flex-fill  container-md"> 
    <div class="row my-5">
      <h3 class="fs-4 mb-3  m-2 success-50">Lista Recursos</h3>
        <div class="col">
@@ -54,17 +54,9 @@
            <div th:insert="comunes/comunes :: pagination"></div>
        </div>
    </div>
-   
-   </div>
-   
+   </div>  
   </main>    
- <script>
-  $(document).ready(function(){
-	 $('table-recursos').DataTable({
-		 stateSave:true
-	 });
-  });
-</script>
+
   <footer th:insert="~{comunes/comunes :: footer}"></footer>
  </body>
 </html>

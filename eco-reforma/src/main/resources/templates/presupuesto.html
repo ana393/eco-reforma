@@ -54,10 +54,10 @@
                             </div>
                         </div>
                     </div>
-                        <button type="submit" class="btn btn-primary btn-lg btn-success px-5 float-right">Confirmar Presupuesto</button>  
+                        <button type="submit" class="btn btn-primary btn-lg btn-success px-5 float-right">Confirmar Presupuesto</button> 
+                        <input type="hidden" name="precioTotal" th:value="${prePresupuesto.obtenerTotal() }"> 
                     <div class="row">
-                        <p> </p>
-                        <h4> Presupuesto : <span th:text="${#numbers.formatDecimal(prePresupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</h4>
+                       <h4> Presupuesto : <span th:text="${#numbers.formatDecimal(prePresupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</h4>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.reforma.ecoreforma.domain.Role;
+import com.reforma.ecoreforma.domain.Roles;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.UsuarioRepository;
 
@@ -38,13 +38,13 @@ public class TestUsuarioService {
 		Usuario usuario = new Usuario();
 		usuario.setId(1L);
 		usuario.setEmail("Mail@test.com");
-		usuario.setRoles(Collections.singleton(Role.USER));
+		usuario.setRoles(Collections.singleton(Roles.USER));
 		
 		
 		when(usuarioRepositoryMock.save(usuario)).thenReturn(usuario);
 		
 		assertEquals(usuario, usuarioService.guardar(usuario));
-		assertTrue(CoreMatchers.is(usuario.getRoles()).matches(Collections.singleton(Role.USER)));
+		assertTrue(CoreMatchers.is(usuario.getRoles()).matches(Collections.singleton(Roles.USER)));
 		Mockito.verify(usuarioRepositoryMock, Mockito.times(1)).save(usuario);
 	}
 	

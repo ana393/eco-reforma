@@ -37,7 +37,7 @@ public class Presupuesto {
 	private String telefono;
 	
 	
-	@Pattern(regexp ="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message="El email no es valido!")
+	/*@Pattern(regexp ="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message="El email no es valido!")*/
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String email;
 	
