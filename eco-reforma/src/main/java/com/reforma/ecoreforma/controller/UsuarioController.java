@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -65,6 +66,21 @@ public class UsuarioController {
 	 	   log.info("IN listaArticulos() - lista: {}");
 		return "admin/articulosList";
 	}
+	 
+	 @GetMapping("mis_presupuestos")
+	 public String articulosPorUsuario(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest,
+			 							Authentication usuarioSession,
+			 							Model model) {
+		 Usuario usuarioDB = (Usuario)usuarioSession.getPrincipal();
+		 Page<Presupuesto> page = presupuestoService.encuentraPorUsuario(usuarioDB, pageRequest) ;
+			int[] pagination = ControllerUtil.computePagination(page);
+			model.addAttribute("pagina", pagination);
+			model.addAttribute("url","/usuario/mis_presupuestos");
+			model.addAttribute("page", page);
+	 	   log.info("IN articulosPorUsuario() - lista: {}");
+		return "mis-presupuestos";
+	} 
+	 
 	 
 	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @RequestMapping("/articulosList/borrar/{id}")

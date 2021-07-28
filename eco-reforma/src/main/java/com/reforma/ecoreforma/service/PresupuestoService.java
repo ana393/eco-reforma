@@ -1,5 +1,4 @@
 package com.reforma.ecoreforma.service;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
@@ -15,7 +14,7 @@ public interface PresupuestoService {
 	  
     Presupuesto guardar(Presupuesto presupuestoValida, Usuario usuario, PrePresupuesto presupuesto);
 	  
-    List<Presupuesto> encuentraPorUsuario(Usuario usuario);
+    Page<Presupuesto> encuentraPorUsuario(Usuario usuario, Pageable pageable);
 	  
 	void actualizaPresupuesto(Map<String, String> form, Presupuesto presupuesto);
 	  

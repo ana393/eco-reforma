@@ -90,12 +90,14 @@ public class TestPresupuestoService {
 		Usuario usuarioTest = new Usuario();
 		usuarioTest.setId(1L);
 		presupuestoTest.setUsuario(usuarioTest);
-		
+		Pageable pageable = PageRequest.of(0, 3);
+		Page<Presupuesto> page = new PageImpl<>(presupuestosList);
 		//when
-		when(presupuestoRepositoryMock.findByUsuario(usuarioTest)).thenReturn(presupuestosList);
+		when(presupuestoRepositoryMock.findByUsuario(usuarioTest, pageable)).thenReturn(page);
 		//then
-		assertEquals(presupuestosList, presupuestoService.encuentraPorUsuario(usuarioTest));
-		Mockito.verify(presupuestoRepositoryMock, Mockito.times(1)).findByUsuario(usuarioTest);
+		assertNotNull(presupuestosList);
+		assertEquals(3, presupuestoService.encuentraPorUsuario(usuarioTest, pageable).getSize());
+			
 	}
 	@Test
 	public void debe_Comprobar_Actualizacion_del_Estado_Presupuesto() {

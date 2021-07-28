@@ -62,8 +62,8 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 	}
 
 	@Override
-	public List<Presupuesto> encuentraPorUsuario(Usuario usuario) {
-		return presupuestoRepository.findByUsuario(usuario);
+	public Page<Presupuesto> encuentraPorUsuario(Usuario usuario, Pageable pageable) {
+		return presupuestoRepository.findByUsuario(usuario, pageable);
 	}
 
 	@Override

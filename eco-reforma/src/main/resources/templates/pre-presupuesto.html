@@ -4,11 +4,12 @@
 <body>
  <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
- <section>
-     <div class="container mt-5 pb-2">
+ <section class="container my-5 vh-100  align-content-center">
+     <div class="container mt-4 pb-2">
         <h3 class="text-center py-2" style="color:#198754;">Articulos Prereservados</h3>
       <div class="text-center" th:if="${#lists.isEmpty(pre_reservas)}">
             <p>No hay elementos deseados.</p>
+             <img class="card-img-top w-50" th:src="@{'/img/cartvacio.svg'}"  alt="" >
         </div>
          <div th:if="${pre_reservas  != null}">
               <div class="row g-4">
@@ -31,7 +32,7 @@
             <hr class="my-3 shadow" style="height: 2px;"/>
             <div class="d-grid d-md-flex justify-content-md-end">
                 <div class="col-6 col-sm-3">
-                   <p class="h5 text-right fw-bold"><i class="bi bi-credit-card h1" style="color: #198754" ></i> <span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</p> 
+                   <p class="h5 text-right fw-bold"><i class="bi bi-credit-card h1" style="color: #198754" ></i> <span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUROS</p> 
                 </div>
                     <form action="/presupuesto" method="get" >
                         <div class="form-row py-3">

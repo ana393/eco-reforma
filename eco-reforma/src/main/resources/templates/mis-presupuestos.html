@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="comunes/comunes :: head"></head>
+<div th:insert="~{comunes/comunes :: scripts}"></div>
+<div th:replace="comunes/comunes :: navbar"></div>
+<body>
+ 
+    <main class="container my-5 vh-100  align-content-center">
+    
+        <!-- -Table --> 
+   <div class="page-content-wrapper flex-fill  container-md py-1"> 
+     <div class="row my-5">
+       <h3 class="fw-bolder mb-3  m-2" style="color:#6f42c1;"><i class="bi-reception-4 " style="width: 8rem;"></i>Mis Presupuestos </h3>
+         <div class="col-secondary shadow">
+      <table  class="table table-secondary table-rounded shadow-sm table-hover m-2">
+     <thead class="table-success">
+         <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Presupuesto</th>
+            <th scope="col">ID - Habitacion</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+           <div th:if="${#lists.isEmpty(page.getContent())}">
+            <h2>No hay Datos en su Base de datos</h2>
+          </div>
+        <tbody th:each="item : ${page.getContent()}">
+        <tr>
+            <th th:text="${item.fechaPresupuesto}"></th>
+            <th th:text="${item.nombre}"></th>
+            <th th:text="${item.email}"></th>
+            <th th:text="${item.telefono}"></th>
+            <th th:text="${item.precioTotal}"></th>
+            <th>
+                <div th:each="it : ${item.getItemsReserva()}">
+                    <p th:text="${it.habitacion.id}"></p>
+                </div>
+            </th>
+            <th th:text="${item.estado}"></th>
+            <th>
+          </th>
+         </tr>
+        </tbody>
+      </table>
+      <hr/>
+        <div th:insert="~{comunes/comunes :: pagination}"></div>
+       </div>
+      </div>
+    </div>
+ </main>
+<footer th:insert="~{comunes/comunes :: footer}"></footer>  
+</body>
+</html>
