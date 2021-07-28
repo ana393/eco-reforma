@@ -5,59 +5,70 @@
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
 <body>
-	 <div class="container mt-5 pb-5">
-        <form th:action="@{/usuario/guardar_recurso}" th:object="${habitacion}" method="post" enctype="multipart/form-data">
-            <h5>Complete el Formulario</h5>
-               <br>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nombre:</label>
-                    <div class="col-sm-6">
-                        <input type="text"  id="title" name="titulo" th:value ="${habitacion.titulo}" placeholder="Nombre de habitacion" 
-								th:classappend="${tituloError} ? ' is-invalid'">
-						<div th:if="${tituloError}" class="invalid-feedback" th:text="${tituloError}"></div>
-                    </div>
-                </div>
-                            
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Tipo:</label>
-                <div class="col-sm-6">
-                    <input type="text" name="tipo" th:value="${habitacion.tipo}" class="form-control" placeholder="Tipo de habitacion" 
-                           th:classappend="${tipoError} ? ' is-invalid'" />
-                    <div th:if="${tipoError}" class="invalid-feedback" th:text="${tipoError}"></div>
-                </div>
-            </div>
-        
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Precio:</label>
-                <div class="col-sm-6">
-						<input  type="text" name="precio" id="price" th:value="${habitacion.precio}" placeholder="Precio habitacion" />
-						<div ><span  id="basic-addon1"></span></div>
-                    <div th:if="${precioError}" class="invalid-feedback" th:text="${precioError}"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Descripcion</label>
-                <textarea class="form-control col-sm-8"  name="descripcion"  th:value ="${habitacion.descripcion}"  rows="3"
-                         placeholder="Descripcion"  th:classappend="${descripcionError} ? ' is-invalid'"></textarea>
-                 <div th:if="${descripcionError}" class="invalid-feedback" th:text="${descripcionError}"></div>
-            </div>
-            
-              <!-------Campo para multipartf-->
-				<div class="form-group row">
-					<label for="Fichero" class="col-2 col-form-label text-right">Seleccione una Imagen</label>
-						<div class="col-6">
-                       		 <input class="btn btn-dark" type="file"  id="customFile" name="fichero">
-                   	   </div>
-              	 </div>
-				<div class="form-group row">
-					<div class="offset-2 col-6">
-						<button type="submit" class="btn btn-success"> ACEPTAR</button>
-						<a class="btn btn-danger" th:href="@{/usuario/gestion}">CANCELAR</a>
-					</div>
-				</div>
-        </form>
-	</div>
+	 <main class="container mt-5 vh-100  align-content-center">
+	   <section class="row h-100 shadow pt-4">
+	     <div class="col-lg-6"  style="background-image: url(../../img/crear.png); background-position: center center; background-repeat: no-repeat;">
+	     </div>
+	     <article class="col-lg-6 col-md-12 col-sm-12 py-4">
+                <form th:action="@{/usuario/guardar_recurso}" th:object="${habitacion}" method="post" enctype="multipart/form-data">
+                    <div class="card-title text-center"  >
+                     <h3  class =" py-1 fw-bold" style="color:#6f42c1;" >Crear Recurso</h3>
+                        <hr class=" fw-bold"/>
+						<div class="form-group row mb-2">
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Nombre: </label>
+							 <div class="col-sm-6">
+								<input type="text"  id="title" name="titulo" th:value ="${habitacion.titulo}" placeholder="Nombre de habitacion" 
+							  	th:classappend="${tituloError} ? ' is-invalid'" class="form-control" />
+								<div th:if="${tituloError}" class="invalid-feedback" th:text="${tituloError}"></div>
+							</div>
+						</div>
+						<div class="form-group row mb-2">
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Tipo: </label>
+							 <div class="col-sm-6">
+								<input  type="text" name="tipo" th:value="${habitacion.tipo}"  placeholder="Tipo de habitacion" 
+                                     th:classappend="${tipoError} ? ' is-invalid'" class="form-control" />
+								<div th:if="${tipoError}" class="invalid-feedback" th:text="${tipoError}"></div>
+							</div>
+						</div>
+						<div class="form-group row mb-2">
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Precio: </label>
+							 <div class="col-sm-6">
+								<input  type="text" name="precio" id="price" th:value="${habitacion.precio}" placeholder="ejemplo: 345.99" class="form-control" />
+								<div ><span  id="basic-addon1"></span></div>
+                                <div th:if="${precioError}" class="invalid-feedback" th:text="${precioError}"></div>
+							</div>
+						</div>
+                        <div class="form-group row mb-2">
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Descripcion: </label>
+							 <div class="col-sm-6">
+								<textarea class="form-control col-sm-6"  name="descripcion"  th:value ="${habitacion.descripcion}"  rows="3"
+                                   placeholder="Descripcion del recurso"  th:classappend="${descripcionError} ? ' is-invalid'"></textarea>
+                                 <div th:if="${descripcionError}" class="invalid-feedback" th:text="${descripcionError}"></div>
+							</div>
+						</div>
+						<div class="form-group row mb-2">
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary" >Imagen: </label>
+							 <div class="col-sm-6">
+								<input class="btn btn-secondary w-100" type="file"  id="customFile" name="fichero" >
+							</div>
+						</div>
+						<div class="row pt-2">
+						  <div class="col">
+						    <button  type="submit" class="btn btn-success w-100 my-1  text-cente" > ACEPTAR</button>
+						   </div>
+						   <div class="col">
+								<div class="btn btn-dark w-100 my-1">
+									<div class="row align-items-center">
+										<a  th:href="@{/usuario/gestion}" style="text-decoration: none; color: white;">Cancelar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+			         </div>	
+                  </form>
+              </article>  
+	   </section>
+	 </main>
  <footer th:insert="~{comunes/comunes :: footer}"></footer>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.reforma.ecoreforma.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -7,9 +8,9 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.BeanDefinitionDsl.Role;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.data.domain.Sort;
 
 import com.reforma.ecoreforma.domain.EstadoPresupuesto;
 import com.reforma.ecoreforma.domain.Habitacion;
@@ -59,11 +59,10 @@ public class UsuarioController {
 	 public String listaArticulos(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
 		 Page<Habitacion> page = habitacionService.encuentraTodo(pageRequest);
 			int[] pagination = ControllerUtil.computePagination(page);
-			log.info("IN pagina_Recursos(): ", pagination.length);
 			model.addAttribute("pagina", pagination);
 			model.addAttribute("url","/usuario/articulosList");
 			model.addAttribute("page", page);
-	 	   log.info("IN listaArticulos() - lista: {} ");
+	 	   log.info("IN listaArticulos() - lista: {}");
 		return "admin/articulosList";
 	}
 	 
@@ -103,6 +102,17 @@ public class UsuarioController {
         		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio());
 		return "redirect:/usuario/articulosList";
 	  }
+	 
+	 
+	 @PostMapping("/actualizar_recurso")
+	 public String actualizarRecurso(Habitacion habitacion){
+		habitacionService.actualizarHabitacion(habitacion);
+        log.debug("ADMIN actualizarRecurso()  : id={}, titulo={}, precio={}",
+        		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio());
+           return "redirect:/usuario/articulosList";
+		
+	  }
+	 
 	 
 	 //Metodo get mostrar lista usuarios
 	  @GetMapping("/usuarios") 
@@ -177,4 +187,5 @@ public class UsuarioController {
 	    	presupuestoService.eliminarPresupuesto(id);
 	    	return "redirect:/usuario/presupuestos";
 	    }
+	    
 }

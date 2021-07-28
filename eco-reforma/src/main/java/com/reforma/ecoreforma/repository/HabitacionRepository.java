@@ -10,5 +10,6 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, Long> {
 	
 	 Page<Habitacion> findAll(Pageable pageable);
 	 
-	 Page<Habitacion> findByTituloOrTipo(String titulo, String tipo, Pageable pagina);  
+	 Page<Habitacion> findByTituloOrTipo(String titulo, String tipo, Pageable pagina);
+	
 }

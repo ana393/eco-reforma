@@ -5,8 +5,8 @@
  <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
  <section>
-     <div class="container mt-5 pb-5">
-        <p class="h4 mb-4 text-center">Articulos Prereservados</p>
+     <div class="container mt-5 pb-2">
+        <h3 class="text-center py-2" style="color:#198754;">Articulos Prereservados</h3>
       <div class="text-center" th:if="${#lists.isEmpty(pre_reservas)}">
             <p>No hay elementos deseados.</p>
         </div>
@@ -14,55 +14,35 @@
               <div class="row g-4">
                  <div class="col-md-6 col-lg-3" th:each="item: ${pre_reservas}">
                     <div class="card" id="&{item.habitacion.getId()}">
-                        <img class="card-img-top" th:src="@{'/img/' + ${item.habitacion.getImg_url()}}"  alt="" >
+                        <img class="card-img-top" th:src="@{'/img/' + ${item.habitacion.getImg_url()}}"  alt="Imagines" style="height: 12rem;">
                           <div class="card-body text-center"> 
                             <h5 class="card-title mb-3" th:text="${item.habitacion.getTitulo()}"></h5>
-                             <h5 class="card-text" th:text="${item.habitacion.getPrecio()}"> EUR</h5>
+                             <h5 class="card-text" th:text="${item.habitacion.getPrecio()}"> EUROS</h5>
                             </div>
                         </div>
                         <div class="col-7">
                           <div class="card-body">
-                             <a th:href="@{'/pre-presupuesto/elimina-item/{id}' (id=${item.id})}">Eliminar</a>                   
+                             <a th:href="@{'/pre-presupuesto/elimina-item/{id}' (id=${item.id})}" class="btn btn-danger btn-sm"><i class="bi bi-trash  h5 white p-2"></i>Eliminar</a>                   
                         </div>
                      </div>   
                    </div>           
                 </div>
             </div>
-            <hr class="my-3"/>
-            <div class="row">
-                <div class="col-9 ">
-                  <p class="h5 text-right">Total:<span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</p> 
+            <hr class="my-3 shadow" style="height: 2px;"/>
+            <div class="d-grid d-md-flex justify-content-md-end">
+                <div class="col-6 col-sm-3">
+                   <p class="h5 text-right fw-bold"><i class="bi bi-credit-card h1" style="color: #198754" ></i> <span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUR</p> 
                 </div>
-                <div class="col-3">
-                    <form action="/presupuesto" method="get" class="ml-3">
-                        <div class="form-row">
-                            <div class="col-6" th:if="${not #lists.isEmpty(pre_reservas)}">
+                    <form action="/presupuesto" method="get" >
+                        <div class="form-row py-3">
+                            <div  th:if="${not #lists.isEmpty(pre_reservas)}">
                                 <button class="btn btn-success" >Confirmar Presupuesto</button>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-      </div>
+             </div>
+         </div>
   </section>
-  <script type="text/javascript">
-   let i = 1;
-   function incrementar(precio, itemID){
-	   console.log("incrementar", i);
-	  let elem = document.getElementById('itemID');
-	  let total = document.getElementById('total');
-	  elem.value = ++i;
-	  let suma = precio * i;
-	  total.innerHTML = String(suma);
-   }
-   function decrementar(preci){
-	   let elem = document.getElementById('qty');
-	   let total = document.getElementById('total');
-	   elem.value = --i;
-	   let suma = precio * i;
-	   total.innerHTML = String(suma);
-   }
-       
-  </script>
+  <footer th:insert="~{comunes/comunes :: footer}"></footer>
 </body>
 </html>

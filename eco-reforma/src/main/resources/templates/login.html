@@ -9,7 +9,7 @@
 <div th:replace="comunes/comunes :: navbar"></div>
 
   <section  class="container mt-5 vh-100  align-content-center" >
-    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" class="alert alert-danger col-sm-12 text-center" role="alert">Compruebe sus credenciales</div>
+    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" class="alert alert-danger col-sm-12 text-center" role="alert">Compruebe sus credenciales o Registrese</div>
        <div th:if="${messageType}" class="alert " th:classappend="${messageType}" th:text="${message.text}" role="alert"></div>
          <div th:replace="comunes/loginForm :: login(path=${'/login'})"></div> 
   </section>

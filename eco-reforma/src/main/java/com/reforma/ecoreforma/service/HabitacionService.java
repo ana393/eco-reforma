@@ -16,5 +16,7 @@ public interface HabitacionService {
 	
 	Habitacion guardaHabitacion(Habitacion habitacion, MultipartFile Fichero);
 	
+	void actualizarHabitacion(Habitacion habitacion);
+	
 	void eliminarHabitacionPorId(Long id);
 }

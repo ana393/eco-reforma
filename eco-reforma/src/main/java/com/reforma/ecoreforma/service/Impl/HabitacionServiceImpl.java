@@ -89,4 +89,11 @@ public class HabitacionServiceImpl implements HabitacionService{
 		habitacionRepository.deleteById(id);
 		log.info("IN eliminarHabitacion() - habitacion con id: {} se ha eliminado");			
 	}
+
+
+	@Override
+	public void actualizarHabitacion(Habitacion habitacion) {
+		habitacionRepository.save(habitacion);
+		log.info("IN guardaHabitacion() - habitacion: {}  se guardo");
+	}
 }
