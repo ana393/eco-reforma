@@ -1,5 +1,5 @@
 <div th:fragment="login(path)" xmlns:th="http://www.thymeleaf.org">
- <div class="row  mb-5 shadow">
+ <div class="row h-100 shadow" >
    <div class="col-lg-6" style="background-image: url(./../img/user.svg);">
    <img  th:src="@{'./../img/user.svg'}"  alt=""  class="card-img w-25" >
    </div>
@@ -43,21 +43,22 @@
                 </div>
             </div>
 
-     <div class="row">
-       <div class="col">
-         <button class="btn btn-dark w-100 my-1  text-cente" >
-            <div class="rowr" th:text="${path} == '/registro' ? 'Registrate' : 'Loggeate'"> 
+         <div class="row">
+           <div class="col">
+            <button class="btn btn-dark w-100 my-1  text-cente" >
+              <div class="rowr" th:text="${path} == '/registro' ? 'Registrate' : 'Loggeate'"> 
              </div>
-        </button>
-     </div>
-     <div class="col" th:if="${path} != '/registro'">
+            </button>
+          </div>
+        <div class="col" th:if="${path} != '/registro'">
          <div class="btn btn-dark w-100 my-1" >
             <div class="row align-items-center"> 
                <a th:href="@{/registro}" style="text-decoration:none; color:white;" >Registrate</a>
              </div>
             </div>
           </div>
-        </div>
+          
+         </div>
         </div>
       </form>
     </div>

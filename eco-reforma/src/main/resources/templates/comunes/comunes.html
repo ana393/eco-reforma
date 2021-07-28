@@ -34,8 +34,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse justify-content-around" id="navmenu">
+                <ul class="navbar-nav justify-content-around">
                     <li class="nav-item">
                         <a href="/home" class="nav-link">Home</a>
                     </li>
@@ -49,19 +49,19 @@
                         <a href="/usuario/reservas" class="nav-link">Reservas</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAnonymous()">
-                        <a href="/pre-presupuesto" class="nav-link"><i class="bi bi-cart-fill h5" style="color:white"></i></i></a>
-                    </li>
-                    <li class="nav-item" sec:authorize="isAnonymous()">
                         <a href="/pre-presupuesto" class="nav-link">Identificate</a>
                     </li>
                     <li>
                     <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
-                        <input class="form-control form-control-sm mr-3 w-75 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
+                        <input class="form-control form-control-sm mr-3 w-100 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
                         <button type="submit" class="bg-dark"><i class="be bi-search h4 white" style="color:white"></i></button>
                     </form>
                     </li> 
+                     <li class="nav-item">
+                        <a href="/pre-presupuesto" class="nav-link ms-5 "><i class="bi bi-cart-fill h4" style="color:white"></i></i></a>
+                    </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
-                        <a href="/salir" class="nav-link"><i class="bi-box-arrow-right white"></i></a>
+                        <a href="/salir" class="nav-link ms-5"><i class="bi-box-arrow-right h4" style="color:white"></i></a>
                     </li>    
                 </ul>
             </div>

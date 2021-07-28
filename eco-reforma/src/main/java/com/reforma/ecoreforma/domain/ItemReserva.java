@@ -37,19 +37,11 @@ public class ItemReserva {
 	private Presupuesto presupuesto;
 	
 	
-	public boolean actualizarCantidad(Integer cantidad) {
-		return cantidad == null || cantidad <= 0;
-	}
 	
 	public BigDecimal Total() {
 		return new BigDecimal(habitacion.getPrecio()).multiply(new BigDecimal(cantidad));
 	}
 	
-	public void anadeCantidad(int cantidad) {
-		if(cantidad > 0) {
-			this.cantidad = this.cantidad + cantidad;
-		}
-	}
 	
 	public Long getId() {
 		return id;

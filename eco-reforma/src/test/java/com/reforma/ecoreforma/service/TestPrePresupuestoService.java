@@ -82,23 +82,7 @@ public class TestPrePresupuestoService {
 		verify(itemReservaRepoMock, Mockito.times(1)).countDistinctByUsuarioAndPresupuestoIsNull(usuarioTest);
 	}
 	
-	@Test
-	public void test_Anade_Item_Existente_A_PrePresupuesto() {
-		ItemReserva testIReserva = new ItemReserva();
-		Habitacion testHabitacion = new Habitacion();
-		Usuario testUsuario = new Usuario();
-		testHabitacion.setId(1L);
-		testUsuario.setId(1L);
-		int qty = 2;
-		testIReserva.anadeCantidad(qty);
-		
-		when(itemReservaRepoMock.save(testIReserva)).thenReturn(testIReserva);
-		
-		ItemReserva result = prePresupuestoService.anadeItemAPrePresupuesto(testHabitacion, testUsuario, qty);
-		
-		assertTrue(CoreMatchers.is(testIReserva.getCantidad()).matches(result.getCantidad()));
-		verify(itemReservaRepoMock, Mockito.times(1)).save(testIReserva);
-	}
+
 	
 	@Test
 	public void test_Anade_Item_Nuevo_A_PrePresupuesto() {
@@ -107,8 +91,8 @@ public class TestPrePresupuestoService {
 		Usuario testUsuario = new Usuario();
 		testHabitacion.setId(1L);
 		testUsuario.setId(1L);
-		int qty = 2;
-		testIReserva.anadeCantidad(qty);
+		int qty = 1;
+		testIReserva.setCantidad(qty);
 		
 		when(itemReservaRepoMock.save(testIReserva)).thenReturn(testIReserva);
 		

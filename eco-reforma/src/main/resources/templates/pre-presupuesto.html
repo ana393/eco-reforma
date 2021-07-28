@@ -13,7 +13,7 @@
          <div th:if="${pre_reservas  != null}">
               <div class="row g-4">
                  <div class="col-md-6 col-lg-3" th:each="item: ${pre_reservas}">
-                    <div class="card">
+                    <div class="card" id="&{item.habitacion.getId()}">
                         <img class="card-img-top" th:src="@{'/img/' + ${item.habitacion.getImg_url()}}"  alt="" >
                           <div class="card-body text-center"> 
                             <h5 class="card-title mb-3" th:text="${item.habitacion.getTitulo()}"></h5>
@@ -21,12 +21,8 @@
                             </div>
                         </div>
                         <div class="col-7">
-                         <div class="card-body">
-                          <span th:text = "${item.cantidad}"></span>
-                             <h5 class="card-title"><span th:text="${#numbers.formatDecimal(item.Total(), 0, 'COMMA', 2, 'POINT')}"></span>EUR.</h5>
-                          <div class="col-2 ">
-                             <a th:href="@{'/pre-presupuesto/elimina-item/{id}' (id=${item.id})}">Eliminar</a>                              
-                          </div>                    
+                          <div class="card-body">
+                             <a th:href="@{'/pre-presupuesto/elimina-item/{id}' (id=${item.id})}">Eliminar</a>                   
                         </div>
                      </div>   
                    </div>           
@@ -47,7 +43,26 @@
                     </form>
                 </div>
             </div>
-    </div>
+      </div>
   </section>
+  <script type="text/javascript">
+   let i = 1;
+   function incrementar(precio, itemID){
+	   console.log("incrementar", i);
+	  let elem = document.getElementById('itemID');
+	  let total = document.getElementById('total');
+	  elem.value = ++i;
+	  let suma = precio * i;
+	  total.innerHTML = String(suma);
+   }
+   function decrementar(preci){
+	   let elem = document.getElementById('qty');
+	   let total = document.getElementById('total');
+	   elem.value = --i;
+	   let suma = precio * i;
+	   total.innerHTML = String(suma);
+   }
+       
+  </script>
 </body>
 </html>

@@ -46,7 +46,6 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 		PrePresupuesto prePresupuesto = this.obtenPrePresupuesto(usuario);
 		ItemReserva itemReserva = prePresupuesto.encuentraItemPorHabitacion(habitacion.getId());
 		if(itemReserva != null) {
-			itemReserva.anadeCantidad(qty);
 			itemReserva = itemReservaRepo.save(itemReserva);
 		} else {
 			itemReserva = new ItemReserva();

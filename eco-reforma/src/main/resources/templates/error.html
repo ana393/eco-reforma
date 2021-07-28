@@ -5,7 +5,8 @@
   <div class="container">
         <div class="starter-template">
             <h1 th:text=" ${#response.getStatus()}"></h1>
-            <a th:href="@{/home}">Pagina principal</a>
+            <a th:href="@{/home}" class="fw-bold" style="text-decoration:none; color:#6f42c1;">Pagina principal</a>
+            <img class="card-img-top" th:src="@{'/img/empty.svg'}"  alt="" >
         </div>
     </div>
 </body>
