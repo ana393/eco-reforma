@@ -7,13 +7,15 @@
 <div th:replace="comunes/comunes :: navbar"></div>
 <body>
  
-  <div id="container">
-    <div class="container text-center mt-5">
-        <h2>Gracias por Sus Reserva! En breve nos comunicamos con usted</h2>
+    <main class="container my-5 vh-100  align-content-center">
+      <article class="container mt-4 pb-2">
+          <h2>Gracias por Su Reserva! En breve nos comunicamos con usted</h2>
+           <a th:href="@{/home}">Explore nuestra pagina</a>
+            <img class="card-img-top w-50" th:src="@{'/img/cartvacio.svg'}"  alt="" >
+      </article>
        
-    </div>
-    <a th:href="@{/home}">Explore nuestra pagina</a>
-</div>
+    </main>
+
 <footer th:insert="~{comunes/comunes :: footer}"></footer>  
 </body>
 </html>

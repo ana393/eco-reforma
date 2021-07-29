@@ -19,6 +19,8 @@ import org.springframework.util.StringUtils;
 import com.reforma.ecoreforma.repository.HabitacionRepository;
 import com.reforma.ecoreforma.service.HabitacionService;
 
+import javassist.NotFoundException;
+
 @Service
 public class HabitacionServiceImpl implements HabitacionService{
 	
@@ -93,7 +95,19 @@ public class HabitacionServiceImpl implements HabitacionService{
 
 	@Override
 	public void actualizarHabitacion(Habitacion habitacion) {
-		habitacionRepository.save(habitacion);
-		log.info("IN guardaHabitacion() - habitacion: {}  se guardo");
+	try {
+			Habitacion result = habitacionRepository.findById(habitacion.getId())
+					.orElseThrow(()-> new NotFoundException("Habitacion no encontrada" + habitacion.getId()));
+			result.setTitulo(habitacion.getTitulo());
+			result.setTipo(habitacion.getTipo());
+			result.setPrecio(habitacion.getPrecio());
+			result.setDescripcion(habitacion.getDescripcion());
+			
+			habitacionRepository.save(result);
+
+			log.info("IN guardaHabitacion() - habitacion: {}  se guardo");
+		} catch (NotFoundException e) {
+			log.warn("Habitacion no encontrada.");
+		}	
 	}
 }

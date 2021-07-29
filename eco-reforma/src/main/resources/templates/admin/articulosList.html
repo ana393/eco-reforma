@@ -9,14 +9,7 @@
 <body class="d-flex flex-column min-vh-100">
 
 
- <main class="d-flex " style="overflow-x: hidden; min-width: 100vh; background-image: linear-gradient(
-    to right,
-    #baf3d7,
-    #c2f5de,
-    #cbf2e4,
-    #d4f5ec,
-    #ddfeef
-  );">
+ <main class="d-flex " style="overflow-x: hidden; min-width: 100vh;">
          <div th:replace="comunes/comunes :: usuarioNavbar"></div>
 <!-- -end of sidebar -->
     
@@ -59,9 +52,9 @@
                    <form th:action="@{/usuario/actualizar_recurso}"  method="post">
                        <div class="form-group row mb-4">
                          <label class="col-sm-4 col-form-label  fw-bold text-secondary">ID: </label>
-                         <div class="col-sm-6">
-						 <h5 th:text="${item.getId()}"></h5>
-						 </div>
+                           <div class="col-sm-6">
+								<input type="text"  id="title" name="id" th:value ="${item.getId()}"  class="form-control" readonly />
+							</div>
                        </div>
 						<div class="form-group row mb-4">
 						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Nombre: </label>

@@ -7,7 +7,7 @@
 <div th:replace="comunes/comunes :: navbar"></div>
 <body>
  
-    <main class="container my-5 vh-100  align-content-center">
+ <main class="container my-5 vh-100  align-content-center">
     
         <!-- -Table --> 
    <div class="page-content-wrapper flex-fill  container-md py-1"> 
@@ -24,7 +24,7 @@
             <th scope="col">Presupuesto</th>
             <th scope="col">ID - Habitacion</th>
             <th scope="col">Estado</th>
-            <th scope="col"></th>
+            <th scope="col">Aciones</th>
         </tr>
         </thead>
            <div th:if="${#lists.isEmpty(page.getContent())}">
@@ -44,6 +44,8 @@
             </th>
             <th th:text="${item.estado}"></th>
             <th>
+              <a th:href="@{/usuario/eliminar_presupuesto?id=} + ${item.getId()}" 
+             onclick="return confirm('Estas seguro de que quieres borrar esta reserva de la Base de Datos?')" class="btn btn-danger btn-sm"><i class="bi bi-trash white p-2"></i></a>      
           </th>
          </tr>
         </tbody>

@@ -4,8 +4,8 @@
 <body>
  <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
- <section class="container my-5 vh-100  align-content-center">
-     <div class="container mt-4 pb-2">
+ <main class="container my-5 vh-100  align-content-center">
+     <section class="container mt-4 pb-2">
         <h3 class="text-center py-2" style="color:#198754;">Articulos Prereservados</h3>
       <div class="text-center" th:if="${#lists.isEmpty(pre_reservas)}">
             <p>No hay elementos deseados.</p>
@@ -42,8 +42,8 @@
                         </div>
                     </form>
              </div>
-         </div>
-  </section>
+         </section>
+  </main>
   <footer th:insert="~{comunes/comunes :: footer}"></footer>
 </body>
 </html>

@@ -80,8 +80,16 @@ public class UsuarioController {
 	 	   log.info("IN articulosPorUsuario() - lista: {}");
 		return "mis-presupuestos";
 	} 
-	 
-	 
+	
+	   
+	@RequestMapping("/eliminar_presupuesto")
+	public String eliminarMiPresupuesto(@RequestParam("id") Long id) {
+		log.info("IN eliminarReserva() : {}", id);
+		presupuestoService.eliminarPresupuesto(id);
+		return "redirect:/usuario/mis_presupuestos";
+	}
+
+	
 	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @RequestMapping("/articulosList/borrar/{id}")
 	 public String borrarRecurso(@PathVariable("id") Long id){
@@ -203,5 +211,6 @@ public class UsuarioController {
 	    	presupuestoService.eliminarPresupuesto(id);
 	    	return "redirect:/usuario/presupuestos";
 	    }
+	 
 	    
 }
