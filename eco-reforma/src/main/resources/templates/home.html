@@ -1,10 +1,223 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org" >
 <head th:replace="comunes/comunes :: head"></head>
-<body>
 <div th:insert="~{comunes/comunes :: scripts}"></div>
+<body>
 <div th:replace="comunes/comunes :: navbar"></div>
-  <h2>Bienvenidos</h2>
+   <!--Showcase-->
+    <section id="showcase" class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div class="container">
+            <!--flexbox-->
+            <div class="d-sm-flex">
+                <div>
+                    <h1>Convertimos Tus Ideas <span class="text-warning">En Realidad</span></h1>
+                    <p class="lead my-4">
+                        Adecuar el espacio para conseguir el carácter y el estilo personal de los propietarios.
+                        Estudio y analisis profesional antes de comenzar la obra considerando todas las posibiles
+                        distribuciones del ambiente, mejoras de aislamiento y de las instalaciones con fin de ahorrar en
+                        el consumo diario del hogar.
+                    </p>
+                   
+                </div>
+                <img class="img-fluid w-50 d-none d-sm-block" src="img/underBuild.svg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!--Newsletter-->
+
+    <section class="bg-success text-light p-5">
+        <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center">
+                <h3 class="mb-3 mb-md-0">Explora nuestros trabajos</h3>
+            </div>
+        </div>
+    </section>
+
+    <!--Cards-->
+    <section class="p-5">
+        <div class="container">
+            <div class="row g-4" >
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <img src="img/salon-3.jpg" class="card-img-top" alt="image" style="height: 12rem;">
+                        <div class="card-body text-center"> 
+                            <p class="card-title mb-3 text-uppercase text-secondary">SALON</p>
+                            <a href="#" class="btn btn-secondary">Reserva</a>
+                        </div>
+                      </div>
+                   </div>
+                 <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img src="img/cocina-3.jpg" class="card-img-top" alt="image" style="height: 12rem;">
+                            <div class="card-body text-center">
+                                 <p class="card-title mb-3 text-uppercase text-secondary">COCINA</p>
+                                <a href="#" class="btn btn-secondary">Reserva</a>
+                            </div>
+                        </div>
+                    </div>
+               
+                <!---->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                            <img src="img/bano-2.jpg" class="card-img-top" alt="image" style="height: 12rem;">
+                            <div class="card-body text-center">
+                                 <p class="card-title mb-3 text-uppercase text-secondary">BAÑO</p>
+                                <a href="#" class="btn btn-secondary">Reserva</a>
+                            </div>
+                        </div>
+                    </div>
+                <!---->
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                        <img src="img/salon-5.jpg" class="card-img-top" alt="image" style="height: 12rem;">
+                        <div class="card-body text-center">
+                             <p class="card-title mb-3 text-uppercase text-secondary">SALON CLASICO</p>
+                            <a href="#" class="btn btn-secondary">Reserva</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+         </div>     
+    </section>
+    <!---Como trabajamos-->
+    <section id="politica" class="p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+               <div class="col-md">
+                   <img src="" alt="">
+               </div>
+               <div class="col-md p-5">
+                   <h2> Como trabajamos</h2>
+                   <p class="lead">
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum laudantium aperiam quas eius debitis quidem.
+                   </p>
+                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum consequuntur expedita quae quis, quaerat distinctio nam impedit blanditiis laborum praesentium natus, reprehenderit suscipit necessitatibus fuga similique dolores. Dignissimos, sapiente tempore!</p>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Seccion Preguntas-->
+     <section id="preguntas" class="p-5">
+       <div class="container">
+           <h2 class="text-center mb-4"> Preguntas Frequentes</h2>
+        <div class="accordion accordion-flush" id="preguntas">
+             <!--Items 1-->
+            <div class="accordion-item">
+                <h2 class="accordion-header" >
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#pregunta-uno" >
+                        ¿Qué tipo de información me presentáis?
+                    </button>
+                </h2>
+                <div id="pregunta-uno"
+                    class="accordion-collapse collapse" 
+                    data-bs-parent="#preguntas">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis quo reprehenderit voluptatem eum exercitationem eos dolorum. Molestias quidem ab amet repudiandae, alias sapiente dolore facere magnam recusandae incidunt enim!
+                </div>
+            </div>
+             <!--Item 2-->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#pregunta-dos">
+                        ¿Cómo estoy seguro que el presupuesto que me pasan inclue todo y que no tendre sorpresas una vez iniciada la reforma?
+                    </button>
+                </h2>
+                <div id="pregunta-dos" class="accordion-collapse collapse" data-bs-parent="#preguntas">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis quo reprehenderit voluptatem eum
+                    exercitationem eos dolorum. Molestias quidem ab amet repudiandae, alias sapiente dolore facere magnam recusandae
+                    incidunt enim!
+                </div>
+            </div>
+            <!--Item 3-->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#pregunta-tres">
+                    ¿Que tipo de materiales utilizáis?
+                </button>
+            </h2>
+            <div id="pregunta-tres" class="accordion-collapse collapse" data-bs-parent="#preguntas">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis quo reprehenderit voluptatem eum
+                exercitationem eos dolorum. Molestias quidem ab amet repudiandae, alias sapiente dolore facere magnam recusandae
+                incidunt enim!
+            </div>
+        </div>
+       <!--Item 4-->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#pregunta-cuatro">
+                    ¿Cobráis algo por la visita o presupuesto?
+                </button>
+            </h2>
+            <div id="pregunta-cuatro" class="accordion-collapse collapse" data-bs-parent="#preguntas">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis quo reprehenderit voluptatem eum
+                exercitationem eos dolorum. Molestias quidem ab amet repudiandae, alias sapiente dolore facere magnam recusandae
+                incidunt enim!
+            </div>
+        </div>
+        <!--Item 5-->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#pregunta-five">
+                    ¿Hay garantías en vuestro trabajo?
+                </button>
+            </h2>
+            <div id="pregunta-five" class="accordion-collapse collapse" data-bs-parent="#preguntas">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae corporis quo reprehenderit voluptatem eum
+                exercitationem eos dolorum. Molestias quidem ab amet repudiandae, alias sapiente dolore facere magnam recusandae
+                incidunt enim!
+            </div>
+        </div>
+     </div>
+   </div> 
+  </section>
+     <!-- Cards-->
+     <section id="ejemplos" class="p-5 bg-success">
+        <div class="container">
+            <h2 class="text-center text-white"></h2>
+           <div class="carousel-inner">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card h-100">
+                 <img src="/img/home.svg" alt="" class="card-img-top" >
+                    <div class="card-body text-center">
+                        <h4 class="card-title mb-3">Carpinteria</h4>
+                        <p class="card-text fst-italic" >Las ventanas más utilizadas suelen ser PVC,
+                         o bien en aluminio según perfil europeo o con rotura de puente térmico.</p>
+                    </div>
+                </div>
+              </div>
+            <!----->
+             <div class="col">
+                <div class="card h-100">
+                  <img src="/img/home.svg" alt="" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h4 class="card-title mb-3">Electricidad</h4>
+                            <p class="card-text fst-italic">La electricidad nos garantiza la correcta instalación y funcionamiento de acometida,
+                             cuadro eléctrico, líneas de distribución y mecanismos de vivienda.</p>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+               <div class="col">
+                <div class="card h-100">
+                 <img src="/img/home.svg" alt="" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h4 class="card-title mb-3">Fontaneria</h4>
+                             <p class="card-text fst-italic" >El saneado de las instalación de fontanería consiste en instalar cobre o multicapa para AF/ACS y PVC para desagües,
+                              llevando las tuberías emporadas o, excepcionalmente vistas.</p>
+                        </div>
+                     </div>
+                   </div>
+              </div>
+            </div>
+         </div>   
+     </section>
   <footer th:insert="~{comunes/comunes :: footer}"></footer>
 </body>
 </html>

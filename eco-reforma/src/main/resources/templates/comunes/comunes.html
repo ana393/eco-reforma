@@ -169,27 +169,77 @@
 
 
 <!--Footer-->
+<footer class="bg-dark text-center text-white" th:fragment="footer" xmlns:th="http://www.thymeleaf.org">
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Estamos en redes sociales:</span>
+    </div>
+    <!-- Left -->
 
-  <footer class="p-5 bg-dark text-white text-center position-relative" th:fragment="footer" xmlns:th="http://www.thymeleaf.org" >
-     <section class="p-5">
-         <div class="container">
-             <div class="row g-4">
-                 <div class="col-md bg-dark text-light">
-                     <h2 class="text-center  mb-4">Contactos</h2>
-                     <ul class="list-group list-grup-flush lead">
-                         <li class="list-group-item">
-                             <span class="fw-bold">Nos encontramos aqui:</span> 20 Mesa de Monte 28860 Miramadrid Spain
-                         </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Llamanos:</span> 9156234567, 638977561
-                        </li>
-                     </ul>
-                 </div>
-             </div>
-         </div>
-     </section>
-         <div class="container">
-             <div class="lead">Copyright &copy; 2021 eco-reforma</div>
-             <a href="#" class="position-absolute bottom-0 end-0 p-5"><i class="bi bi-arrow-up-circle h1"></i></a>    
-         </div>
-     </footer>
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-4">
+        <!-- Grid column -->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Eco - Reforma
+          </h6>
+          <p>
+            Realizar una reforma de vivienda no suele ser una decisión sencilla. Reformar nuestro hogar, de forma parcial o integral,
+             significa tanto una inversión de dinero como de esfuerzo. Por ello, es fundamental saber en quién depositar nuestra confianza,
+             para obtener la mayor garantía, responsabilidad y profesionalidad que nos garantice el éxito final de nuestro proyecto.
+          </p>
+        </div>
+        <!-- Grid column -->
+    
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i>2860, Miramadrid, España</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            ecoreforma@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i>91 567 88</p>
+          <p><i class="fas fa-print me-3"></i>654 78 96 77 </p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-white" href="#">eco-reforma.es</a>
+     <a href="#" class="position-absolute bottom-0 end-0 p-5"><i class="bi bi-arrow-up-circle h1" style="color:white;"></i></a> 
+  </div>
+</footer>
