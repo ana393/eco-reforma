@@ -110,4 +110,10 @@ public class HabitacionServiceImpl implements HabitacionService{
 			log.warn("Habitacion no encontrada.");
 		}	
 	}
+
+
+	@Override
+	public Long NumeroArticulos() {
+		return habitacionRepository.count();
+	}
 }

@@ -1,6 +1,5 @@
 package com.reforma.ecoreforma.controller;
 
-import java.io.IOException;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -51,8 +50,16 @@ public class UsuarioController {
 	
 	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @GetMapping("/gestion")
-	 public String verPaginaAdmin() {
-	 	   log.info("IN verPaginAdmin() - lista: {} ");
+	 public String verPaginaAdmin(Model model) {
+		 long nrArticulos = habitacionService.NumeroArticulos();
+		 long nrPresupuestos = presupuestoService.nrPresupuestos();
+		 long nrUsuarios = usuarioService.nrUsuarios();
+		 long presupuestosTramitados = presupuestoService.presupuestosTramitados();
+		 model.addAttribute("habitacionesBD",nrArticulos);
+		 model.addAttribute("presupuestosBD", nrPresupuestos);
+		 model.addAttribute("presupuestosTramitados", presupuestosTramitados);
+		 model.addAttribute("usuariosBD", nrUsuarios);
+	 	log.info("IN verPaginAdmin() - lista: {} ");
 		return "admin/gestion";
 	}
 	 
@@ -166,7 +173,7 @@ public class UsuarioController {
 	    }
 	 
 		/**
-	     * Retorna todas los presupuesto del consumidor.
+	     * Retorna todos los presupuestos de los consumidores.
 	     * URL request {"/gestion"}, metodo GET.
 	     *
 	     * @param model objeto {@link Model}.
@@ -188,10 +195,10 @@ public class UsuarioController {
 	    
 
 	    /**
-	     * metodo para guardar el estado de la {@link Presupueseto}.
+	     * metodo para guardar el estado del {@link Presupueseto}.
 	     * 
 	     * @param form que guarda los valores en Map<String, String>
-	     * @param prseupuesto el objeto {@link Presupueseto} editado.
+	     * @param presupuesto el objeto {@link Presupueseto} editado.
 	     * @return la vista con la ruta /usuario/presupuestos.
 	     */
 	    @PostMapping("/presupuesto-editar")

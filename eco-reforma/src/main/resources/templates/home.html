@@ -1,98 +1,171 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org" >
+<html lang="es" xmlns:th = "http://www.thymeleaf.org" >
+<meta charset="utf-8"/>
 <head th:replace="comunes/comunes :: head"></head>
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 <body>
 <div th:replace="comunes/comunes :: navbar"></div>
    <!--Showcase-->
-    <section id="showcase" class="text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section id="showcase" class="bg-dark p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
-            <!--flexbox-->
-            <div class="d-sm-flex">
-                <div>
-                    <h1>Convertimos Tus Ideas <span class="text-warning">En Realidad</span></h1>
-                    <p class="lead my-4">
-                        Adecuar el espacio para conseguir el carácter y el estilo personal de los propietarios.
-                        Estudio y analisis profesional antes de comenzar la obra considerando todas las posibiles
-                        distribuciones del ambiente, mejoras de aislamiento y de las instalaciones con fin de ahorrar en
-                        el consumo diario del hogar.
-                    </p>
-                   
-                </div>
-                <img class="img-fluid w-50 d-none d-sm-block" src="img/underBuild.svg" alt="">
-            </div>
+			<div id="carouselExampleIndicators" class="carousel slide"
+				data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="0" class="active" aria-current="true"
+						aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="img/slider-0.jpg" class="d-block w-100"
+							alt="salon-modelo">
+					</div>
+					<div class="carousel-item">
+						<img src="img/slider-1.jpg" class="d-block w-100"
+							alt="imagen-modelo">
+					</div>
+					<div class="carousel-item">
+						<img src="img/slider-2.jpg" class="d-block w-100"
+							alt="imagen-modelo">
+					</div>
+				</div>
+			</div>
         </div>
     </section>
 
     <!--Newsletter-->
 
-    <section class="bg-success text-light p-5">
+    <section class="container text-center my-3 mt-5">
         <div class="container">
-            <div class="d-md-flex justify-content-between align-items-center">
-                <h3 class="mb-3 mb-md-0">Explora nuestros trabajos</h3>
+            <div class="text-center">
+                <h3 class="mb-3 mb-md-0 text-uppercase" style="color:#198754;">Explora nuestros trabajos</h3>
             </div>
         </div>
     </section>
+    
 
     <!--Cards-->
     <section class="p-5">
         <div class="container">
-            <div class="row g-4" >
-                <div class="col-md-6 col-lg-3">
-                    <div class="card">
-                        <img src="img/salon-3.jpg" class="card-img-top" alt="image" style="height: 12rem;">
-                        <div class="card-body text-center"> 
-                            <p class="card-title mb-3 text-uppercase text-secondary">SALON</p>
-                            <a href="#" class="btn btn-secondary">Reserva</a>
-                        </div>
-                      </div>
-                   </div>
-                 <div class="col-md-6 col-lg-3">
-                        <div class="card">
-                            <img src="img/cocina-3.jpg" class="card-img-top" alt="image" style="height: 12rem;">
-                            <div class="card-body text-center">
-                                 <p class="card-title mb-3 text-uppercase text-secondary">COCINA</p>
-                                <a href="#" class="btn btn-secondary">Reserva</a>
-                            </div>
-                        </div>
-                    </div>
-               
-                <!---->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card">
-                            <img src="img/bano-2.jpg" class="card-img-top" alt="image" style="height: 12rem;">
-                            <div class="card-body text-center">
-                                 <p class="card-title mb-3 text-uppercase text-secondary">BAÑO</p>
-                                <a href="#" class="btn btn-secondary">Reserva</a>
-                            </div>
-                        </div>
-                    </div>
-                <!---->
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                        <img src="img/salon-5.jpg" class="card-img-top" alt="image" style="height: 12rem;">
-                        <div class="card-body text-center">
-                             <p class="card-title mb-3 text-uppercase text-secondary">SALON CLASICO</p>
-                            <a href="#" class="btn btn-secondary">Reserva</a>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-         </div>     
-    </section>
+         
+        <!-- -start carousel -->
+       
+			<div id="carouselExampleIndicators" class="carousel slide"
+				data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<article class="carousel-item active">
+							<div class="row g-4">
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-0.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-1.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+
+								<!---->
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-2.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-4.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+							</div>
+					</article>
+					<!-- slider--->
+					<article class="carousel-item">
+							<div class="row">
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-0.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-1.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/slider-4.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary"> Catalogo</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-lg-3">
+									<div class="card">
+										<img src="img/salon-5.jpg" class="card-img-top" alt="image"
+											style="height: 12rem;">
+										<div class="card-body text-center">
+											<a href="/catalogo" class="btn btn-secondary">Catalogo</a>
+										</div>
+									</div>
+								</div>
+							</div>
+					</article>
+				</div>
+		     </div>
+	<!------ end carousel -------->
+	  </div>
+	    
+   </section> 
+         
+     
     <!---Como trabajamos-->
     <section id="politica" class="p-5">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                <div class="col-md">
-                   <img src="" alt="">
+                   <img src="img/analisis.PNG" alt="">
                </div>
-               <div class="col-md p-5">
+               <div class="col-md p-5  bg-light">
                    <h2> Como trabajamos</h2>
                    <p class="lead">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum laudantium aperiam quas eius debitis quidem.
+                        Adecuamos el espacio para conseguir el carÃ¡cter y el estilo personal de los propietarios.
+                        Estudio y analisis profesional antes de comenzar la obra considerando todas las posibiles
+                        distribuciones del ambiente, mejoras de aislamiento y de las instalaciones con fin de ahorrar en
+                        el consumo diario del hogar.
                    </p>
-                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum consequuntur expedita quae quis, quaerat distinctio nam impedit blanditiis laborum praesentium natus, reprehenderit suscipit necessitatibus fuga similique dolores. Dignissimos, sapiente tempore!</p>
                </div>
             </div>
         </div>
@@ -108,7 +181,7 @@
                 <h2 class="accordion-header" >
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#pregunta-uno" >
-                        ¿Qué tipo de información me presentáis?
+                        Â¿QuÃ© tipo de informaciÃ³n me presentÃ¡is?
                     </button>
                 </h2>
                 <div id="pregunta-uno"
@@ -122,7 +195,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#pregunta-dos">
-                        ¿Cómo estoy seguro que el presupuesto que me pasan inclue todo y que no tendre sorpresas una vez iniciada la reforma?
+                        Â¿CÃ³mo estoy seguro que el presupuesto que me pasan inclue todo y que no tendre sorpresas una vez iniciada la reforma?
                     </button>
                 </h2>
                 <div id="pregunta-dos" class="accordion-collapse collapse" data-bs-parent="#preguntas">
@@ -136,7 +209,7 @@
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#pregunta-tres">
-                    ¿Que tipo de materiales utilizáis?
+                    Â¿Que tipo de materiales utilizÃ¡is?
                 </button>
             </h2>
             <div id="pregunta-tres" class="accordion-collapse collapse" data-bs-parent="#preguntas">
@@ -150,7 +223,7 @@
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#pregunta-cuatro">
-                    ¿Cobráis algo por la visita o presupuesto?
+                    Â¿CobrÃ¡is algo por la visita o presupuesto?
                 </button>
             </h2>
             <div id="pregunta-cuatro" class="accordion-collapse collapse" data-bs-parent="#preguntas">
@@ -164,7 +237,7 @@
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#pregunta-five">
-                    ¿Hay garantías en vuestro trabajo?
+                    Â¿Hay garantÃ­as en vuestro trabajo?
                 </button>
             </h2>
             <div id="pregunta-five" class="accordion-collapse collapse" data-bs-parent="#preguntas">
@@ -177,40 +250,40 @@
    </div> 
   </section>
      <!-- Cards-->
-     <section id="ejemplos" class="p-5 bg-success">
+     <section id="ejemplos" class="p-5 bg-light">
         <div class="container">
             <h2 class="text-center text-white"></h2>
            <div class="carousel-inner">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
-                <div class="card h-100">
-                 <img src="/img/home.svg" alt="" class="card-img-top" >
+                <div class="card h-100  shadow">
+                 <img src="/img/carpinteria.jpg" alt="" class="card-img-top" >
                     <div class="card-body text-center">
                         <h4 class="card-title mb-3">Carpinteria</h4>
-                        <p class="card-text fst-italic" >Las ventanas más utilizadas suelen ser PVC,
-                         o bien en aluminio según perfil europeo o con rotura de puente térmico.</p>
+                        <p class="card-text fst-italic" >Las ventanas mÃ¡s utilizadas suelen ser PVC,
+                         o bien en aluminio segÃºn perfil europeo o con rotura de puente tÃ©rmico.</p>
                     </div>
                 </div>
               </div>
             <!----->
              <div class="col">
-                <div class="card h-100">
-                  <img src="/img/home.svg" alt="" class="card-img-top">
+                <div class="card h-100  shadow">
+                  <img src="/img/electricidad.jpg" alt="" class="card-img-top">
                         <div class="card-body text-center">
                             <h4 class="card-title mb-3">Electricidad</h4>
-                            <p class="card-text fst-italic">La electricidad nos garantiza la correcta instalación y funcionamiento de acometida,
-                             cuadro eléctrico, líneas de distribución y mecanismos de vivienda.</p>
+                            <p class="card-text fst-italic">La electricidad nos garantiza la correcta instalaciÃ³n y funcionamiento de acometida,
+                             cuadro elÃ©ctrico, lÃ­neas de distribuciÃ³n y mecanismos de vivienda.</p>
                         </div>
                     </div>
                 </div>
                 <!---->
                <div class="col">
-                <div class="card h-100">
-                 <img src="/img/home.svg" alt="" class="card-img-top">
+                <div class="card h-100  shadow">
+                 <img src="/img/fontaneria.jpg" alt="" class="card-img-top" style="height: 15rem;">
                         <div class="card-body text-center">
                             <h4 class="card-title mb-3">Fontaneria</h4>
-                             <p class="card-text fst-italic" >El saneado de las instalación de fontanería consiste en instalar cobre o multicapa para AF/ACS y PVC para desagües,
-                              llevando las tuberías emporadas o, excepcionalmente vistas.</p>
+                             <p class="card-text fst-italic" >El saneado de las instalaciÃ³n de fontanerÃ­a consiste en instalar cobre o multicapa para AF/ACS y PVC para desagÃ¼es,
+                              llevando las tuberÃ­as empotradas o, excepcionalmente vistas.</p>
                         </div>
                      </div>
                    </div>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
 <head th:replace="comunes/comunes :: head"></head>
 <body>
@@ -32,7 +32,8 @@
             <hr class="my-3 shadow" style="height: 2px;"/>
             <div class="d-grid d-md-flex justify-content-md-end">
                 <div class="col-6 col-sm-3">
-                   <p class="h5 text-right fw-bold"><i class="bi bi-credit-card h1" style="color: #198754" ></i> <span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUROS</p> 
+                   <p class="h5 text-right fw-bold"><i class="bi bi-credit-card h1" style="color: #198754" ></i>
+                   <span th:text="${#numbers.formatDecimal(pre_presupuesto.obtenerTotal(), 0, 'COMMA', 2, 'POINT')}"></span> EUROS</p> 
                 </div>
                     <form action="/presupuesto" method="get" >
                         <div class="form-row py-3">

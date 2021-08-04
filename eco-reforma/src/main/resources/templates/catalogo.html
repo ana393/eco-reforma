@@ -1,6 +1,5 @@
-  
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org"
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="comunes/comunes :: head"></head>
@@ -14,8 +13,8 @@
             <div class="row g-4"  th:fragment="list">
               <!-- card -->
                   <div class="col-md-6 col-lg-3 " th:each="item: ${page.getContent()}">
-                    <div class="card shadow">
-                        <img class="card-img-top"  th:src="@{'/img/' + ${item.img_url}}"  alt="Imagines"  style="height: 12rem;" >
+                    <div class="card h-100  shadow">
+                        <img class="card-img-top"  th:src="@{'/img/' + ${item.img_url}}"  alt="Imagines" style="height: 12rem;">
                           <div class="card-body">
                           <!--  -->
 							<div class="row justify-content-center">
@@ -26,8 +25,7 @@
 								  <i class="bi bi-credit-card h4" style="color: #198754"></i><span class="fw-bold ms-2" th:text="${item.getPrecio()}" style="color: #198754"></span>
 								</div>
 							</div>
-							<!--  -->
-                            
+						
                               <p class="card-text fst-italic" th:text="${item.getDescripcion()}"></p>
                               <form th:action="@{/pre-presupuesto/anade}" method="post">
                                 <button  class="btn btn-secondary" type="submit" name="anade" th:value="${item.getId()}">Reserva</button>

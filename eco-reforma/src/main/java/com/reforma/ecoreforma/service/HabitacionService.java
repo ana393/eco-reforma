@@ -8,6 +8,8 @@ import com.reforma.ecoreforma.domain.Habitacion;
 
 public interface HabitacionService {
 	
+	Long NumeroArticulos();
+	
     Page<Habitacion> encuentraTodo(Pageable pagina);
 	
 	Page<Habitacion> encuentraPorTituloOrPorTipo(String titulo, String tipo, Pageable pageable);

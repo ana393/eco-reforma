@@ -18,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 
 
@@ -36,8 +35,6 @@ public class Presupuesto {
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String telefono;
 	
-	
-	/*@Pattern(regexp ="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(?:[a-zA-Z]{2,6})$", message="El email no es valido!")*/
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String email;
 	
@@ -101,8 +98,6 @@ public class Presupuesto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
 
 	public EstadoPresupuesto getEstado() {
 		return estado;

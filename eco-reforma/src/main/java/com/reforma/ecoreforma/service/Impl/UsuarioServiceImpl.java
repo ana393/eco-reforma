@@ -96,4 +96,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioRepository.findByEmail(email).isPresent();
 	}
 
+
+	@Override
+	public long nrUsuarios() {
+		return usuarioRepository.count();
+	}
+
 }

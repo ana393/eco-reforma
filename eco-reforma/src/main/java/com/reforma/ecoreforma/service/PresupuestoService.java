@@ -10,6 +10,10 @@ import com.reforma.ecoreforma.domain.Usuario;
 
 public interface PresupuestoService {
 	
+	long nrPresupuestos();
+	
+	long presupuestosTramitados();
+	
 	Page<Presupuesto> encuentraTodos(Pageable page);
 	  
     Presupuesto guardar(Presupuesto presupuestoValida, Usuario usuario, PrePresupuesto presupuesto);

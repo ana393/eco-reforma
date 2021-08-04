@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="comunes/comunes :: head"></head>
@@ -28,7 +28,7 @@
                         <label class="col-sm-4 col-form-label fw-bold">Теlefono:</label>
                         <div class="col-sm-6">
                             <input type="text" name="telefono" th:value="${presupuesto} ? ${presupuesto.telefono} : ''"
-                                   class="form-control" th:classappend="${telefonoError} ? ' is-invalid'" placeholder="380__ ___ __ __"/>
+                                   class="form-control" th:classappend="${telefonoError} ? ' is-invalid'" placeholder="ej.915 298 210 o 634 89 06 75"/>
                             <div th:if="${telefonoError}" class="invalid-feedback" th:text="${telefonoError}"></div>
                         </div>
                     </div>

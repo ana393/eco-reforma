@@ -88,4 +88,14 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 		
 	}
 
+	@Override
+	public long nrPresupuestos() {
+		return presupuestoRepository.count();
+	}
+
+	@Override
+	public long presupuestosTramitados() {
+		return presupuestoRepository.nrTramitados();
+	}
+
 }

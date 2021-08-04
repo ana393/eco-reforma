@@ -12,47 +12,48 @@
      <aside >
        <div th:replace="comunes/comunes :: usuarioNavbar"></div>
      </aside>
-     <div class="page-content-wrapper flex-fill">
-      <section class="container-fluid ">
-       <h2>Contenido</h2>
-         <div class="row g-3 my-2">
-          <div class="col-md-3">
+     <div class="page-content-wrapper flex-fill bg-light">
+      <section class="container-fluid">
+       <h2 class="fs-4 mb-3  m-2">Contenido</h2>
+         <div class="row g-2 my-2">
+          <div class="col-md-4">
            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-               <h3 class="fs-2">720</h3>
+               <h3 class="fs-2" th:text="${habitacionesBD}"></h3>
                <p class="fs-5">Articulos</p>
             </div>
            <i class="bi bi-building fs-1 primary text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
-         <div class="col-md-3">
+         <div class="col-md-4">
            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-               <h3 class="fs-2">1200</h3>
-               <p class="fs-5">Reservas</p>
+               <h3 class="fs-2" th:text="${usuariosBD}"></h3>
+               <p class="fs-5">Clientes</p>
             </div>
-           <i class="bi bi-clipboard-checks fs-1 primary text border rounded-full secondary-bg p-4"></i>
+           <i class="bi bi-people fs-1 primary text border rounded-full secondary-bg p-3"></i>
           </div>
         </div> 
-         <div class="col-md-3">
+         <div class="col-md-4">
            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-               <h3 class="fs-2">2345</h3>
-               <p class="fs-5">Trabajos Realizados</p>
+               <h3 class="fs-2" th:text="${presupuestosBD}"></h3>
+               <p class="fs-5">Presupuestos</p>
             </div>
            <i class="fs-4 bi-truck  fs-1 primary text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
-         <div class="col-md-3">
+        
+       </div>
+        <div class="col-md-6">
            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-               <h3 class="fs-2">2345</h3>
-               <p class="fs-5">Comparativa</p>
+               <h3 class="fs-2" th:text = "${presupuestosTramitados}"></h3>
+               <p class="fs-5" >Presupuestos Tramitados</p>
             </div>
            <i class="bi bi-bar-chart-line  fs-1 primary text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
-       </div>
       </section>
      </div>   
     </main>
