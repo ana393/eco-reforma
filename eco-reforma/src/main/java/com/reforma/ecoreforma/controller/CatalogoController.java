@@ -1,7 +1,6 @@
 package com.reforma.ecoreforma.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -18,9 +17,9 @@ import com.reforma.ecoreforma.service.HabitacionService;
 @RequestMapping("/catalogo")
 public class CatalogoController {
 	
- private final HabitacionService habitacionService;
+	 private final HabitacionService habitacionService;
 	 
-	 private static final Logger log = LoggerFactory.getLogger(CatalogoController.class);
+     @Autowired
 	 public CatalogoController(HabitacionService habitacionService) {
 		this.habitacionService = habitacionService;
 	}
@@ -30,16 +29,13 @@ public class CatalogoController {
 			@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, 
 			Model model) {
 		 
-		log.info("IN pagina_Catalogo(): ", pageRequest.toString());
 		Page<Habitacion> page = habitacionService.encuentraTodo(pageRequest);
 		int[] pagination = ControllerUtil.computePagination(page);
 
 		model.addAttribute("pagina", pagination);
 		model.addAttribute("url","/catalogo");
 		model.addAttribute("page", page);
-		log.info("IN pagina_Recursos()");
+		
 		return "catalogo";
 		}
-	
-	
 }

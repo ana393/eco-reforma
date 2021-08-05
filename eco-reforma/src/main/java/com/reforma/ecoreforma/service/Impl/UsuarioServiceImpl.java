@@ -98,7 +98,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 
 	@Override
-	public long nrUsuarios() {
+	public Long nrUsuarios() {
 		return usuarioRepository.count();
 	}
 

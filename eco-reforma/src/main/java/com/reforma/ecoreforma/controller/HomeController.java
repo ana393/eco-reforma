@@ -1,7 +1,5 @@
 package com.reforma.ecoreforma.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +17,6 @@ import com.reforma.ecoreforma.service.HabitacionService;
 public class HomeController {
 
 	private HabitacionService habitacionService;
-	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
 	public HomeController(HabitacionService habitacionService) {
@@ -45,17 +42,15 @@ public class HomeController {
 	  Page<Habitacion> page;
 	  if(filtro != null && !filtro.isEmpty()) {
 		  page = habitacionService.encuentraPorTituloOrPorTipo(filtro, filtro, pageRequest);
-		  log.info("IN pagina_Catalogo(): filtro = {} ",filtro.toString());
 	  } else {
 		  page =habitacionService.encuentraTodo(pageRequest); 
 	  }
-	 
-	  log.info("IN pagina_Catalogo(): ",filtro.toString());
+	
 	int[] pagination = ControllerUtil.computePagination(page);
 	model.addAttribute("pagina", pagination);
 	model.addAttribute("url","/catalogo");
 	model.addAttribute("page", page);
-	log.info("IN pagina_Catalogo(): ", page.getSize());
+	
 	return "catalogo";
   }
 }

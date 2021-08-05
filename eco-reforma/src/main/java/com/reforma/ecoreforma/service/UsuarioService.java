@@ -19,7 +19,7 @@ import com.reforma.ecoreforma.domain.Usuario;
  */
 public interface UsuarioService {
 	
-	long nrUsuarios();
+	Long nrUsuarios();
 	/**
 	 * metodo que registra informacion del usuario
 	 * @param Usuario usuario

@@ -10,9 +10,9 @@ import com.reforma.ecoreforma.domain.Usuario;
 
 public interface PresupuestoService {
 	
-	long nrPresupuestos();
+	Long nrPresupuestos();
 	
-	long presupuestosTramitados();
+	Long presupuestosTramitados();
 	
 	Page<Presupuesto> encuentraTodos(Pageable page);
 	  

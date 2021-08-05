@@ -21,7 +21,7 @@ import org.hibernate.validator.constraints.Length;
 public class Habitacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 	
 	@NotBlank(message="Complete el campo, por favor!")
     private String titulo;
@@ -54,7 +54,7 @@ public class Habitacion {
 	
 	
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

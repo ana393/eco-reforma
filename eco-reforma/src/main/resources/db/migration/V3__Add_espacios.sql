@@ -1,0 +1,8 @@
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Dormitorio', 'dormitorio', 2234.0, 'Revestimiento de madera ecologica.', 'dormitorio-1.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Salon', 'salon', 3456.1, 'Pintura rezistente a la luz del sol, suelos de grés.','salon-4.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Cocina', 'cocina', 4455.67, 'Cocina funcional completa con mejoras en iluminacion natural.','cocina-2.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Cocina', 'cocina', 3445.99, 'Distribución efectiva del espacio y luz natural.','cocina-1.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Salon', 'salon', 5674.89, 'Reforma integral del espacio con materiales ecológicos a su eleccion.', 'slider-2.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Baño', 'baño', 1546.8, 'Estilo vanguardista. Pintura rezistente al agua y muebles de madera ecológica.', 'bano-1.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Salon', 'salon', 4563.99, 'Estilo minimalista. \r\nParedes lisos y suelos de madera.', 'salon-5.jpg');
+INSERT INTO habitacion (titulo, tipo, precio, descripcion, img_url) VALUES ('Baño', 'baño', 3567.77, 'Baño completo con suelos y paredes revestidos con grés. ', 'bano-2.jpg');

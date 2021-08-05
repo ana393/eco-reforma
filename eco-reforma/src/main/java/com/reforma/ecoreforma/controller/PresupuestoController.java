@@ -4,8 +4,6 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +24,6 @@ public class PresupuestoController {
 	
 	private final PresupuestoService presupuestoService;
 	private final PrePresupuestoService prePresupueastoService;
-	private static final Logger log = LoggerFactory.getLogger(PresupuestoController.class);
 	
 	public PresupuestoController(PresupuestoService presupuestoService, PrePresupuestoService prePresupueastoService) {
 		this.presupuestoService = presupuestoService;
@@ -40,7 +37,6 @@ public class PresupuestoController {
 		
 		model.addAttribute("presupuestos", pr.getPrePresupusetoItemos());
 		model.addAttribute("prePresupuesto", pr);
-		log.info("IN obtenerPresupuesto(), GET: {}");
 		return "presupuesto";
 	
 	}
@@ -51,13 +47,11 @@ public class PresupuestoController {
 								@Valid Presupuesto reservaValida, BindingResult bindingResult,
 								Model model) {
 		
-		log.info("IN postPresupuesto(): {}", model.asMap());
 		Usuario usuarioDB = (Usuario)usuarioSession.getPrincipal();
 		PrePresupuesto prePresupuesto = prePresupueastoService.obtenPrePresupuesto(usuarioDB);
 		
 		if(bindingResult.hasErrors()) {
 			Map<String, String> mapErrores = ControllerUtil.obtenerErrores(bindingResult) ;
-			log.info("In registro(): errors - {}", mapErrores.toString());
 			model.mergeAttributes(mapErrores);
 			model.addAttribute("presupuestos", prePresupuesto.getPrePresupusetoItemos());
 			model.addAttribute("prePresupuesto", prePresupuesto);
@@ -75,7 +69,6 @@ public class PresupuestoController {
 			return "redirect:/";
 		}
 		model.addAttribute("reservaUsuario", presupuesto);
-		log.info("IN finalizarReserva() {}", presupuesto.getId());
 		return "finalizar-presupuesto";
 	}
 

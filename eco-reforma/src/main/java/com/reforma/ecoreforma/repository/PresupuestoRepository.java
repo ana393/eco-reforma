@@ -15,5 +15,5 @@ public interface PresupuestoRepository extends JpaRepository<Presupuesto, Long> 
 	Page<Presupuesto> findByUsuario(Usuario ususario, Pageable pageable);
 	
 	@Query(value = OBTENER_NR_PRESUPUESTOS_TRAMITADOS, nativeQuery = true)
-	long nrTramitados();
+	Long nrTramitados();
 }

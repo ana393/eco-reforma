@@ -51,18 +51,18 @@ public class UsuarioController {
 	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @GetMapping("/gestion")
 	 public String verPaginaAdmin(Model model) {
-		 long nrArticulos = habitacionService.NumeroArticulos();
-		 long nrPresupuestos = presupuestoService.nrPresupuestos();
-		 long nrUsuarios = usuarioService.nrUsuarios();
-		 long presupuestosTramitados = presupuestoService.presupuestosTramitados();
+		 Long nrArticulos = habitacionService.NumeroArticulos();
+		 Long nrPresupuestos = presupuestoService.nrPresupuestos();
+		 Long nrUsuarios = usuarioService.nrUsuarios();
+		 Long presupuestosTramitados = presupuestoService.presupuestosTramitados();
 		 model.addAttribute("habitacionesBD",nrArticulos);
 		 model.addAttribute("presupuestosBD", nrPresupuestos);
 		 model.addAttribute("presupuestosTramitados", presupuestosTramitados);
 		 model.addAttribute("usuariosBD", nrUsuarios);
-	 	log.info("IN verPaginAdmin() - lista: {} ");
 		return "admin/gestion";
 	}
 	 
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @GetMapping("articulosList")
 	 public String listaArticulos(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
 		 Page<Habitacion> page = habitacionService.encuentraTodo(pageRequest);
@@ -70,9 +70,9 @@ public class UsuarioController {
 			model.addAttribute("pagina", pagination);
 			model.addAttribute("url","/usuario/articulosList");
 			model.addAttribute("page", page);
-	 	   log.info("IN listaArticulos() - lista: {}");
 		return "admin/articulosList";
 	}
+	 
 	 
 	 @GetMapping("mis_presupuestos")
 	 public String articulosPorUsuario(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest,
@@ -112,10 +112,10 @@ public class UsuarioController {
 		Habitacion habitacion = new Habitacion();
 		model.addAttribute("habitacion", habitacion);
 		
-		log.info("IN anadeHabitacion() -  Categorias {} ");
 		return "admin/crea_recurso";
 	}
 	 
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @PostMapping("/guardar_recurso")
 	 public String guardarRecurso( @Valid Habitacion habitacion,
 			  						BindingResult bindingResult,
@@ -129,12 +129,13 @@ public class UsuarioController {
 		  	}
 		  	
 		   habitacionService.guardaHabitacion(habitacion, fichero); 
+		   
            log.debug("ADMIN anadio articulo a DB: id={}, titulo={}, precio={}",
         		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio());
 		return "redirect:/usuario/articulosList";
 	  }
 	 
-	 
+	 @PreAuthorize("hasAuthority('ADMIN')")
 	 @PostMapping("/actualizar_recurso")
 	 public String actualizarRecurso(Habitacion habitacion){
 		habitacionService.actualizarHabitacion(habitacion);
@@ -145,9 +146,8 @@ public class UsuarioController {
 	  }
 	 
 	 
-	 //Metodo get mostrar lista usuarios
-	  @GetMapping("/usuarios") 
 	  @PreAuthorize("hasAuthority('ADMIN')")
+	  @GetMapping("/usuarios") 
 	  public String listaUsuarios(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
 			 Page<Usuario> page = usuarioService.encuentraTodos(pageRequest);
 				int[] pagination = ControllerUtil.computePagination(page);
@@ -157,18 +157,15 @@ public class UsuarioController {
 				model.addAttribute("page", page);
 				model.addAttribute("roles", Roles.values());
 				
-		 	   log.info("IN verPaginAdmin() - lista: {} ");
-		  
 		  return "admin/usuarios";
 	  }
 	  
-	  
-	  @PostMapping("/roles")
 	  @PreAuthorize("hasAuthority('ADMIN')")
+	  @PostMapping("/roles")
 	  public String editarRoles(@RequestParam Map<String, String> form,
 	  		  					   @RequestParam("usuarioId") Usuario usuario) {
 	  	  usuarioService.actualizaUsuario(form, usuario);
-	  	  log.info("IN editarRoles() : {}", form);
+	  	  log.debug("Admin editarRoles() : id={}", form);
 	      return "redirect:/usuario/usuarios";
 	    }
 	 
@@ -179,8 +176,8 @@ public class UsuarioController {
 	     * @param model objeto {@link Model}.
 	     * @return reservas pagina con atributos uso del objeto  {@link Model}.
 	     */
-	    @GetMapping("/presupuestos")
 	    @PreAuthorize("hasAuthority('ADMIN')")
+	    @GetMapping("/presupuestos")
 	    public String obtenerListaPresupuesto(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
 			 Page<Presupuesto> page = presupuestoService.encuentraTodos(pageRequest);
 				int[] pagination = ControllerUtil.computePagination(page);
@@ -189,35 +186,33 @@ public class UsuarioController {
 				model.addAttribute("url","/usuario/presupuestos");
 				model.addAttribute("page", page);
 				model.addAttribute("estados", EstadoPresupuesto.values()); 
-	        log.info("IN obtenerListaPresupuesto() {}", page);
 	        return "admin/presupuestos";
 	    }
 	    
 
 	    /**
-	     * metodo para guardar el estado del {@link Presupueseto}.
+	     * metodo para guardar el estado del {@link Presupuesto}.
 	     * 
 	     * @param form que guarda los valores en Map<String, String>
-	     * @param presupuesto el objeto {@link Presupueseto} editado.
+	     * @param presupuesto el objeto {@link Presupuesto} editado.
 	     * @return la vista con la ruta /usuario/presupuestos.
 	     */
-	    @PostMapping("/presupuesto-editar")
+
 	    @PreAuthorize("hasAuthority('ADMIN')")
+	    @PostMapping("/presupuesto-editar")
 	    public String editarEstado(@RequestParam Map<String, String> form,
 	  		  					   @RequestParam("presupuestoId") Presupuesto presupuesto) {
 	  	  presupuestoService.actualizaPresupuesto(form, presupuesto);
-	  	  log.info("IN editarEstado() : {}", form);
 	      return "redirect:/usuario/presupuestos";
 	    	}
 	    
-	   
-	    @RequestMapping("/eliminar")
+
 	    @PreAuthorize("hasAuthority('ADMIN')")
-	    public String eliminarReserva(@RequestParam("id") Long id) {
-	    	log.info("IN eliminarReserva() : {}", id);
+	    @RequestMapping("/eliminar")
+	    public String eliminarPresupuesto(@RequestParam("id") Long id) {
 	    	presupuestoService.eliminarPresupuesto(id);
+
+	    	log.debug("Admin ha eliminado presupuesto : id={}", id);
 	    	return "redirect:/usuario/presupuestos";
-	    }
-	 
-	    
+	    }  
 }

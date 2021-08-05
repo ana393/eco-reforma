@@ -89,12 +89,12 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 	}
 
 	@Override
-	public long nrPresupuestos() {
+	public Long nrPresupuestos() {
 		return presupuestoRepository.count();
 	}
 
 	@Override
-	public long presupuestosTramitados() {
+	public Long presupuestosTramitados() {
 		return presupuestoRepository.nrTramitados();
 	}
 

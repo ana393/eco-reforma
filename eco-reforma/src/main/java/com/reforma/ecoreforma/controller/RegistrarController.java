@@ -1,12 +1,9 @@
 package com.reforma.ecoreforma.controller;
 
-import org.slf4j.LoggerFactory;
-
 import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +34,6 @@ import com.reforma.ecoreforma.service.UsuarioService;
 public class RegistrarController {
 	
 	private final UsuarioService usuarioService;
-	private static final Logger logger = LoggerFactory.getLogger(RegistrarController.class);
 	
 	@Autowired
 	public RegistrarController(UsuarioService usuarioService) {
@@ -46,13 +42,11 @@ public class RegistrarController {
 	
 	@GetMapping("/login")
 	public String logeo(Usuario usuario) {
-		logger.info("In logeo(), el usuario autentificado es: {}");
 		return "login";
 	}
 	
 	@GetMapping("/registro")
 	public String registro() {
-		logger.info("In registro(), el usuario autentificado es: {}");
 		return "registro";
 	} 
 	
@@ -62,7 +56,6 @@ public class RegistrarController {
 			@Valid Usuario usuario,
 			BindingResult bindingResult,
 			Model model) {
-		logger.info("IN registro(): {}", model.asMap());
 		
 		boolean esConfirmVacio = contrasenaConfirm.isBlank();
 		boolean esContrasenaDiferente = usuario.getPassword() !=null && !usuario.getPassword().equals(contrasenaConfirm);
@@ -78,21 +71,17 @@ public class RegistrarController {
 		
 		if(esConfirmVacio || esContrasenaDiferente || bindingResult.hasErrors()) {
 			Map<String, String> errors = ControllerUtil.obtenerErrores(bindingResult);
-			logger.info("In registro(): errors - {}", errors.toString());
 			model.mergeAttributes(errors);
 			return "registro";
 		} 
 
 		if(usuarioService.usuarioExiste(usuario.getEmail())) {
-			logger.info("IN registro(): usuarioExiste - {}", usuario.getEmail());
 			model.addAttribute("emailError", "Este usuario existe!");
 			return "registro";
 		}
 			usuarioService.guardar(usuario);
 			model.addAttribute("messageType", "alert-danger");
 			model.addAttribute("message", "Gracias por unirse a nuestro equipo");
-			logger.info("Usuario {} registrado", usuario.toString());
-		
 		
 		return "redirect:/login";
 	}
