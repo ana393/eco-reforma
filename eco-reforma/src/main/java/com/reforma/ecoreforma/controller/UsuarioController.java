@@ -55,10 +55,16 @@ public class UsuarioController {
 		 Long nrPresupuestos = presupuestoService.nrPresupuestos();
 		 Long nrUsuarios = usuarioService.nrUsuarios();
 		 Long presupuestosTramitados = presupuestoService.presupuestosTramitados();
+		 Long presupuestosIniciales = presupuestoService.presupuestosInicial();
+		 Long presupuestosReformados = presupuestoService.presupuestosReformados();
+		 
 		 model.addAttribute("habitacionesBD",nrArticulos);
 		 model.addAttribute("presupuestosBD", nrPresupuestos);
+		 model.addAttribute("presupIniciales",presupuestosIniciales);
 		 model.addAttribute("presupuestosTramitados", presupuestosTramitados);
+		 model.addAttribute("presupReformados",presupuestosReformados);
 		 model.addAttribute("usuariosBD", nrUsuarios);
+		 
 		return "admin/gestion";
 	}
 	 

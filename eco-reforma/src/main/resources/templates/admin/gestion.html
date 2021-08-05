@@ -1,9 +1,8 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
-<head th:replace="comunes/comunes :: head">
-</head>
+<meta charset="utf-8"/>
+<head th:replace="comunes/comunes :: head"></head>
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 
 <body >
@@ -43,9 +42,18 @@
            <i class="fs-4 bi-truck  fs-1 primary text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
+      
+         <div class="col-md-4">
+           <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+              <div>
+               <h3 class="fs-2" th:text = "${presupIniciales}"></h3>
+               <p class="fs-5" >Presupuestos Iniciales</p>
+            </div>
+           <i class="bi bi-bar-chart-line  fs-1 primary text border rounded-full secondary-bg p-3"></i>
+          </div>
+        </div>
         
-       </div>
-        <div class="col-md-6">
+         <div class="col-md-4">
            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
                <h3 class="fs-2" th:text = "${presupuestosTramitados}"></h3>
@@ -54,6 +62,18 @@
            <i class="bi bi-bar-chart-line  fs-1 primary text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
+        
+          <div class="col-md-4">
+           <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+              <div>
+               <h3 class="fs-2" th:text = "${presupReformados}"></h3>
+               <p class="fs-5" >Presupuestos Reformados</p>
+            </div>
+           <i class="bi bi-bar-chart-line  fs-1 primary text border rounded-full secondary-bg p-3"></i>
+          </div>
+        </div>
+       </div>
+       
       </section>
      </div>   
     </main>

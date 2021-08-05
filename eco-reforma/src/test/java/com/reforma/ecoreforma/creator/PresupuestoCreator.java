@@ -18,7 +18,7 @@ public class PresupuestoCreator {
 		presupuesto.setEmail("TestPresupusto@mail.com");
 		presupuesto.setFechaPresupuesto(LocalDate.now());
 		presupuesto.setPrecioTotal(BigDecimal.valueOf(2367));
-		presupuesto.setEstado(EstadoPresupuesto.PENDIENTE);
+		presupuesto.setEstado(EstadoPresupuesto.INICIAL);
 		return presupuesto;
 	}
 	public static List<Presupuesto> crearListaPresupuestos(){

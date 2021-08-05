@@ -77,7 +77,7 @@ public class TestPresupuestoService {
 		assertNotNull(ppTest);
 		
 		assertEquals(presupuestoTest.getFechaPresupuesto(), LocalDate.now());
-		assertEquals(presupuestoTest.getEstado(), EstadoPresupuesto.PENDIENTE);
+		assertEquals(presupuestoTest.getEstado(), EstadoPresupuesto.INICIAL);
 	    assertEquals(presupuestoTest, presupuestoService.guardar(presupuestoValidoTest, usuarioTest, ppTest));
 		Mockito.verify(presupuestoRepositoryMock, Mockito.times(1)).save(presupuestoTest);
 	}
@@ -105,14 +105,14 @@ public class TestPresupuestoService {
 		Presupuesto presupuestoTest = new Presupuesto();
 		Map<String, String> formTest = new HashMap<String, String>();
 		formTest.put("RECIBIDO", "PENDIENTE");
-		presupuestoTest.setEstado(EstadoPresupuesto.RECIBIDO);
+		presupuestoTest.setEstado(EstadoPresupuesto.TRAMITADO);
 		
 		//when
 		when(presupuestoRepositoryMock.save(presupuestoTest)).thenReturn(presupuestoTest);
 		presupuestoService.actualizaPresupuesto(formTest, presupuestoTest);
 		
 		//then
-		assertTrue(CoreMatchers.is(presupuestoTest.getEstado()).matches(EstadoPresupuesto.RECIBIDO));
+		assertTrue(CoreMatchers.is(presupuestoTest.getEstado()).matches(EstadoPresupuesto.TRAMITADO));
 	}
 	
 	@Test

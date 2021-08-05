@@ -49,7 +49,7 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 		presupuestDB.setFechaPresupuesto(LocalDate.now());
 		presupuestDB.setUsuario(usuario);
 		presupuestDB.setPrecioTotal(presupuestoValida.getPrecioTotal());
-		presupuestDB.setEstado(EstadoPresupuesto.PENDIENTE);
+		presupuestDB.setEstado(EstadoPresupuesto.INICIAL);
 		presupuestoRepository.save(presupuestDB);
 		
 		List<ItemReserva> lista = prePresupuesto.getPrePresupusetoItemos();
@@ -96,6 +96,16 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 	@Override
 	public Long presupuestosTramitados() {
 		return presupuestoRepository.nrTramitados();
+	}
+
+	@Override
+	public Long presupuestosInicial() {
+		return  presupuestoRepository.nrInicial();
+	}
+
+	@Override
+	public Long presupuestosReformados() {
+		return presupuestoRepository.nrReformado();
 	}
 
 }

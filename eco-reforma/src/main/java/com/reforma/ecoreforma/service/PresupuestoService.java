@@ -14,6 +14,10 @@ public interface PresupuestoService {
 	
 	Long presupuestosTramitados();
 	
+	Long presupuestosInicial();
+	
+	Long presupuestosReformados();
+	
 	Page<Presupuesto> encuentraTodos(Pageable page);
 	  
     Presupuesto guardar(Presupuesto presupuestoValida, Usuario usuario, PrePresupuesto presupuesto);
