@@ -40,7 +40,7 @@
                         <a href="/usuario/mis_presupuestos" class="nav-link fw-bolder text-info">Mis-Presupuestos</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAnonymous()">
-                        <a href="/pre-presupuesto" class="nav-link fw-bolder text-info">Identificate</a>
+                        <a href="/tus-favoritos" class="nav-link fw-bolder text-info">Identificate</a>
                     </li>
                     <li>
                     <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
@@ -51,7 +51,7 @@
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                  <li class="nav-item ms-5" >
-                        <a href="/pre-presupuesto" class="nav-link fw-bolder text-light"><i class="bi bi-heart-fill h5" style="color:red"></i> Tus Favoritos</a>
+                        <a href="/tus-favoritos" class="nav-link fw-bolder text-light"><i class="bi bi-heart-fill h5" style="color:red"></i> Tus Favoritos</a>
                    </li>
                    <li class="nav-item " sec:authorize="isAuthenticated()">
                         <a href="/salir" class="nav-link fw-bolder"><i class="bi-box-arrow-right h4" style="color:white"></i></a>

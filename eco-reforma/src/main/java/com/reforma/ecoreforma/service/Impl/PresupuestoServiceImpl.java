@@ -75,7 +75,6 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 		for (String key : form.keySet()) {
 			if (estados.contains(key)) {
 				presupuesto.setEstado(EstadoPresupuesto.valueOf(key));
-				log.info("IN actualizarPresupuesto(): {}", presupuesto.getEstado());
 				presupuestoRepository.save(presupuesto);
 			}
 		}	

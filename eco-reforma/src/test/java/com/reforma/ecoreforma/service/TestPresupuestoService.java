@@ -104,7 +104,7 @@ public class TestPresupuestoService {
 		//given
 		Presupuesto presupuestoTest = new Presupuesto();
 		Map<String, String> formTest = new HashMap<String, String>();
-		formTest.put("RECIBIDO", "PENDIENTE");
+		formTest.put("TRAMITADO", "INICIAL");
 		presupuestoTest.setEstado(EstadoPresupuesto.TRAMITADO);
 		
 		//when

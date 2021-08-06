@@ -48,6 +48,7 @@ public class TestPrePresupuestoService {
 		List<ItemReserva> testIRList = ItemReservaCreator.crearPrePresupuesto();
 		testIRList.add(testIReserva);
 		PrePresupuesto expectedTest = new PrePresupuesto(testIRList); 
+		
 		when(itemReservaRepoMock.findAllByUsuarioAndPresupuestoIsNull(usuarioTest)).thenReturn(testIRList);
 		
 		PrePresupuesto resultTest = prePresupuestoService.obtenPrePresupuesto(usuarioTest);

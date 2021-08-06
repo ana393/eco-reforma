@@ -27,7 +27,7 @@
 							</div>
 						
                               <p class="card-text fst-italic" th:text="${item.getDescripcion()}"></p>
-                              <form th:action="@{/pre-presupuesto/anade}" method="post">
+                              <form th:action="@{/tus-favoritos/anade}" method="post">
                                 <button  class="btn btn-secondary" type="submit" name="anade" th:value="${item.getId()}">Reserva</button>
                               </form>  
                             </div>

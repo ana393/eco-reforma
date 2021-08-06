@@ -20,7 +20,7 @@ import com.reforma.ecoreforma.service.HabitacionService;
 import com.reforma.ecoreforma.service.PrePresupuestoService;
 
 @Controller
-@RequestMapping("/pre-presupuesto")
+@RequestMapping("/tus-favoritos")
 public class PrePresupuestoController {
 	
 	private final HabitacionService habitacionService; 
@@ -35,12 +35,11 @@ public class PrePresupuestoController {
 	@GetMapping
 	public String prePresupuesto(Authentication usuarioSession, Model model) {
 		Usuario usuarioDB = (Usuario)usuarioSession.getPrincipal();
-		logger.info("In prePresupuesto : {}", usuarioDB.toString());
 		PrePresupuesto prePresupuesto = prePresupuestoService.obtenPrePresupuesto(usuarioDB);
 		model.addAttribute("pre_reservas", prePresupuesto.getPrePresupusetoItemos());
 		model.addAttribute("pre_presupuesto", prePresupuesto);
 		
-		return "pre-presupuesto";
+		return "tus-favoritos";
 	}
 	
 	
@@ -55,7 +54,7 @@ public class PrePresupuestoController {
 		prePresupuestoService.anadeItemAPrePresupuesto(habitacion, usuarioDB, qty);
 		logger.debug("Usuario ande prePresupusesto : id={}, usuario={}", habitacion.getId(), usuarioDB.toString());
 		
-	    return "redirect:/pre-presupuesto";
+	    return "redirect:/tus-favoritos";
 	}
 	
 	@GetMapping("/elimina-item/{id}")
@@ -65,6 +64,6 @@ public class PrePresupuestoController {
 		
 		logger.debug("Usuario elimina item: id={}", item.getId());
 		
-	    return "redirect:/pre-presupuesto";
+	    return "redirect:/tus-favoritos";
 	 }
 }

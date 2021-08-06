@@ -54,7 +54,6 @@ public class TestHabitacionService {
 		Habitacion habitacion = new Habitacion();
 		habitacion.setTipo("Dormitorio");
 		habitacion.setTitulo("Matrimonio");
-		System.out.println("Habitacion:" + habitacion.toString());
 		habitacionList.add(habitacion);
 		
 		Pageable pageable = PageRequest.of(0, 2);
