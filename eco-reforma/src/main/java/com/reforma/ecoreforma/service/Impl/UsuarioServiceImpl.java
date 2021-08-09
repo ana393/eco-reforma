@@ -49,11 +49,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public Usuario guardar(Usuario usuario) {
-		usuario.setRoles(Collections.singleton(Roles.ADMIN));
+		usuario.setRoles(Collections.singleton(Roles.USER));
 		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		
 		Usuario registered = usuarioRepository.save(usuario);
-		logger.info("IN guardar() - user: {} guardado", registered);
+		logger.debug("IN guardar() - user: registered={}", registered);
 		return registered;
 	}
 
@@ -87,7 +87,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public void delete(Long id) {
 		usuarioRepository.deleteById(id);
-	    logger.info("IN delete() - user with id: {} successfully deleted");
 		
 	}
 

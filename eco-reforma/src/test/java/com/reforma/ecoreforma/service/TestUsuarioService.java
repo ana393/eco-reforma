@@ -1,5 +1,6 @@
 package com.reforma.ecoreforma.service;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -55,7 +56,7 @@ public class TestUsuarioService {
 	
 		
 		assertTrue(email.equals("Mail@test.com"));
-		assertTrue(esUsuarioPresente);
+		assertFalse(esUsuarioPresente);
 		
 	}
 }

@@ -9,13 +9,10 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 public class ControllerUtil {
-	private static final Logger log = LoggerFactory.getLogger(ControllerUtil.class);
 
 	/**
 	 * 
@@ -37,7 +34,6 @@ public class ControllerUtil {
 	 */
 	static int[] computePagination(Page page) {
         Integer totalPages = page.getTotalPages();
-        log.info("IN computePagination():", totalPages.toString());
         if (totalPages > 4) {
             Integer pageNumber = page.getNumber() + 1;
             Integer[] head = pageNumber > 4 ? new Integer[]{1, -1} : new Integer[]{1, 2, 3};

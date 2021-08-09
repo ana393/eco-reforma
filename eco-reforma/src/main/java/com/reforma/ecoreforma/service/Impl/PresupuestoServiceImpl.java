@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,7 +26,6 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 	
 	private final PresupuestoRepository presupuestoRepository;
 	private final ItemReservaRepository itemRepository;
-	private static final Logger log = LoggerFactory.getLogger(PresupuestoServiceImpl.class);
 	
 	public PresupuestoServiceImpl(PresupuestoRepository presupuestoRepository, ItemReservaRepository itemRepository) {
 		this.presupuestoRepository = presupuestoRepository;
