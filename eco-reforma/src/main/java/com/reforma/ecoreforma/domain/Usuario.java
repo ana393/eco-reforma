@@ -19,28 +19,63 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * La clase describe la entidad "Usuario" implementa metodos de la interface {@link UserDetails}.
+ * La anotacion @Entity nos surgiere que la clase esta mapeada por hibernate.
+ * la anotacion @Table indica la existencia de la tabla "usuario" en la Base de datos."
+ *
+ */
+/**
+ * @author atcac
+ *
+ */
+/**
+ * @author atcac
+ *
+ */
 @Entity(name = "usuario")
 public class Usuario implements UserDetails{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * codigo unico del objeto.
+	 *  @Id - indica que el campo tiene la clave primaria;
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	/**
+	 * Nombre de usuario.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 */
 	@NotBlank(message = "Complete el campo.")
 	private String username;
 	
+	/**
+	 * La contrasena del usuario para identificarse con el sistema.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 */
 	@NotBlank(message = "Protege su cuenta con una contrasena.")
 	private String password;
 	
 	
+	/**
+	 * El email del usuario necesario para su identificacion.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 * La anotacion @Email surgiere el mensaje del email incorecto.
+	 */
 	@Email(message = "Email incorecto")
 	@NotBlank(message = "El email no puede estar vacio")
 	private String email;
     
+	/**
+	 * El rol del usuario que puede tomar distintos valores @see {@link Roles}
+	 * @ElementCollection indica la relacion @OneToMany con la clase embebida {@link Roles}, 
+	 *     dependiendo totalmente del comportamento de la clase "usuario"
+	 * @CollectionTable 
+	 */
 	@ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "rol_usuario", joinColumns = @JoinColumn(name = "usuario_id"))
 	@Enumerated(EnumType.STRING)
@@ -53,10 +88,8 @@ public class Usuario implements UserDetails{
 		this.username = username;
 		this.email = email;
 	}
+   
 
-	public boolean isAdmin() {
-		return roles.contains(Roles.ADMIN);
-	}
 
 	public Long getId() {
 		return id;
@@ -110,31 +143,59 @@ public class Usuario implements UserDetails{
 		return username;
 	}
    
+	/**
+	 * Metodo que comprueba los derechos de administrador.
+	 */
+	public boolean isAdmin() {
+		return roles.contains(Roles.ADMIN);
+	}
 
+	/**
+	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * retorna un valor de tipo booleano dependiendo de la fecha de caducidad de la cuenta.
+	 *  
+	 */
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
+	
+	/**
+	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 *Indica el estado de la cuenta del usuario.
+	 */
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
+	/**
+	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Indica si los credenciales del usuario han caducado.
+	 */
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
+	/**
+	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Indica si el usuario esta activo a no.
+	 */
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
+	/**
+	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Retorna las autoridades ofrcidas al usuario.
+	 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return getRoles();
 	}
 
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
+	
 	
 	@Override
 	public boolean equals(Object o) {

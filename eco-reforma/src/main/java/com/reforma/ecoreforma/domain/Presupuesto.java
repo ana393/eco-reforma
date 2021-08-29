@@ -20,33 +20,81 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 
-
+/**
+ * Clase que describe la entidad "Presupuesto".
+ * La anotacion @Entity nos surgiere que la clase esta mapeada por hibernate.
+ * la anotacion @Table indica la existencia de la tabla "presupuesto" en la Base de datos.
+ *
+ */
+/**
+ * @author atcac
+ *
+ */
 @Entity(name="presupuesto")
 public class Presupuesto {
+	/**
+	 * codigo unico del objeto.
+	 * @Id - indica que el campo tiene la clave primaria;
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private BigDecimal precioTotal;
-	private LocalDate fechaPresupuesto;
-	
+		
+	/**
+	 * campo para el nombre del cliente.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 */
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String nombre;
 	
+	/**
+	 * campo para el telefono del cliente.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 */
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String telefono;
 	
+	/**
+	 * campo para el email del cliente.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 */
 	@NotBlank(message = "Complete este campo, porfavor.")
 	private String email;
 	
+	
+	/**
+	 * campo para la lista de items reservados por el cliente.
+	 * @OneToMany relacion entre las entidades "presupuesto" y  "items_reserva" {@link ItemReserva}.
+	 *           cascade=CascadeType.ALL tipo de propagacion,
+	 *           fetch = FetchType.EAGER - tipo de carga de los objetos traidos de la Base de Datos, que sera totalmente.
+	 *            
+	 */
 	@OneToMany(mappedBy="presupuesto", cascade=CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
 	private List<ItemReserva>  itemsReserva = new ArrayList<>();
 	
+	/**
+	 * campo para el estado del presupuesto.
+	 * @Column indica la columna para la clase embebida.
+	 * @Enumerated indica el mapeo de enumeraciones {@link EstadoPresupuesto}
+	 */
 	@Column(name = "estado_presupuesto")
 	@Enumerated(EnumType.STRING)
 	private EstadoPresupuesto estado;
 	
+	/**
+	 * @ManyToOne indica la relacion con la entidad {@link Usuario}
+	 */
 	@ManyToOne
 	private Usuario usuario;
+	
+	/**
+	 * campo para el precio total del presupuesto
+	 */
+	private BigDecimal precioTotal;
+	/**
+	 * campo para la fecha actual del presupuesto
+	 */
+	private LocalDate fechaPresupuesto;
 
 	
 	public Presupuesto() {}

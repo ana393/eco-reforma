@@ -35,21 +35,47 @@ public class RegistrarController {
 	
 	private final UsuarioService usuarioService;
 	
+	/**
+	 * Constructor para la inicializacion  de las variables principales.
+	 * Con la anotacion @Autowired  llevar a cabo la inyección de dependencias de los objetos.
+	 * 
+	 * @param usuarioService
+	 */
 	@Autowired
 	public RegistrarController(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
 	}
 	
+	/**
+	 * Devuelve la pagina de login
+	 * URL {"/login"}, metodo GET
+	 * @param usuario
+	 * @return 
+	 */
 	@GetMapping("/login")
 	public String logeo(Usuario usuario) {
 		return "login";
 	}
 	
+	/**
+	 * Devuelve la pagina de registro
+	 * URL {"/registro"}, metodo GET
+	 * @return 
+	 */
 	@GetMapping("/registro")
 	public String registro() {
 		return "registro";
 	} 
 	
+	/**
+	 * Registra un nuevo usuario.
+	 * URL {"/registro"}, metodo POST
+	 * @param contrasenaConfirm
+	 * @param usuario
+	 * @param bindingResult
+	 * @param model
+	 * @return redirect /login.
+	 */
 	@PostMapping("/registro")
 	public String registro(
 			@RequestParam("password2") String contrasenaConfirm,

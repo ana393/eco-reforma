@@ -18,18 +18,42 @@ import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.service.PrePresupuestoService;
 import com.reforma.ecoreforma.service.PresupuestoService;
 
+/**
+ * Clase controller Presupuesto.
+ * La anotacion @Controller  Spring podrá detectar la clase PresupuestoController cuando realice el escaneo de componentes.
+ * @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
+ * 
+ * @author Ana Tcaci
+ * @version 1.0
+ * @see PresupuestoService
+ * @see PrePresupuestoService
+ *
+ */
 @Controller
 @RequestMapping("/presupuesto")
 public class PresupuestoController {
 	
 	private final PresupuestoService presupuestoService;
 	private final PrePresupuestoService prePresupueastoService;
-	
+	/**
+	 * Constructor para la inicializacion  de las variables principales.
+	 * Con la anotacion @Autowired llevar a cabo la inyección de dependencias de los objetos.
+	 * 
+	 * @param PresupuestoService
+	 * @param PrePresupuestoService
+	 */
 	public PresupuestoController(PresupuestoService presupuestoService, PrePresupuestoService prePresupueastoService) {
 		this.presupuestoService = presupuestoService;
 		this.prePresupueastoService = prePresupueastoService;
 	}
  
+	/**
+	 * Devuelve la pagina del presupuesto.
+	 * metodo GET.
+	 * @param usuarioSession
+	 * @param model {@link Model}
+	 * @return
+	 */
 	@GetMapping
 	public String obtenerPresupuesto(Authentication usuarioSession, Model model){
 		Usuario usuarioDB = (Usuario)usuarioSession.getPrincipal();
@@ -42,6 +66,15 @@ public class PresupuestoController {
 	}
 	
 
+	/**
+	 *  Devuelve la pagina de finalizar el proceso de presupuesto
+	 *  metodo POST
+	 * @param usuarioSession
+	 * @param reservaValida
+	 * @param bindingResult
+	 * @param model {@link Model}
+	 * @return  /finalizar-presupuesto
+	 */
 	@PostMapping
 	public String postPresupuesto(Authentication usuarioSession,
 								@Valid Presupuesto reservaValida, BindingResult bindingResult,
@@ -62,6 +95,12 @@ public class PresupuestoController {
 		    return "/finalizar-presupuesto";
 	}
 	
+	/**
+	 * Finaliza la reserva
+	 * URL request {"/finalizar-presupuesto"}, metodo GET.
+	 * @param model {@link Model}
+	 * @return redirecta a la pagina de presupuesto
+	 */
 	@GetMapping("/finalizar-presupuesto")
 	public String finalizaReserva(Model model) {
 		Presupuesto presupuesto = (Presupuesto) model.asMap().get("reservaUsuario");

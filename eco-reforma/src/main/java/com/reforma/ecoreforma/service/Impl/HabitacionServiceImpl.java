@@ -12,24 +12,50 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.reforma.ecoreforma.domain.Habitacion;
-import org.springframework.util.StringUtils;
+import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.HabitacionRepository;
 import com.reforma.ecoreforma.service.HabitacionService;
 
 import javassist.NotFoundException;
 
+/**
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link Habitacion} 
+ *  por la interfaz {@link HabitacionService}.
+ * 
+ * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
+ *   que es un subtipo de la clase @Component.
+ * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
+ * 
+ * @author Ana Tcaci
+ * @version 1.0
+ * @see Usuario
+ * @see UsuarioServiceImpl
+ *
+ */
 @Service
 public class HabitacionServiceImpl implements HabitacionService{
+	
 	
 	private final HabitacionRepository habitacionRepository;
 	private static final Logger log = LoggerFactory.getLogger(HabitacionServiceImpl.class);
 	
+	/**
+	 * direccion de la carpeta que guarda los imagines de los recursos.
+	 */
 	@Value("${upload.path}")
 	private String uploadPath;
 	
+	/**
+	 * Constructor para la inicializacion  de la variable principal.
+	 * Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objetos.
+	 * 
+	 * @param habitacionRepository implimentacion de la interfaz {@link HabitacionService}
+	 *                          para el procesamiento de habitaciones de la base de datos.
+	 */
 	@Autowired
 	public HabitacionServiceImpl(HabitacionRepository habitacionRepository) {
 			this.habitacionRepository = habitacionRepository;
@@ -49,13 +75,12 @@ public class HabitacionServiceImpl implements HabitacionService{
 	@Override
 	public Habitacion encuentraPorId(long id) {
 		Habitacion result = habitacionRepository.findById(id).orElse(null);
-		log.info("IN encontrarPorId() - habitacion: {} encontrada por id: {}", result);
 		return result;
 	}
 
 	@Override
 	public Habitacion guardaHabitacion(Habitacion habitacion,  MultipartFile fichero){
-		log.info("IN guardarFichero() - carpeta {}", uploadPath);
+		log.info(String.format("Estas guardando un nuevo recurso [%s]", habitacion.toString()));
 		 Habitacion guardado = new Habitacion();
 		  guardado.setTitulo(habitacion.getTitulo());
 		  guardado.setTipo(habitacion.getTipo());
@@ -80,7 +105,7 @@ public class HabitacionServiceImpl implements HabitacionService{
 		 } 
 		
 		Habitacion persistente = habitacionRepository.save(habitacion);
-		log.info("IN guardaHabitacion() - habitacion: {}  se guardo", persistente);
+		log.info("El nuevo recurso - habitacion: {} se guardo corectamente", persistente);
 		
 		return persistente;
 	}
@@ -89,7 +114,7 @@ public class HabitacionServiceImpl implements HabitacionService{
 	@Transactional
 	public void eliminarHabitacionPorId(Long id) {
 		habitacionRepository.deleteById(id);
-		log.info("IN eliminarHabitacion() - habitacion con id: {} se ha eliminado");			
+		log.info("Se está eliminando un recurso - habitacion con id: {} se ha eliminado", id);			
 	}
 
 
@@ -105,7 +130,7 @@ public class HabitacionServiceImpl implements HabitacionService{
 			
 			habitacionRepository.save(result);
 
-			log.info("IN guardaHabitacion() - habitacion: {}  se guardo");
+			log.info("Se  esta actualizando un recurso - habitacion: {} ", habitacion);
 		} catch (NotFoundException e) {
 			log.warn("Habitacion no encontrada.");
 		}	

@@ -20,13 +20,40 @@ import com.reforma.ecoreforma.repository.ItemReservaRepository;
 import com.reforma.ecoreforma.repository.PresupuestoRepository;
 import com.reforma.ecoreforma.service.PresupuestoService;
 
+/**
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link Presupuesto} 
+ *  por la interfaz {@link PresupuestoService}.
+ * 
+ * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
+ *   que es un subtipo de la clase @Component.
+ * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
+ * 
+ * @author Ana Tcaci
+ * @version 1.0
+ * @see Usuario
+ * @see UsuarioServiceImpl
+ *
+ */
 @Service
 public class PresupuestoServiceImpl  implements PresupuestoService{
 	
 	
+	/**
+	 * Se implementa la interfaz {@link PresupuestoRepository}.
+	 */
 	private final PresupuestoRepository presupuestoRepository;
+	/**
+	 * Se implementa la interfaz {@link ItemReservaRepository}.
+	 */
 	private final ItemReservaRepository itemRepository;
-	
+	/**
+	 * Constructor para la inicializacion  de las variables principales.
+	 * La anotacion @Autowired proporciona la inicializacion automatica de los objetos.
+	 *  
+	 * @param presupuestoRepository implimentacion de la interfaz {@link PresupuestoRepository}
+	 *                    para el procesamiento de presupuestos de la base de datos.
+	 * @param itemRepository implimentacion de la interfaz {@link ItemReservaRepository}.
+	 */
 	public PresupuestoServiceImpl(PresupuestoRepository presupuestoRepository, ItemReservaRepository itemRepository) {
 		this.presupuestoRepository = presupuestoRepository;
 		this.itemRepository = itemRepository;

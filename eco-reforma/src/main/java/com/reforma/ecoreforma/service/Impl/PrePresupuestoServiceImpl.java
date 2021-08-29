@@ -13,13 +13,32 @@ import com.reforma.ecoreforma.domain.PrePresupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.ItemReservaRepository;
 import com.reforma.ecoreforma.service.PrePresupuestoService;
-
+/**
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link PrePresupuesto} 
+ *  por la interfaz {@link PrePresupuestoService}.
+ * 
+ * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
+ *   que es un subtipo de la clase @Component.
+ * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
+ * 
+ * @author Ana Tcaci
+ * @version 1.0
+ * @see Usuario
+ * @see UsuarioServiceImpl
+ *
+ */
 @Service
 public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 
 	private final ItemReservaRepository itemReservaRepo;
 	private static final Logger log = LoggerFactory.getLogger(PrePresupuestoServiceImpl.class);
 	
+	/**
+	 * Constructor para la inicializacion  de la variable principal.
+	 * Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objeto.
+	 * 
+	 * @param itemReservaRepo implimentacion de la interfaz {@link ItemReservaRepository}
+	 */
 	@Autowired
 	public PrePresupuestoServiceImpl(ItemReservaRepository itemReservaRepo) {
 		this.itemReservaRepo = itemReservaRepo;
@@ -43,6 +62,7 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 
 	@Override
 	public ItemReserva anadeItemAPrePresupuesto(Habitacion habitacion, Usuario usuario, int qty) {
+		log.info(String.format("Se esta añadiendo articulos [%S] a tu lista de favoritos (pre-Presupuesto) ", habitacion.toString()));
 		PrePresupuesto prePresupuesto = this.obtenPrePresupuesto(usuario);
 		ItemReserva itemReserva = prePresupuesto.encuentraItemPorHabitacion(habitacion.getId());
 		if(itemReserva != null) {

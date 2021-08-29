@@ -11,28 +11,51 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
-/*
+/**
  * Clase que describe la entidad "Habitacion"
- * La anotacion @Entity indica que el objeto de esta clase estara procesado por hibernate.
- * La anotacion @Table indica el nombre de la tabla en la base de datos MySQL.
+ * La anotacion @Entity nos surgiere que la clase esta mapeada por hibernate.
+ * la anotacion @Table indica la existencia de la tabla "habitacion" en la Base de datos."
+ *
  */
 @Entity
 @Table(name = "habitacion")
 public class Habitacion {
+	/**
+	 * codigo unico del objeto.
+	 *  @Id - indica que el campo tiene la clave primaria;
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	/**
+	 * titulo de la habitacion.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 */
 	@NotBlank(message="Complete el campo, por favor!")
     private String titulo;
 	
+	/**
+	 * tipo de la habitacion. 
+	 */
 	private String tipo;
+	/**
+	 * campo para la descripcion relevante de la descripcion.
+	 * @Length indica la longitud permitida.
+	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío. 
+	 */
 	@Length(max = 1024, message = "Mensaje demasiado largo (mas de 1kb)!")
 	@NotBlank(message="Complete el campo, por favor!")
     private String descripcion;
 	 
+    /**
+     * campo para la URL de la imagen.
+     */
     private String img_url;
     
+    /**
+     *  precio de la habitacion
+     */
     private Double precio;
    
     public Habitacion() {}

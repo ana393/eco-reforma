@@ -21,15 +21,43 @@ import com.reforma.ecoreforma.domain.Roles;
 import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.UsuarioRepository;
 import com.reforma.ecoreforma.service.UsuarioService;
-
+/**
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link Usuario} 
+ *  por la interfaz {@link UsuarioService}.
+ * 
+ * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
+ *   que es un subtipo de la clase @Component.
+ * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
+ * 
+ * @author Ana Tcaci
+ * @version 1.0
+ * @see Usuario
+ * @see UsuarioServiceImpl
+ *
+ */
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 	
+	/**
+	 * Se implementa la interfaz {@link UsuarioRepository}
+	 */
 	private final UsuarioRepository usuarioRepository;
+	/**
+	 * Se implementa la interfaz  {@link PasswordEncoder} para la codificacion de la contraseña
+	 */
 	private final PasswordEncoder passwordEncoder;
 
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioServiceImpl.class);
 
+	/**
+	 * Constructor para la inicializacion  de las variables principales.
+	 *  Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objetos.
+	 *  
+	 * @param usuarioRepository implimentacion de la interfaz {@link UsuarioRepository}
+	 *                    para el procesamiento de usuarios de la base de datos.
+	 * @param passwordEncoder implimentacion de la interfaz {@link PasswordEncoder}
+	 *                    para la codificacion de la contrasena.
+	 */
 	@Autowired
 	public UsuarioServiceImpl(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
 		this.usuarioRepository = usuarioRepository;
@@ -37,10 +65,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 	
 	
-	/**
-	 * @param email del usuario de la Base de Datos.
-	 * @return Optional de los usuarios
-	 */
+	
+	@Override
 	@Transactional
 	public Optional<Usuario> findByEmail(String email){
 		return usuarioRepository.findByEmail(email);
@@ -53,7 +79,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		
 		Usuario registered = usuarioRepository.save(usuario);
-		logger.debug("IN guardar() - user: registered={}", registered);
+		logger.debug("Se esta guradando - nuevo  usuario: - {}", registered);
 		return registered;
 	}
 
@@ -64,6 +90,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public void actualizaUsuario(Map<String, String> form, Usuario usuario) {
+		logger.info("Se estan actualizando roles del usuario - {}", form);
 		Set <String> roles = Arrays.stream(Roles.values())
 				.map(Roles::name)
 				.collect(Collectors.toSet());

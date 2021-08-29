@@ -12,12 +12,22 @@ import java.util.stream.IntStream;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+/**
+ *  Clase  con metodos utiles para las clases Controller.
+ * 
+ * La anotacion @Controller  sirve para informar a Spring que esta es una clase @Bean,
+ * y que se debe cargar cuando se lanza la aplicacion.
+ * 
+ *@author Ana Tcaci
+ *@version 1.0
+ */
 public class ControllerUtil {
 
 	/**
+	 * Devulve erores validados a la pagina html.
 	 * 
-	 * @param bindingResult
-	 * @return
+	 * @param bindingResult erores validados por http request
+	 * @return la validacion de erores a la pagina html. 
 	 */
 	static Map<String, String> obtenerErrores(BindingResult bindingResult){
 		Collector<FieldError, ?, Map<String, String>> collector = Collectors.toMap(
@@ -29,8 +39,9 @@ public class ControllerUtil {
 	}
 	
 	/**
-	 * @param page
-	 * @return paginacion computada
+	 * Devuelve paginacion computada.
+	 * @param page es una sublista de la lista de objetos.
+	 * @return paginacion computada.
 	 */
 	static int[] computePagination(Page page) {
         Integer totalPages = page.getTotalPages();
