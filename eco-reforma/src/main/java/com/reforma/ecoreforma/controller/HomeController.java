@@ -17,7 +17,7 @@ import com.reforma.ecoreforma.domain.Habitacion;
 import com.reforma.ecoreforma.service.HabitacionService;
 /**
  * Clase controller Home.
- * La anotacion @Controller  Spring podrá detectar la clase HomeController cuando realice el escaneo de componentes.
+ * Con la anotacion @Controller  Spring podrá detectar la clase HomeController cuando realice el escaneo de componentes.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -32,7 +32,7 @@ public class HomeController {
 	
 	/**
 	 * Constructor para la inicializacion  de la variable principal.
-	 * Con la anotacion @Autowired   llevar a cabo la inyección de dependencias del objeto.
+	 * Con la anotacion @Autowired   se lleva a cabo la inyección de dependencias del objeto.
 	 * @param habitacionService
 	 */
 	@Autowired
@@ -53,7 +53,7 @@ public class HomeController {
 
   
   /**
- * Devulve el catalogo con recursos disponibiles
+ * Devuelve el catalogo con recursos disponibiles
  * URL request {"/buscar"}, metodo GET.
  * @param pageRequestv {@link PageRequest}
  * @param filtro 

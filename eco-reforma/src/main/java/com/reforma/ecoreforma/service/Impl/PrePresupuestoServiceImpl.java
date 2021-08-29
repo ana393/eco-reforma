@@ -35,7 +35,7 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 	
 	/**
 	 * Constructor para la inicializacion  de la variable principal.
-	 * Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objeto.
+	 * Con la anotacion @Autowired  se lleva a cabo la inyección de dependencias del objeto.
 	 * 
 	 * @param itemReservaRepo implimentacion de la interfaz {@link ItemReservaRepository}
 	 */

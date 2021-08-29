@@ -20,7 +20,7 @@ import com.reforma.ecoreforma.service.PresupuestoService;
 
 /**
  * Clase controller Presupuesto.
- * La anotacion @Controller  Spring podrá detectar la clase PresupuestoController cuando realice el escaneo de componentes.
+ * Con la anotacion @Controller , Spring podrá detectar la clase PresupuestoController cuando realice el escaneo de componentes.
  * @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
  * 
  * @author Ana Tcaci
@@ -37,7 +37,7 @@ public class PresupuestoController {
 	private final PrePresupuestoService prePresupueastoService;
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
-	 * Con la anotacion @Autowired llevar a cabo la inyección de dependencias de los objetos.
+	 * Con la anotacion @Autowired se lleva a cabo la inyección de dependencias de los objetos.
 	 * 
 	 * @param PresupuestoService
 	 * @param PrePresupuestoService

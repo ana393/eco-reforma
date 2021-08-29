@@ -51,7 +51,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
-	 *  Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objetos.
+	 *  Con la anotacion @Autowired  se lleva a cabo la inyección de dependencias del objetos.
 	 *  
 	 * @param usuarioRepository implimentacion de la interfaz {@link UsuarioRepository}
 	 *                    para el procesamiento de usuarios de la base de datos.

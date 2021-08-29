@@ -34,7 +34,7 @@ import com.reforma.ecoreforma.service.UsuarioService;
 
 /**
  * Clase controller Usuario.
- * La anotacion @Controller  Spring podrá detectar la clase UsuarioController cuando realice el escaneo de componentes.
+ * Con la anotacion @Controller  Spring podrá detectar la clase UsuarioController cuando realice el escaneo de componentes.
  * @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
  * 
  * @author Ana Tcaci
@@ -55,7 +55,7 @@ public class UsuarioController {
 	
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
-	 * Con la anotacion @Autowired   llevar a cabo la inyección de dependencias de los objetos.
+	 * Con la anotacion @Autowired  se lleva a cabo la inyección de dependencias de los objetos.
 	 * 
 	 * @param habitacionService
 	 * @param usuarioService

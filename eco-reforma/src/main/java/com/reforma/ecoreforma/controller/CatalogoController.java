@@ -15,7 +15,7 @@ import com.reforma.ecoreforma.domain.Habitacion;
 import com.reforma.ecoreforma.service.HabitacionService;
 /**
  * Clase controller Catalogo.
- * La anotacion @Controller  Spring podrá detectar la clase CatalogoController cuando realice el escaneo de componentes.
+ * Con la anotacion @Controller , Spring podrá detectar la clase CatalogoController cuando realice el escaneo de componentes.
  * @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
  * 
  * @author Ana Tcaci
@@ -31,7 +31,7 @@ public class CatalogoController {
 
 		/**
 		 * Constructor para la inicializacion de la variable principal. Con la
-		 * anotacion @Autowired llevar a cabo la inyección de dependencias del objeto.
+		 * anotacion @Autowired se lleva a cabo la inyección de dependencias del objeto.
 		 * 
 		 * @param habitacionService
 		 */

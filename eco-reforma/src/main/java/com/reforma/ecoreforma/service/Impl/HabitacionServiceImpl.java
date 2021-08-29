@@ -51,7 +51,7 @@ public class HabitacionServiceImpl implements HabitacionService{
 	
 	/**
 	 * Constructor para la inicializacion  de la variable principal.
-	 * Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objetos.
+	 * Con la anotacion @Autowired  se lleva a cabo la inyección de dependencias del objetos.
 	 * 
 	 * @param habitacionRepository implimentacion de la interfaz {@link HabitacionService}
 	 *                          para el procesamiento de habitaciones de la base de datos.

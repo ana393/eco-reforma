@@ -37,7 +37,7 @@ public class PrePresupuestoController {
 	private static final Logger logger = LoggerFactory.getLogger(PrePresupuestoController.class);
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
-	 * Con la anotacion @Autowired  llevar a cabo la inyección de dependencias de los objetos.
+	 * Con la anotacion @Autowired se lleva a cabo la inyección de dependencias de los objetos.
 	 * 
 	 * @param habitacionService
 	 * @param usuarioService

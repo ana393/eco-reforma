@@ -40,7 +40,7 @@ public class UsuarioSecurityService implements UserDetailsService {
 	
 	/**
 	 * Constructor para la inicializacion  de las variable principal.
-	 * Con la anotacion @Autowired  se llevar a cabo la inyección de dependencias del objeto.
+	 * Con la anotacion @Autowired  se lleva a cabo la inyección de dependencias del objeto.
 	 *              
 	 * @param usuarioRepository implimentacion de la interfaz {@link UsuarioRepository}
 	 *                    para el procesamiento de usuarios de la base de datos.
