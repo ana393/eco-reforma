@@ -1,4 +1,5 @@
-<div th:fragment="login(path)" lang="es" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="login(path)" lang="es" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8"/>
  <div class="row h-100 shadow" >
    <div class="col-lg-6" style="background-image: url(../../img/user.svg); background-position: center center;  object-fit: cover;">
    <img  th:src="@{'./../img/user.svg'}"  alt=""  class="card-img w-25" >
@@ -19,14 +20,14 @@
             <div class="form-group row mb-4" >
                 <label class="col-sm-4 col-form-label  fw-bold" >Correo electronico: </label>  
                   <div class="col-sm-6">
-                    <input type="email" name="email"  th:value="${usuario} ? ${usuario.email} : ''" class="form-control"
+                    <input  name="email"  th:value="${usuario} ? ${usuario.email} : ''" class="form-control"
                           th:classappend="${emailError} ? ' is-invalid'"/>
                     <div th:if="${emailError}" class="invalid-feedback" th:text="${emailError}"></div>
                 </div>
             </div>
 
             <div class="form-group row mb-4">
-                <label class="col-sm-4 col-form-label  fw-bold">Contrasena: </label>
+                <label class="col-sm-4 col-form-label  fw-bold">Contraseña: </label>
                 <div class="col-sm-6">
                     <input type="password" name="password" class="form-control"
                            th:classappend="${passwordError} ? ' is-invalid'"/>
@@ -35,7 +36,7 @@
             </div>
 
             <div class="form-group row mb-4" th:if="${path} == '/registro'">
-                <label class="col-sm-4 col-form-label  fw-bold">Comprobar contrasena: </label>
+                <label class="col-sm-4 col-form-label  fw-bold">Comprobar contraseña: </label>
                 <div class="col-sm-6">
                     <input type="password" name="password2" class="form-control"
                            th:classappend="${password2Error} ? ' is-invalid'"/>

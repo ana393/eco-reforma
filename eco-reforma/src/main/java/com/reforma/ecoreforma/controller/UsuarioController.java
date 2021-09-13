@@ -281,7 +281,8 @@ public class UsuarioController {
 	     */
 	    @PreAuthorize("hasAuthority('ADMIN')")
 	    @GetMapping("/presupuestos")
-	    public String obtenerListaPresupuesto(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageRequest, Model model) {
+	    public String obtenerListaPresupuesto(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) 
+	    									  Pageable pageRequest, Model model) {
 			 Page<Presupuesto> page = presupuestoService.encuentraTodos(pageRequest);
 				int[] pagination = ControllerUtil.computePagination(page);
 				log.info("Los presupuestos existenetes en la BD: - {}", pagination.length);

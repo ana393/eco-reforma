@@ -100,6 +100,7 @@ public class HabitacionServiceImpl implements HabitacionService{
 			fichero.transferTo(new File(uploadPath + "/" + nombre_Fichero));
 			}catch(IOException e) {
 			   e.printStackTrace();
+		log.info(String.format("No se pudo guardar el fichero [%s], en la carpeta uploadPath indicada.", nombre_Fichero));
 			}
 		  habitacion.setImg_url(nombre_Fichero);
 		 } 

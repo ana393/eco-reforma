@@ -79,7 +79,7 @@ public class PrePresupuestoServiceImpl implements PrePresupuestoService {
 
 	@Override
 	public void eliminarItemReserva(ItemReserva item) {
-		log.debug("req a eliminar item del Cache: {}",item.getId());
+		log.debug("Se está a eliminar item del Cache: {}",item.getId());
 		boolean i = itemReservaRepo.existsById(item.getId());
 		if (i) {
 		itemReservaRepo.deleteById(item.getId());

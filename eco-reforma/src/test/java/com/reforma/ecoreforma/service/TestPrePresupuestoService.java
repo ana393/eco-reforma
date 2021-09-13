@@ -72,7 +72,7 @@ public class TestPrePresupuestoService {
 	}
 	
 	@Test
-	public void debe_Devolver_NrItemos_DelCache() {
+	public void debe_Devolver_NrItemos() {
 		Usuario usuarioTest = new Usuario(1L, "Test","test@mail.com");
 		ItemReserva testIReserva = ItemReservaCreator.crearTestItemReserva();
 		

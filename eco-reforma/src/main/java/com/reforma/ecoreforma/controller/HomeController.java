@@ -69,7 +69,7 @@ public class HomeController {
 	  Page<Habitacion> page;
 	  if(filtro != null && !filtro.isEmpty()) {
 		  page = habitacionService.encuentraPorTituloOrPorTipo(filtro, filtro, pageRequest);
-		  log.info(String.format("Estas encontrando articulos segun el criterio [%s]  existen [%s] recurso.", filtro.toString(), page.getNumberOfElements()));
+ log.info(String.format("Estas encontrando articulos segun el criterio [%s]  existen [%s] recurso.", filtro.toString(), page.getNumberOfElements()));
 	  } else {
 		  page =habitacionService.encuentraTodo(pageRequest); 
 	  }

@@ -31,15 +31,7 @@ public class PrePresupuesto {
 		}
 		return total;	
 	}
-	
-	 /**
-	 * Metodo que comprueba la existencia de items en la lista.
-	 * @return boolean
-	 */
-	public boolean esVacio() {
-		 return lista.isEmpty();
-	 }
-	
+		
 	 /**
 	 * Metodo que elimina elementos de la lista.
 	 * @param itemReserva
@@ -52,7 +44,7 @@ public class PrePresupuesto {
 	 /**
 	 * Metodo que encuentra un item en la lista de objetos {@link ItemReserva}
 	 * @param id
-	 * @return
+	 * @return el obj ItemReserva
 	 */
 	public ItemReserva encuentraItemPorHabitacion(long id) {
 			for (ItemReserva item : this.lista) {
@@ -82,5 +74,11 @@ public class PrePresupuesto {
 public void setPrePresupusetoItemos(List<ItemReserva> lista) {
 		this.lista = lista;
 	}
-	
+/**
+* Metodo que comprueba la existencia de items en la lista.
+* @return boolean
+*/
+//public boolean esVacio() {
+//	 return lista.isEmpty();
+//}
 }

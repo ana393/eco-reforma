@@ -10,7 +10,7 @@ import com.reforma.ecoreforma.domain.Usuario;
 
 /**
  * Repositorio para el objeto {@link ItemReserva}
- *  que proporciona un conjuntos de metodos para trabajar con la Base de Datos.
+ *  que proporciona un conjunto de metodos para trabajar con la Base de Datos.
  *  
  *  Hereda de la interfaz {@link JpaRepository}
  */

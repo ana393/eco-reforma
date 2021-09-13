@@ -9,6 +9,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.apache.el.lang.FunctionMapperImpl.Function;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -24,7 +25,7 @@ import org.springframework.validation.FieldError;
 public class ControllerUtil {
 
 	/**
-	 * Devulve erores validados a la pagina html.
+	 * Devuelve erores validados a la pagina html.
 	 * 
 	 * @param bindingResult erores validados por http request
 	 * @return la validacion de erores a la pagina html. 
@@ -32,8 +33,7 @@ public class ControllerUtil {
 	static Map<String, String> obtenerErrores(BindingResult bindingResult){
 		Collector<FieldError, ?, Map<String, String>> collector = Collectors.toMap(
 				fieldError -> fieldError.getField() + "Error", 
-				FieldError::getDefaultMessage
-				);
+				FieldError::getDefaultMessage);
 				
 		return bindingResult.getFieldErrors().stream().collect(collector);
 	}

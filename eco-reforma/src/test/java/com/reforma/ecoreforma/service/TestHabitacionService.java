@@ -59,14 +59,18 @@ public class TestHabitacionService {
 		Pageable pageable = PageRequest.of(0, 2);
 		Page<Habitacion> page = new PageImpl<>(habitacionList);
 
-		when(habitacionRepositoryMock.findByTituloOrTipo(habitacion.getTitulo(), habitacion.getTipo(), pageable)).thenReturn(page);
+		when(habitacionRepositoryMock.findByTituloOrTipo(habitacion.getTitulo(), habitacion.getTipo(),
+				                                          pageable)).thenReturn(page);
 		
 		assertNotNull(habitacionList);
 		assertNotNull(habitacion.getTipo());
 		assertNotNull(habitacion.getTitulo());
-		assertEquals(1, habitacionService.encuentraPorTituloOrPorTipo(habitacion.getTitulo(), habitacion.getTipo(), pageable).getSize());
-		assertEquals("Dormitorio", habitacionService.encuentraPorTituloOrPorTipo(habitacion.getTitulo(), habitacion.getTipo(), pageable).getContent().get(0).getTipo());
-		assertEquals("Matrimonio", habitacionService.encuentraPorTituloOrPorTipo(habitacion.getTitulo(), habitacion.getTipo(), pageable).getContent().get(0).getTitulo());
+		assertEquals(1, habitacionService.encuentraPorTituloOrPorTipo(habitacion.getTitulo(),
+				     habitacion.getTipo(), pageable).getSize());
+		assertEquals("Dormitorio", habitacionService.encuentraPorTituloOrPorTipo(habitacion.getTitulo(),
+				     habitacion.getTipo(), pageable).getContent().get(0).getTipo());
+		assertEquals("Matrimonio", habitacionService.encuentraPorTituloOrPorTipo(habitacion.getTitulo(),
+				     habitacion.getTipo(), pageable).getContent().get(0).getTitulo());
 	}
 	
 }

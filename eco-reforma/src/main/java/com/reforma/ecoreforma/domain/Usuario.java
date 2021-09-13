@@ -13,8 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,19 +56,18 @@ public class Usuario implements UserDetails{
 	
 	/**
 	 * La contrasena del usuario para identificarse con el sistema.
-	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
+	 * La anotacion @Size surgiere que el campo no debe de tener menos 6 caracteres.
 	 */
-	@NotBlank(message = "Protege su cuenta con una contrasena.")
+	@Size(min=6, max=20, message = "Su contraseña debe tener minimo 6 caracteres")
 	private String password;
 	
 	
 	/**
 	 * El email del usuario necesario para su identificacion.
-	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
-	 * La anotacion @Email surgiere el mensaje del email incorecto.
+	 * La anotacion @Pattern surgiere el mensaje del email incorecto.
 	 */
-	@Email(message = "Email incorecto")
-	@NotBlank(message = "El email no puede estar vacio")
+	@Pattern(regexp="[A-Sa-s0-9._%-+]+@[-Sa-s0-9._%-]+\\.[A-Sa-s]{2,4}",
+			message="Error en el formato del email")
 	private String email;
     
 	/**

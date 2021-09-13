@@ -73,7 +73,8 @@
                        <label for="Estado"   class="col-form-label" > Estado actual Presupuesto:</label>
                          <label for="EstadoPresupuesto"   class="col-form-label" th:text="${item.getEstado()}" style="color: green;"></label>
                           <div  th:each="estado : ${estados}">
-                         <input id="estadoCheck" type="checkbox"  th:name="${estado}" th:text="${estado}" th:checked="${#lists.contains(item.estado, estado)}">
+                         <input id="estadoCheck" type="checkbox"  th:name="${estado}" th:text="${estado}" 
+                                th:checked="${#lists.contains(item.estado, estado)}">
                       </div>
                     </div>
                   <div class="modal-footer">

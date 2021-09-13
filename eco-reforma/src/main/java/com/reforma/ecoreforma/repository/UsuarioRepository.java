@@ -18,7 +18,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	/**
 	 * Metodo que nos devuelve los usuarios con el email proporcionado.
 	 * @param email de usuario a devolver
-	 * @return el objeto {@link Usuario}
+	 * @return un contenedor Optional del objeto {@link Usuario} no nulo
 	 */
 	Optional<Usuario> findByEmail(String email);
 }
