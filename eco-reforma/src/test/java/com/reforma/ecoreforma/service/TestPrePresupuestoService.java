@@ -44,12 +44,12 @@ public class TestPrePresupuestoService {
 	@Test
 	public void test_ObtenerPrePresupuesto() {
 		Usuario usuarioTest = new Usuario(1L, "Test","test@mail.com");
-		ItemReserva testIReserva = ItemReservaCreator.crearTestItemReserva();
-		List<ItemReserva> testIRList = ItemReservaCreator.crearPrePresupuesto();
-		testIRList.add(testIReserva);
-		PrePresupuesto expectedTest = new PrePresupuesto(testIRList); 
+		ItemReserva testItemReserva = ItemReservaCreator.crearTestItemReserva();
+		List<ItemReserva> testItemReservaList = ItemReservaCreator.crearPrePresupuesto();
+		testItemReservaList.add(testItemReserva);
+		PrePresupuesto expectedTest = new PrePresupuesto(testItemReservaList); 
 		
-		when(itemReservaRepoMock.findAllByUsuarioAndPresupuestoIsNull(usuarioTest)).thenReturn(testIRList);
+		when(itemReservaRepoMock.findAllByUsuarioAndPresupuestoIsNull(usuarioTest)).thenReturn(testItemReservaList);
 		
 		PrePresupuesto resultTest = prePresupuestoService.obtenPrePresupuesto(usuarioTest);
 	
@@ -76,7 +76,8 @@ public class TestPrePresupuestoService {
 		Usuario usuarioTest = new Usuario(1L, "Test","test@mail.com");
 		ItemReserva testIReserva = ItemReservaCreator.crearTestItemReserva();
 		
-		when(itemReservaRepoMock.countDistinctByUsuarioAndPresupuestoIsNull(usuarioTest)).thenReturn(testIReserva.getCantidad());
+		when(itemReservaRepoMock.countDistinctByUsuarioAndPresupuestoIsNull(usuarioTest))
+								.thenReturn(testIReserva.getCantidad());
 		int result = prePresupuestoService.obtenerNrItemos(usuarioTest);
 		
 		assertEquals(testIReserva.getCantidad(), result);
