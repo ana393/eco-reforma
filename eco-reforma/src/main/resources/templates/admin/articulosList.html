@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
+<meta charset="utf-8"/>
 <head th:replace="comunes/comunes :: head">
 <link rel="stylesheet"  type="text/css"  th:href="@{/css/dashboard.css}"/>
 </head>
@@ -23,7 +23,7 @@
       	<th>ID</th>
         <th>Nombre</th>
         <th>Tipo</th>
-        <th>Precio</th>
+        <th>Precío</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -81,10 +81,17 @@
 								<textarea  class="form-control col-sm-8"  name="descripcion"  th:text ="${item.getDescripcion()}"  rows="3" ></textarea>
 							</div>
 						</div>
-               
+                        <div class="form-group row mb-4">
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Fichero: </label>
+							<div class="col-sm-6">
+								<input class="btn btn-secondary w-70" id="file"  style="position: absolute;" th:placeholder="${item.getImg_url()}"/> 
+								<input type="file" name="fichero" style="opacity: 0; z-index: 1;"
+									               onchange="document.getElementById('file').value = this.value;"/>
+							</div>
+						</div>	
                    <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                         <input type="hidden" th:value="${item.getId()}" name="habitacionId">
+                         <input type="hidden"  name="habitacionId">
                      <button type="submit" class="btn btn-success">Actualizar</button>		
                  </div>
                </form>

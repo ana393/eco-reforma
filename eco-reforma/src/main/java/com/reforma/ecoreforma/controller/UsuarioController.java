@@ -199,7 +199,7 @@ public class UsuarioController {
 	 public String guardarRecurso( @Valid Habitacion habitacion,
 			  						BindingResult bindingResult,
 			  						Model model,
-			  						@RequestParam("fichero")MultipartFile fichero)  {
+			  						@RequestParam("fichero") MultipartFile fichero)  {
 		  	if(bindingResult.hasErrors()) {
 		  		Map<String, String> eroresMap = ControllerUtil.obtenerErrores(bindingResult);
 		  		log.info("Los errores al guardar un recurso: errors - {}", eroresMap.toString());

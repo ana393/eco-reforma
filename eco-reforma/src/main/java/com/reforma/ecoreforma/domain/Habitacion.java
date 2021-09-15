@@ -38,6 +38,7 @@ public class Habitacion {
 	/**
 	 * tipo de la habitacion. 
 	 */
+	@NotBlank(message="Complete el campo, por favor!")	
 	private String tipo;
 	/**
 	 * campo para la descripcion relevante de la descripcion.

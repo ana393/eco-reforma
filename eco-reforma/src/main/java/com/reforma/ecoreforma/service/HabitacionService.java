@@ -57,6 +57,7 @@ public interface HabitacionService {
 	/**
 	 * Metodo que actualiza la habitacion.
 	 * @param habitacion
+	 * @param Fichero
 	 */
 	void actualizarHabitacion(Habitacion habitacion);
 	
@@ -65,4 +66,5 @@ public interface HabitacionService {
 	 * @param id
 	 */
 	void eliminarHabitacionPorId(Long id);
+
 }
