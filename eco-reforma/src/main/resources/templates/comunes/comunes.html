@@ -40,12 +40,12 @@
                         <a href="/usuario/mis_presupuestos" class="nav-link fw-bolder text-info">Mis-Presupuestos</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAnonymous()">
-                        <a href="/tus-favoritos" class="nav-link fw-bolder text-info">Identificate</a>
+                        <a href="/tus-favoritos" class="nav-link fw-bolder text-info">Identifícate</a>
                     </li>
                     <li>
                     <form class="form-inline d-flex justify-content-center md-form form-sm mr-3" action="/buscar"  method="get" >
-                        <input class="form-control form-control-sm mr-3 w-100 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" />
-                        <button type="submit" class="bg-dark"><i class="be bi-search h4 white" style="color:white"></i></button>
+                        <input class="form-control form-control-sm mr-3 w-100 rounded-0" type="text" name="filtro" placeholder="buscar" aria-label="Buscar" style="border-color:black"/>
+                        <button type="submit" class="bg-dark" style="border-color:black"><i class="be bi-search h4 white" style="color:white"></i></button>
                     </form>
                     </li>  
                 </ul>
@@ -177,20 +177,24 @@
     <!-- Left -->
 
     <!-- Right -->
+    <!-- Section: Social media -->
     <div>
       <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-facebook-f h4" style="color:#4267B2"></i>
       </a>
       <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
+        <i class="fab fa-twitter h4" style="color:#92DCE5"></i>
       </a>
       <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
+        <i class="fab fa-instagram h4"  style="color:#8a3ab9"></i>
+      </a>
+       <a href="https://es.linkedin.com/in/ana-tcaci-a02372106" class="me-4 text-reset">
+        <i class="fab fa-linkedin h4" style="color:#0077b5" ></i>
       </a>
     </div>
     <!-- Right -->
   </section>
-  <!-- Section: Social media -->
+  
 
   <!-- Section: Links  -->
   <section class="">
@@ -222,7 +226,7 @@
             <i class="fas fa-envelope me-3"></i>
             ecoreforma@gmail.com
           </p>
-          <p><i class="fas fa-phone me-3"></i>91 567 88</p>
+          <p><i class="fas fa-phone me-3"></i>934 567 088</p>
           <p><i class="fas fa-print me-3"></i>654 78 96 77 </p>
         </div>
         <!-- Grid column -->

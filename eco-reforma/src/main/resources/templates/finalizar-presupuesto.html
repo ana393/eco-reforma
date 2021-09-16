@@ -6,16 +6,22 @@
 <div th:insert="~{comunes/comunes :: scripts}"></div>
 <div th:replace="comunes/comunes :: navbar"></div>
 <body>
- 
-    <main class="container my-5 vh-100  align-content-center">
-      <article class="container mt-4 pb-2">
-          <h2>Gracias por Su Reserva! En breve nos comunicamos con usted</h2>
-           <a th:href="@{/home}">Explore nuestra pagina</a>
-            <img class="card-img-top w-50" th:src="@{'/img/cartvacio.svg'}"  alt="" >
-      </article>
-       
-    </main>
-
-<footer th:insert="~{comunes/comunes :: footer}"></footer>  
+	<main id="politica" class="p-5">
+		<div class="container">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-md">
+					<h4 style="text-decoration: none; color: green">Gracias por su
+						solicitud! En breve nos comunicamos con usted</h4>
+					<a th:href="@{/home}" style="text-decoration: none; color: green">Explore
+						nuestra pagina</a>
+				</div>
+				<div class="col-md p-5  bg-light">
+					<img class="card-img-top w-75" th:src="@{'/img/cartvacio.svg'}"
+						alt="">
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer th:insert="~{comunes/comunes :: footer}"></footer>  
 </body>
 </html>

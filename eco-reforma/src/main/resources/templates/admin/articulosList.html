@@ -63,9 +63,16 @@
 							</div>
 						</div>
 						<div class="form-group row mb-4">
-						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Tipo: </label>
+						  <label class="col-sm-4 col-form-label  fw-bold text-secondary">Categoría: </label>
 							 <div class="col-sm-6">
-								<input  type="text" name="tipo" th:value="${item.getTipo()}"  placeholder="Tipo de habitacion"  class="form-control" />
+								<select id="type" name="tipo" class="form-select">
+									<option selected th:text="${item.getTipo()}"></option>
+									<option th:value="salon">SALON</option>
+									<option th:value="cocina">COCINA</option>
+									<option th:value="pasillo">PASILLO</option>
+									<option th:value="matrimonio">MATRIMONIO</option>
+									<option th:value="dormitorio">DORMITORIO</option>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row mb-4">

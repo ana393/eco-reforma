@@ -17,7 +17,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -51,14 +53,14 @@ public class Presupuesto {
 	 * campo para el telefono del cliente.
 	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
 	 */
-	@NotBlank(message = "Complete este campo, porfavor.")
+	@Size(min=9, message = "Su teléfono debe contener mínimo 9 cifras")
 	private String telefono;
 	
 	/**
 	 * campo para el email del cliente.
 	 * La anotacion @NotBlank surgiere que el campo no debe de estar vacío.
 	 */
-	@NotBlank(message = "Complete este campo, porfavor.")
+	@Email(message="Facilite un correo electrónico válido.")
 	private String email;
 	
 	
@@ -168,6 +170,19 @@ public class Presupuesto {
 
 	public void setItemsReserva(List<ItemReserva> itemsReserva) {
 		this.itemsReserva = itemsReserva;
+	}
+	
+	/**
+	 * Metodo que compruebe el estado del presupuesto reformado,
+	 *             para el renderizaje de elementos en la pagina.
+	 * @return boolean
+	 */
+	public boolean isReformado() {
+		boolean result = false;
+		if(this.estado.equals(EstadoPresupuesto.REFORMADO)) {
+			result = true;
+		}
+		return result;
 	}
 
 	/**
