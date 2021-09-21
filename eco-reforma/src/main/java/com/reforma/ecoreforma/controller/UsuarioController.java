@@ -1,5 +1,6 @@
 package com.reforma.ecoreforma.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -199,18 +200,16 @@ public class UsuarioController {
 	 public String guardarRecurso( @Valid Habitacion habitacion,
 			  						BindingResult bindingResult,
 			  						Model model,
-			  						@RequestParam("fichero") MultipartFile fichero)  {
+			  						@RequestParam("fichero") MultipartFile fichero) throws IOException  {
 		  	if(bindingResult.hasErrors()) {
 		  		Map<String, String> eroresMap = ControllerUtil.obtenerErrores(bindingResult);
 		  		log.info("Los errores al guardar un recurso: errors - {}", eroresMap.toString());
 		  		model.mergeAttributes(eroresMap);
 		  		return "admin/crea_recurso";
 		  	}
-		  	
-		   habitacionService.guardaHabitacion(habitacion, fichero); 
-		   
-           log.debug("ADMIN añadio articulo a DB: id={}, titulo={}, precio={}",
-        		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio());
+	 habitacionService.guardaHabitacion(habitacion, fichero);
+	 log.debug("ADMIN añadio articulo a DB: id={}, titulo={}, precio={}",
+ 		   habitacion.getId(), habitacion.getTitulo(), habitacion.getPrecio(), fichero.getName());      
 		return "redirect:/usuario/articulosList";
 	  }
 	 

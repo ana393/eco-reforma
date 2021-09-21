@@ -23,8 +23,8 @@ import com.reforma.ecoreforma.service.HabitacionService;
 import javassist.NotFoundException;
 
 /**
- * Capa de Servicios que implementa los metodos de acceso del objeto {@link Habitacion} 
- *  por la interfaz {@link HabitacionService}.
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link com.reforma.ecoreforma.domain.Habitacion} 
+ *  por la interfaz {@link com.reforma.ecoreforma.service.HabitacionService}.
  * 
  * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
  *   que es un subtipo de la clase @Component.
@@ -99,9 +99,13 @@ public class HabitacionServiceImpl implements HabitacionService{
 		try{
 			fichero.transferTo(new File(uploadPath + "/" + nombre_Fichero));
 			}catch(IOException e) {
-			   e.printStackTrace();
-		log.info(String.format("No se pudo guardar el fichero [%s], en la carpeta uploadPath indicada.", nombre_Fichero));
-			}
+	            log.error(String.format("No se pudo transferir el fichero [%s], a la carpeta uploadPath indicada.", e.toString()));
+	            //log.info(String.format("No se pudo transferir el fichero [%s], a la carpeta uploadPath indicada.", nombre_Fichero));
+	        } catch (Exception exception) {
+	            // excepciones inesperadas.
+	           log.error(exception.toString());
+	        }
+			   
 		  habitacion.setImg_url(nombre_Fichero);
 		 } 
 		

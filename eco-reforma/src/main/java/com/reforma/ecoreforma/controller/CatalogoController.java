@@ -42,6 +42,7 @@ public class CatalogoController {
 	 
 	/**
 	 * Devuelve la lista de recursos existentes
+	 * 
 	 * @param pageRequest {@link PageRequest}
 	 * @param model {@link Model}
 	 * @return la pagina catalogo.html

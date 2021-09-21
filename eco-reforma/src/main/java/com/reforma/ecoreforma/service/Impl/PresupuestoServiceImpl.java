@@ -21,9 +21,9 @@ import com.reforma.ecoreforma.repository.PresupuestoRepository;
 import com.reforma.ecoreforma.service.PresupuestoService;
 
 /**
- * Capa de Servicios que implementa los metodos de acceso del objeto {@link Presupuesto} 
- *  por la interfaz {@link PresupuestoService}.
- * 
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link com.reforma.ecoreforma.domain.Presupuesto} 
+ *  por la interfaz {@link com.reforma.ecoreforma.service.PresupuestoService}.
+ * <p>
  * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
  *   que es un subtipo de la clase @Component.
  * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
@@ -92,7 +92,7 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 
 	@Override
 	public void actualizaPresupuesto(Map<String, String> form, Presupuesto presupuesto) {
-		Set <String> estados = Arrays.stream(EstadoPresupuesto.values())
+		Set<String> estados = Arrays.stream(EstadoPresupuesto.values())
 				.map(EstadoPresupuesto::name)
 				.collect(Collectors.toSet());
 		

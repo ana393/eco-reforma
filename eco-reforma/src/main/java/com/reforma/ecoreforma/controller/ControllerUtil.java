@@ -9,18 +9,17 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.apache.el.lang.FunctionMapperImpl.Function;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 /**
  *  Clase  con metodos utiles para las clases Controller.
- * 
+ * <p>
  * La anotacion @Controller  sirve para informar a Spring que esta es una clase @Bean,
  * y que se debe cargar cuando se lanza la aplicacion.
  * 
  *@author Ana Tcaci
- *@version 1.0
+ *@version 1.0.0
  */
 public class ControllerUtil {
 
@@ -40,6 +39,7 @@ public class ControllerUtil {
 	
 	/**
 	 * Devuelve paginacion computada.
+	 * 
 	 * @param page es una sublista de la lista de objetos.
 	 * @return paginacion computada.
 	 */

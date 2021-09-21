@@ -74,11 +74,5 @@ public class PrePresupuesto {
 public void setPrePresupusetoItemos(List<ItemReserva> lista) {
 		this.lista = lista;
 	}
-/**
-* Metodo que comprueba la existencia de items en la lista.
-* @return boolean
-*/
-//public boolean esVacio() {
-//	 return lista.isEmpty();
-//}
+
 }

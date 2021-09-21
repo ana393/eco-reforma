@@ -66,7 +66,7 @@ public class Presupuesto {
 	
 	/**
 	 * campo para la lista de items reservados por el cliente.
-	 * @OneToMany relacion entre las entidades "presupuesto" y  "items_reserva" {@link ItemReserva}.
+	 * @OneToMany relacion entre las entidades "presupuesto" y  "items_reserva" {@link com.reforma.ecoreforma.ItemReserva}.
 	 *           cascade=CascadeType.ALL tipo de propagacion,
 	 *           fetch = FetchType.EAGER - tipo de carga de los objetos traidos de la Base de Datos, que sera totalmente.
 	 *            
@@ -77,7 +77,7 @@ public class Presupuesto {
 	/**
 	 * campo para el estado del presupuesto.
 	 * @Column indica la columna para la clase embebida.
-	 * @Enumerated indica el mapeo de enumeraciones {@link EstadoPresupuesto}
+	 * @Enumerated indica el mapeo de enumeraciones {@link com.reforma.ecoreforma.domain.EstadoPresupuesto}
 	 */
 	@Column(name = "estado_presupuesto")
 	@Enumerated(EnumType.STRING)

@@ -1,9 +1,12 @@
 package com.reforma.ecoreforma.controller;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +38,7 @@ public class PresupuestoController {
 	
 	private final PresupuestoService presupuestoService;
 	private final PrePresupuestoService prePresupueastoService;
+	private static final Logger log = LoggerFactory.getLogger(PresupuestoController.class);
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
 	 * Con la anotacion @Autowired se lleva a cabo la inyección de dependencias de los objetos.
@@ -88,11 +92,12 @@ public class PresupuestoController {
 			model.mergeAttributes(mapErrores);
 			model.addAttribute("presupuestos", prePresupuesto.getPrePresupusetoItemos());
 			model.addAttribute("prePresupuesto", prePresupuesto);
+			log.info(String.format("Errores en completar el formulario", mapConvertor(mapErrores)));
 			return "presupuesto";
 		} else {
 			presupuestoService.guardar(reservaValida, usuarioDB, prePresupuesto);		  
 		}
-		    return "/finalizar-presupuesto";
+		    return "redirect:/presupuesto/finalizar-presupuesto";
 	}
 	
 	/**
@@ -101,7 +106,7 @@ public class PresupuestoController {
 	 * @param model {@link Model}
 	 * @return redirecta a la pagina de presupuesto
 	 */
-	@GetMapping("/finalizar-presupuesto")
+	@GetMapping("/presupuesto/finalizar-presupuesto")
 	public String finalizaReserva(Model model) {
 		Presupuesto presupuesto = (Presupuesto) model.asMap().get("reservaUsuario");
 		if(presupuesto == null) {
@@ -111,4 +116,10 @@ public class PresupuestoController {
 		return "finalizar-presupuesto";
 	}
 
+	private String mapConvertor(Map<String, ?> mapa){
+		String result = mapa.keySet().stream()
+			      .map(key -> key + "=" + mapa.get(key))
+			      .collect(Collectors.joining(", ", "{", "}"));
+		return result;
+		}
 }

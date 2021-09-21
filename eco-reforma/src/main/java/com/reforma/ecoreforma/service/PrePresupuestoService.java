@@ -7,7 +7,7 @@ import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.service.Impl.PrePresupuestoServiceImpl;
 /**
  * Interfaz de la capa de Servicios, 
- * describe un set de metodos de trabajo con el objeto {@link PrePresupuesto}.
+ * describe un set de metodos de trabajo con el objeto {@link com.reforma.ecoreforma.domain.PrePresupuesto}.
  * 
  * @author Ana Tcaci
  * @version 1.0

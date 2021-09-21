@@ -16,6 +16,8 @@ import org.hibernate.validator.constraints.Length;
  * La anotacion @Entity nos surgiere que la clase esta mapeada por hibernate.
  * la anotacion @Table indica la existencia de la tabla "habitacion" en la Base de datos."
  *
+ *@author Ana Tcaci
+ *@version 1.0.0
  */
 @Entity
 @Table(name = "habitacion")

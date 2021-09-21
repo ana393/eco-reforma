@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.reforma.ecoreforma.domain.Usuario;
 
 /**
- * Repositorio para el objeto {@link Usuario}
+ * Repositorio para el objeto {@link com.reforma.ecoreforma.domain.Usuario}
  *  que proporciona un conjuntos de metodos para trabajar con la Base de Datos.
  *  
  *  Hereda de la interfaz {@link JpaRepository}

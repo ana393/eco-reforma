@@ -12,8 +12,8 @@ import com.reforma.ecoreforma.domain.Usuario;
 
 /**
  * Interfaz de la capa de Servicios, 
- * describe un set de metodos de trabajo con el objeto {@link Usuario}.
- * 
+ * describe un set de metodos de trabajo con el objeto {@link com.reforma.ecoreforma.domain.Usuario}.
+ * <p>
  * @author Ana Tcaci
  * @version 1.0
  * @see Usuario

@@ -9,7 +9,7 @@ import com.reforma.ecoreforma.service.Impl.HabitacionServiceImpl;
 
 /**
  * Interfaz de la capa de Servicios, 
- * describe un set de metodos de trabajo con el objeto {@link Habitacion}.
+ * describe un set de metodos de trabajo con el objeto {@link com.reforma.ecoreforma.domain.Habitacion}.
  * 
  * @author Ana Tcaci
  * @version 1.0

@@ -21,17 +21,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * La clase describe la entidad "Usuario" implementa metodos de la interface {@link UserDetails}.
+ * La clase describe la entidad "Usuario" implementa metodos de la interfaz
+ *  			 {@link org.springframework.security.core.userdetails.UserDetails}.
  * La anotacion @Entity nos surgiere que la clase esta mapeada por hibernate.
  * la anotacion @Table indica la existencia de la tabla "usuario" en la Base de datos."
  *
  */
 /**
- * @author atcac
- *
- */
-/**
- * @author atcac
+ * @author Ana Tcaci
  *
  */
 @Entity(name = "usuario")
@@ -58,7 +55,7 @@ public class Usuario implements UserDetails{
 	 * La contrasena del usuario para identificarse con el sistema.
 	 * La anotacion @Size surgiere que el campo no debe de tener menos 6 caracteres.
 	 */
-	@Size(min=6, max=20, message = "Su contraseña debe tener minimo 6 caracteres")
+	@Size(min=4, message = "Su contraseña debe tener minimo 6 caracteres")
 	private String password;
 	
 	
@@ -66,14 +63,14 @@ public class Usuario implements UserDetails{
 	 * El email del usuario necesario para su identificacion.
 	 * La anotacion @Pattern surgiere el mensaje del email incorecto.
 	 */
-	@Pattern(regexp="[A-Sa-s0-9._%-+]+@[-Sa-s0-9._%-]+\\.[A-Sa-s]{2,4}",
+	@Pattern(regexp="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
 			message="Error en el formato del email")
 	private String email;
     
 	/**
-	 * El rol del usuario que puede tomar distintos valores @see {@link Roles}
-	 * @ElementCollection indica la relacion @OneToMany con la clase embebida {@link Roles}, 
-	 *     dependiendo totalmente del comportamento de la clase "usuario"
+	 * El rol del usuario que puede tomar distintos valores @see {@link com.reforma.ecoreforma.domain.Roles}
+	 * @ElementCollection indica la relacion @OneToMany con la clase embebida {@link com.reforma.ecoreforma.domain.Roles}, 
+	 *     dependiendo totalmente del comportamento de la clase {@link com.reforma.ecoreforma.domain.Usuario}
 	 * @CollectionTable 
 	 */
 	@ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
@@ -142,16 +139,9 @@ public class Usuario implements UserDetails{
 	public String getUsername() {
 		return username;
 	}
-   
-	/**
-	 * Metodo que comprueba los derechos de administrador.
-	 */
-	public boolean isAdmin() {
-		return roles.contains(Roles.ADMIN);
-	}
 
 	/**
-	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Metodo de la interfaz implimentada {@link org.springframework.security.core.userdetails.UserDetails}
 	 * retorna un valor de tipo booleano dependiendo de la fecha de caducidad de la cuenta.
 	 *  
 	 */
@@ -162,7 +152,7 @@ public class Usuario implements UserDetails{
 
 	
 	/**
-	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Metodo de la interfaz implimentada {@link org.springframework.security.core.userdetails.UserDetails}
 	 *Indica el estado de la cuenta del usuario.
 	 */
 	@Override
@@ -170,7 +160,7 @@ public class Usuario implements UserDetails{
 		return true;
 	}
 	/**
-	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Metodo de la interfaz implimentada {@link org.springframework.security.core.userdetails.UserDetails}
 	 * Indica si los credenciales del usuario han caducado.
 	 */
 	@Override
@@ -178,7 +168,7 @@ public class Usuario implements UserDetails{
 		return true;
 	}
 	/**
-	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Metodo de la interfaz implimentada {@link org.springframework.security.core.userdetails.UserDetails}
 	 * Indica si el usuario esta activo a no.
 	 */
 	@Override
@@ -187,7 +177,7 @@ public class Usuario implements UserDetails{
 	}
 
 	/**
-	 * Metodo de la interfaz implimentada {@link UserDetails}
+	 * Metodo de la interfaz implimentada {@link org.springframework.security.core.userdetails.UserDetails}
 	 * Retorna las autoridades ofrcidas al usuario.
 	 */
 	@Override

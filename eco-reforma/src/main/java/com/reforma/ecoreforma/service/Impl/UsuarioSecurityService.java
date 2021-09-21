@@ -14,9 +14,9 @@ import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.UsuarioRepository;
 
 /**
- * Capa de Servicios que implementa los metodos de acceso del objeto {@link Usuario} 
- *  por la interfaz {@link UserDetailsService}.
- * 
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link com.reforma.ecoreforma.domain.Usuario} 
+ *  por la interfaz {@link org.springframework.security.core.userdetails.UserDetailsService}.
+ * <p>
  * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
  *                      que es un subtipo de la clase @Component.
  * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath

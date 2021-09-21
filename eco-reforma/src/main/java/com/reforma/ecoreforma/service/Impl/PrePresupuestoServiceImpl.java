@@ -14,8 +14,8 @@ import com.reforma.ecoreforma.domain.Usuario;
 import com.reforma.ecoreforma.repository.ItemReservaRepository;
 import com.reforma.ecoreforma.service.PrePresupuestoService;
 /**
- * Capa de Servicios que implementa los metodos de acceso del objeto {@link PrePresupuesto} 
- *  por la interfaz {@link PrePresupuestoService}.
+ * Capa de Servicios que implementa los metodos de acceso del objeto {@link com.reforma.ecoreforma.domain.PrePresupuesto} 
+ *  por la interfaz {@link com.reforma.ecoreforma.service.PrePresupuestoService}.
  * 
  * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
  *   que es un subtipo de la clase @Component.

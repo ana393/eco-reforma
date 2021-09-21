@@ -9,7 +9,7 @@ import com.reforma.ecoreforma.domain.Presupuesto;
 import com.reforma.ecoreforma.domain.Usuario;
 
 /**
- * Repositorio para el objeto {@link Presupuesto}
+ * Repositorio para el objeto {@link com.reforma.ecoreforma.domain.Presupuesto}
  *  que proporciona un conjuntos de metodos para trabajar con la Base de Datos.
  *  
  *  Hereda de la interfaz {@link JpaRepository}
