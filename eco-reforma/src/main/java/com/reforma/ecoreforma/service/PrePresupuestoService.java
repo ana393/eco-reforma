@@ -29,14 +29,14 @@ public interface PrePresupuestoService {
 	int obtenerNrItemos(Usuario usuario); 
 	
 	/**
-	 * Metodo que encuentra el {@link ItemReserva} segun el id.
+	 * Metodo que encuentra el {@link com.reforma.ecoreforma.domain.ItemReserva} segun el id.
 	 * @param id
 	 * @return
 	 */
 	ItemReserva encuentraItemPorId(Long id);
 	
 	/**
-	 * Metodo que anade {@link ItemReserva} a {@link PrePresupuesto}.
+	 * Metodo que anade {@link com.reforma.ecoreforma.domain.ItemReserva} a {@link com.reforma.ecoreforma.domain.PrePresupuesto}.
 	 * @param habitacion
 	 * @param usuario
 	 * @param qty
@@ -45,7 +45,7 @@ public interface PrePresupuestoService {
 	ItemReserva anadeItemAPrePresupuesto(Habitacion habitacion,Usuario usuario, int qty);
 		
 	/**
-	 * Metodo que elimina {@link ItemReserva}.
+	 * Metodo que elimina {@link com.reforma.ecoreforma.domain.ItemReserva}.
 	 * @param item
 	 */
 	void eliminarItemReserva(ItemReserva item);

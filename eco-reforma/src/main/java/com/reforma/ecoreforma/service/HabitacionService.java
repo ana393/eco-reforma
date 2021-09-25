@@ -1,5 +1,7 @@
 package com.reforma.ecoreforma.service;
 
+import java.io.IOException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,12 +21,14 @@ import com.reforma.ecoreforma.service.Impl.HabitacionServiceImpl;
 public interface HabitacionService {
 	
 	/**
-	 * @return el numero de {@link Habitacion} existentes.
+	 * Metodo para la totalidad de articulos existentes en la persistencia.
+	 * @return el numero de {@link com.reforma.ecoreforma.domain.Habitacion} existentes.
 	 */
 	Long NumeroArticulos();
 	
     /**
      *  Metodo que devuelve todas las habitaciones existentes.
+     *  
      * @param pagina
      * @return pageable objeto que especifica la informacion de la pagina solicitada.
      */
@@ -32,6 +36,7 @@ public interface HabitacionService {
 	
 	/**
 	 *  Metodo que devuelve todas las habitaciones existentes segun el titulo or tipo.
+	 *  
 	 * @param titulo
 	 * @param tipo
 	 * @param pageable
@@ -50,9 +55,10 @@ public interface HabitacionService {
 	 * Metodo que guarda un nuevo recurso en la base de datos.
 	 * @param habitacion
 	 * @param Fichero
+	 * @throws IOException si se encuentra error en el proceso de lectura del fichero.
 	 * @return
 	 */
-	Habitacion guardaHabitacion(Habitacion habitacion, MultipartFile Fichero);
+	Habitacion guardaHabitacion(Habitacion habitacion, MultipartFile Fichero) throws IOException;
 	
 	/**
 	 * Metodo que actualiza la habitacion.

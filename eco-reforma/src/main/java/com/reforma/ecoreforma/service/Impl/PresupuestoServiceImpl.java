@@ -27,6 +27,8 @@ import com.reforma.ecoreforma.service.PresupuestoService;
  * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
  *   que es un subtipo de la clase @Component.
  * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -39,20 +41,20 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 	
 	
 	/**
-	 * Se implementa la interfaz {@link PresupuestoRepository}.
+	 * Se implementa la interfaz {@link com.reforma.ecoreforma.repository.PresupuestoRepository}.
 	 */
 	private final PresupuestoRepository presupuestoRepository;
 	/**
-	 * Se implementa la interfaz {@link ItemReservaRepository}.
+	 * Se implementa la interfaz {@link com.reforma.ecoreforma.repository.ItemReservaRepository}.
 	 */
 	private final ItemReservaRepository itemRepository;
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
 	 * La anotacion @Autowired proporciona la inicializacion automatica de los objetos.
 	 *  
-	 * @param presupuestoRepository implimentacion de la interfaz {@link PresupuestoRepository}
+	 * @param presupuestoRepository implimentacion de la interfaz {@link com.reforma.ecoreforma.repository.PresupuestoRepository}
 	 *                    para el procesamiento de presupuestos de la base de datos.
-	 * @param itemRepository implimentacion de la interfaz {@link ItemReservaRepository}.
+	 * @param itemRepository implimentacion de la interfaz {@link com.reforma.ecoreforma.repository.ItemReservaRepository}.
 	 */
 	public PresupuestoServiceImpl(PresupuestoRepository presupuestoRepository, ItemReservaRepository itemRepository) {
 		this.presupuestoRepository = presupuestoRepository;
@@ -85,6 +87,7 @@ public class PresupuestoServiceImpl  implements PresupuestoService{
 		return presupuestDB;
 	}
 
+	
 	@Override
 	public Page<Presupuesto> encuentraPorUsuario(Usuario usuario, Pageable pageable) {
 		return presupuestoRepository.findByUsuario(usuario, pageable);

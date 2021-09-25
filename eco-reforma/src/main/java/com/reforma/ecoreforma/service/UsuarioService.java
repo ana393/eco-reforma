@@ -21,17 +21,20 @@ import com.reforma.ecoreforma.domain.Usuario;
  *
  */
 public interface UsuarioService {
+	
 	/**
-	 * Metodo que devuelve un contenedor con valor or no del objeto {@link Usuario}.
+	 * Metodo que devuelve un contenedor con valor or no del objeto {@link com.reforma.ecoreforma.domain.Usuario}.
 	 * @param email del usuario de la Base de Datos.
 	 * @return Optional de los usuarios
 	 */
 	@Transactional
 	Optional<Usuario> findByEmail(String email);
+	
 	/**
-	 * Metodo que registra informacion del usuario
+	 * Metodo que registra informacion del usuario.
+	 * 
 	 * @param Usuario usuario
-	 * @return el {@link Usuario} objeto que se guarda en la base de datos
+	 * @return el {@link com.reforma.ecoreforma.domain.Usuario} objeto que se guarda en la base de datos
 	 */
 	Usuario guardar(Usuario usuario);
 	
@@ -44,6 +47,7 @@ public interface UsuarioService {
 	
 	/**
 	 * Metodo que actualiza el rol del usuario.
+	 * 
 	 * @param form formulario con los roles de los usuarios.
 	 * @param usuario de la base de datos.
 	 */
@@ -63,6 +67,7 @@ public interface UsuarioService {
 	
 	/**
 	 * Elimina el usuario de la Base de datos.
+	 * 
 	 * @param id del usuario de la base de datos.
 	 */
 	void delete(Long id);

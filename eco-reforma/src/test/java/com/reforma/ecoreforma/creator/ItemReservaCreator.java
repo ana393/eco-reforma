@@ -7,8 +7,17 @@ import com.reforma.ecoreforma.domain.Habitacion;
 import com.reforma.ecoreforma.domain.ItemReserva;
 import com.reforma.ecoreforma.domain.Usuario;
 
+/**
+ * Clase creadora de objetos para una mejora organizacion de los metodos dentro de la clase test.
+ * @author Ana Tcaci
+ *
+ */
 public class ItemReservaCreator {
     
+	/**
+	 * Crecion de articulos de una cesta de pre presupuesto.
+	 * @return objeto ItemReserva
+	 */
 	public static ItemReserva crearTestItemReserva() {
 		ItemReserva testIReserva = new ItemReserva();
 		testIReserva.setId(1L);
@@ -18,6 +27,10 @@ public class ItemReservaCreator {
 		return testIReserva;
 	}
 		
+	/**
+	 * Crecion de una lista de articulos de una cesta de pre presupuesto.
+	 * @return Lis<ItemReserva>
+	 */
 	public static List<ItemReserva> crearPrePresupuesto(){
 		List<ItemReserva> testPrePresupuesto = new ArrayList<>();
 		testPrePresupuesto.add(crearTestItemReserva());

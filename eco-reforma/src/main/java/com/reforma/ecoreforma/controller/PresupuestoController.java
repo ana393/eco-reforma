@@ -23,8 +23,10 @@ import com.reforma.ecoreforma.service.PresupuestoService;
 
 /**
  * Clase controller Presupuesto.
- * Con la anotacion @Controller , Spring podrá detectar la clase PresupuestoController cuando realice el escaneo de componentes.
- * @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
+ * Con la anotacion @Controller , Spring podra detectar la clase PresupuestoController cuando realice el escaneo de componentes.
+ *    @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -116,6 +118,14 @@ public class PresupuestoController {
 		return "finalizar-presupuesto";
 	}
 
+	/**
+	 * 
+	 * Metodo utilitario convertor de los valores de la estructura de datos {@link java.util.Map},
+	 *  para una mejora persecusion de errores.
+	 *   
+	 * @param mapa
+	 * @return
+	 */
 	private String mapConvertor(Map<String, ?> mapa){
 		String result = mapa.keySet().stream()
 			      .map(key -> key + "=" + mapa.get(key))

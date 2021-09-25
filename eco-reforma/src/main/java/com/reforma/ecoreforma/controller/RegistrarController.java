@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ import com.reforma.ecoreforma.service.UsuarioService;
  * La anotacion @Controller  sirve para informar a Spring que esta es una clase @Bean,
  * y que se debe cargar cuando se lanza la aplicacion.
  * 
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
+ * 
  *@author Ana Tcaci
  *@version 1.0
  *@see Usuario
@@ -34,6 +39,7 @@ import com.reforma.ecoreforma.service.UsuarioService;
 public class RegistrarController {
 	
 	private final UsuarioService usuarioService;
+	private static final Logger log = LoggerFactory.getLogger(RegistrarController.class);
 	
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
@@ -82,7 +88,7 @@ public class RegistrarController {
 			@Valid Usuario usuario,
 			BindingResult bindingResult,
 			Model model) {
-		
+		log.info("Se hace la Peticion POST para el registro de un nuevo usuario.");
 		boolean esConfirmVacio = contrasenaConfirm.isBlank();
 		boolean esContrasenaDiferente = usuario.getPassword() !=null && !usuario.getPassword().equals(contrasenaConfirm);
 		
@@ -98,6 +104,7 @@ public class RegistrarController {
 		if(esConfirmVacio || esContrasenaDiferente || bindingResult.hasErrors()) {
 			Map<String, String> errors = ControllerUtil.obtenerErrores(bindingResult);
 			model.mergeAttributes(errors);
+			log.info("Los errores al registrar un recurso: errors - {}", errors.size());
 			return "registro";
 		} 
 
@@ -108,7 +115,6 @@ public class RegistrarController {
 			usuarioService.guardar(usuario);
 			model.addAttribute("messageType", "alert-danger");
 			model.addAttribute("message", "Gracias por unirse a nuestro equipo");
-		
 		return "redirect:/login";
 	}
 }

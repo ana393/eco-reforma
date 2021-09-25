@@ -22,6 +22,8 @@ import com.reforma.ecoreforma.repository.UsuarioRepository;
  * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
  *
  * La anotacion @Transactional - crea un punto AOP que asegura la ejecucion de todas las queries en una sola transaccion.
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -42,7 +44,7 @@ public class UsuarioSecurityService implements UserDetailsService {
 	 * Constructor para la inicializacion  de las variable principal.
 	 * Con la anotacion @Autowired  se lleva a cabo la inyección de dependencias del objeto.
 	 *              
-	 * @param usuarioRepository implimentacion de la interfaz {@link UsuarioRepository}
+	 * @param usuarioRepository implimentacion de la interfaz {@link com.reforma.ecoreforma.repository.UsuarioRepository}
 	 *                    para el procesamiento de usuarios de la base de datos.
 	 *                    
 	 */
@@ -64,11 +66,5 @@ public class UsuarioSecurityService implements UserDetailsService {
 		return usuario;
 	}
 	
-//	public void authenticationUser(String email) {
-//		UserDetails userDetails = loadUserByUsername(email);
-//		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(),
-//					userDetails.getAuthorities());
-//		logger.info("Authenticando usuario: auth: {}", authentication.toString());
-//		SecurityContextHolder.getContext().setAuthentication(authentication);
-//	} 
+ 
 }

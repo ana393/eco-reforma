@@ -35,8 +35,10 @@ import com.reforma.ecoreforma.service.UsuarioService;
 
 /**
  * Clase controller Usuario.
- * Con la anotacion @Controller  Spring podrá detectar la clase UsuarioController cuando realice el escaneo de componentes.
+ * Con la anotacion @Controller  Spring podra detectar la clase UsuarioController cuando realice el escaneo de componentes.
  * @RequestMapping - anotacion que permite el mapeo a los metodos del controlador.
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -71,9 +73,10 @@ public class UsuarioController {
 	
 	 /** 
 	 * Metodo que prepara varios datos estatisticos para la pagina de gestion.
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize},
+	 *   surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/gestion"}, metodo GET.
-	 * @param model {@link Model}
+	 * @param model {@link org.springframework.ui.Model}
 	 * @return
 	 */
 	@PreAuthorize("hasAuthority('ADMIN')")
@@ -98,9 +101,9 @@ public class UsuarioController {
 	 
 	 /**
 	 * Metodo que devuelve una lista de recursos para ser editados por el administrados
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/articulosList"}, metodo GET.
-	 * @param model {@link Model}
+	 * @param model {@link org.springframework.ui.Model}
 	 * @param pageRequest objeto que espesifica la informacion solicitada.
 	 * @return lista de recursos
 	 */
@@ -121,7 +124,7 @@ public class UsuarioController {
 	 * URL request {"/mis_presupuestos"}, metodo GET.
 	 * @param pageRequest objeto que espesifica la informacion solicitada.
 	 * @param usuarioSession 
-	 * @param model {@link Model}
+	 * @param model {@link org.springframework.ui.Model}
 	 * @return la pagina /mis-presupuestos
 	 */
 	 @GetMapping("mis_presupuestos")
@@ -142,6 +145,7 @@ public class UsuarioController {
 	/**
 	 * Metodo para eliminar presupuesto.
 	 * URL request {"/mis_presupuestos"}, @RequestMapping.
+	 * 
 	 * @param id
 	 * @return redirect a /usuario/mis_presupuestos
 	 */
@@ -155,8 +159,10 @@ public class UsuarioController {
 	
 	 /**
 	  * Se elimina los recursos.
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize}
+	 *  surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/articulosList/borrar/{id}"}, metodo GET.
+	 * 
 	 * @param id
 	 * @return redirect a /usuario/articulosList
 	 */
@@ -170,7 +176,8 @@ public class UsuarioController {
 	 
 	 /**
 	 * Metodo que anade una habitacion.
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * 
 	 * URL request {"admin/crea_recurso"}, metodo GET
 	 * @param model
 	 * @return
@@ -187,8 +194,9 @@ public class UsuarioController {
 	 
 	 /**
 	 * Se guarda un recurso
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/guardar_recurso"}, metodo POST.
+	 * 
 	 * @param habitacion
 	 * @param bindingResult
 	 * @param model
@@ -215,8 +223,9 @@ public class UsuarioController {
 	 
 	 /**
 	 * Se actualiza un recurso
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/actualizar_recurso"}, metodo POST.
+	 * 
 	 * @param habitacion
 	 * @return
 	 */
@@ -233,8 +242,9 @@ public class UsuarioController {
 	 
 	  /**
 	 * Metodo para listar usuarios
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize}e surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/usuarios"}, metodo GET.
+	 * 
 	 * @param pageRequest
 	 * @param model
 	 * @return la pagina admin/usuarios
@@ -255,9 +265,10 @@ public class UsuarioController {
 	  
 	  /**
 	 * 
-	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	 * URL request {"/roles"}, metodo POST.
 	 * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	 * 
 	 * @param form
 	 * @param usuario
 	 * @return redirecta a  /usuario/usuarios
@@ -274,8 +285,9 @@ public class UsuarioController {
 		/**
 	     * Retorna todos los presupuestos de los clientes.
 	     * URL request {"/presupuestos"}, metodo GET.
-	     * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
-	     * @param model objeto {@link Model}.
+	     * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	     * 
+	     * @param model objeto {@link org.springframework.ui.Model}.
 	     * @return reservas pagina con atributos uso del objeto  {@link Model}.
 	     */
 	    @PreAuthorize("hasAuthority('ADMIN')")
@@ -294,11 +306,13 @@ public class UsuarioController {
 	    
 
 	    /**
-	     * metodo para guardar el estado del {@link Presupuesto}.
-	     * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	     * metodo para guardar el estado del {@link com.reforma.ecorefoma.domain.Presupuesto}.
+	     * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} 
+	     * surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	     * URL request {"/presupuesto-editar"}, metodo GET.
-	     * @param form que guarda los valores en Map<String, String>
-	     * @param presupuesto el objeto {@link Presupuesto} editado.
+	     * 
+	     * @param form que guarda los valores en la estructura de datos Map<String, String>.
+	     * @param presupuesto el objeto {@link com.reforma.ecoreforma.domain.Presupuesto} editado.
 	     * @return la vista con la ruta /usuario/presupuestos.
 	     */
 
@@ -313,7 +327,7 @@ public class UsuarioController {
 
 	    /**
 	     * Metodo que elimina Presupuestos.
-	     * La anotacion @link PreAuthorize surgiere el acceso de la url solo para usuarios con derecho de administrador.
+	     * La anotacion {@link org.springframework.security.access.prepost.PreAuthorize} surgiere el acceso de la url solo para usuarios con derecho de administrador.
 	     * URL {"/eliminar"}, @RequestMapping
 	     * @param id
 	     * @return redirect a /usuario/presupuestos

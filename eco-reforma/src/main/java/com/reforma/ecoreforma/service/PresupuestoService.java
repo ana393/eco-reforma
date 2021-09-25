@@ -22,7 +22,8 @@ public interface PresupuestoService {
 	
 	
 	/**
-	 * Metodo que encuentra todos los {@link Presupuesto} existentes.
+	 * Metodo que encuentra todos los {@link com.reforma.ecoreforma.domain.Presupuesto} existentes.
+	 * 
 	 * @param page  objeto que especifica la informacion de la pagina solicitada. 
 	 * @return lista paginada de {@link Presupuesto}.
 	 */
@@ -30,6 +31,7 @@ public interface PresupuestoService {
 	  
     /**
      * Metodo que guarda un nuevo presupuesto.
+     * 
      * @param presupuestoValida
      * @param usuario
      * @param presupuesto
@@ -38,7 +40,9 @@ public interface PresupuestoService {
     Presupuesto guardar(Presupuesto presupuestoValida, Usuario usuario, PrePresupuesto presupuesto);
 	  
     /**
-     * Metodo que encuentra todos los {@link Presupuesto} existentes segun {@link Usuario}. 
+     * Metodo que encuentra todos los {@link com.reforma.ecoreforma.domain.Presupuesto} 
+     *  existentes segun {@link com.reforma.ecoreforma.domain.Usuario}. 
+     *  
      * @param usuario
      * @param pageable objeto que especifica la informacion de la pagina solicitada.
      * @return
@@ -47,6 +51,7 @@ public interface PresupuestoService {
 	  
 	/**
 	 * Metodo que actualiza un  presupuesto existente.
+	 * 
 	 * @param form
 	 * @param presupuesto
 	 */

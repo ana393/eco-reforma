@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -17,8 +16,10 @@ import com.reforma.ecoreforma.domain.Habitacion;
 import com.reforma.ecoreforma.service.HabitacionService;
 /**
  * Clase controller Home.
- * Con la anotacion @Controller  Spring podrá detectar la clase HomeController cuando realice el escaneo de componentes.
- * 
+ * Con la anotacion @Controller  Spring podra detectar la clase HomeController cuando realice el escaneo de componentes.
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
+ *  
  * @author Ana Tcaci
  * @version 1.0
  * @see HabitacionService
@@ -55,9 +56,9 @@ public class HomeController {
   /**
  * Devuelve el catalogo con recursos disponibiles
  * URL request {"/buscar"}, metodo GET.
- * @param pageRequestv {@link PageRequest}
+ * @param pageRequestv {@link org.springframework.data.domain.PageRequest}
  * @param filtro 
- * @param model {@link Model}
+ * @param model {@link org.springframework.ui.Model}.
  * @return pagina catalogo.html
  */
 @GetMapping("/buscar")

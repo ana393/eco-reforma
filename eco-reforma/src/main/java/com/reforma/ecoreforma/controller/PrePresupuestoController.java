@@ -20,7 +20,9 @@ import com.reforma.ecoreforma.service.HabitacionService;
 import com.reforma.ecoreforma.service.PrePresupuestoService;
 /**
  * Clase controller PrePresupuesto.
- * La anotacion @Controller  Spring podrá detectar la clase PrePresupuestoController cuando realice el escaneo de componentes.
+ * La anotacion @Controller  Spring podra detectar la clase PrePresupuestoController cuando realice el escaneo de componentes.
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -34,10 +36,14 @@ public class PrePresupuestoController {
 	
 	private final HabitacionService habitacionService; 
 	private final PrePresupuestoService prePresupuestoService;
+	
+	/**
+	 *  
+	 */
 	private static final Logger logger = LoggerFactory.getLogger(PrePresupuestoController.class);
 	/**
 	 * Constructor para la inicializacion  de las variables principales.
-	 * Con la anotacion @Autowired se lleva a cabo la inyección de dependencias de los objetos.
+	 * Con la anotacion @Autowired se lleva a cabo la inyeccion de dependencias de los objetos.
 	 * 
 	 * @param habitacionService
 	 * @param usuarioService
@@ -51,6 +57,7 @@ public class PrePresupuestoController {
 	/**
 	 * Devuelve la pagina de los articulos favoritos
 	 * URL {/tus-favoritos}, metodo GET.
+	 * 
 	 * @param usuarioSession
 	 * @param model {@link Model}
 	 * @return la pagina de tus-favoritos.html
@@ -67,11 +74,12 @@ public class PrePresupuestoController {
 	
 	
 	/**
-	 * Añade articulos a la lista de elementos favoritos
+	 * Metodo que anade articulos a la lista de elementos favoritos
 	 *  URL {/anade}, metodo POST. 
+	 *  <p>
 	 * @param habitacion
 	 * @param attributes
-	 * @param model {@link Model}
+	 * @param model {@link org.springframework.ui.Model}.
 	 * @param usuarioSession
 	 * @return redirect /tus-favoritos.
 	 */
@@ -90,8 +98,9 @@ public class PrePresupuestoController {
 	}
 	
 	/**
-	 * Elimina una preReserva.
+	 * Elimina un PreRresupuesto.
 	 * URL {"/elimina-item/{id}"}, metodo GET.
+	 * <p>
 	 * @param id
 	 * @return redirect /elimina-item/{id}
 	 */

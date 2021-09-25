@@ -29,6 +29,8 @@ import javassist.NotFoundException;
  * La anotacion @Service nos anuncia que esta clase es un componente de la capa de servicio,
  *   que es un subtipo de la clase @Component.
  * Usanddo la anotacion @Service se autodetecta el bean durante el escaneo del .classpath
+ * <p>
+ * Se recabara la informacion de los posibiles errores con el mecanismo {@link org.slf4j.Logger}; {@link org.slf4j.LoggerFactory}.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -100,7 +102,6 @@ public class HabitacionServiceImpl implements HabitacionService{
 			fichero.transferTo(new File(uploadPath + "/" + nombre_Fichero));
 			}catch(IOException e) {
 	            log.error(String.format("No se pudo transferir el fichero [%s], a la carpeta uploadPath indicada.", e.toString()));
-	            //log.info(String.format("No se pudo transferir el fichero [%s], a la carpeta uploadPath indicada.", nombre_Fichero));
 	        } catch (Exception exception) {
 	            // excepciones inesperadas.
 	           log.error(exception.toString());

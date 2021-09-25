@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Clase de configuracion 
- * La anotacion @Configuration encargada de definir que la clase es una clase de configuración para el framework.
+ * La anotacion @Configuration encargada de definir que la clase es una clase de configuracion para el framework.
  * 
  * @author Ana Tcaci
  * @version 1.0
@@ -17,7 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class EncryptionConfig {
 	
 	 /**
-	 * @Bean - anotacion que marca como bean cada el métodos de tal forma que este disponibles para Spring
+	  * Metodo de incriptacion de contrasena.
+	 * @Bean - anotacion que marca como bean cada  metodo de tal forma que esten disponibles para Spring.
 	 * @return un objeto BCryptPasswordEncoder una combinacion de hashing  con 8-byte generados al azar 
 	 */
 	@Bean
